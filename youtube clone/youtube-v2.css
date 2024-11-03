@@ -1,0 +1,438 @@
+body{
+    cursor:pointer;
+    font-family:Roboto,Arial,sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+.yt {
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    padding:0;
+}
+.yt-layout {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-content {
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.yt-vertical {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0px;
+    height: 400px;
+    width: 70px;
+    background-color:white;
+}
+.yt-content{
+    margin:0;
+    padding:0;
+    padding-left:15px;
+    padding-top: 100px;
+}
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 40px;
+    height: 1000px;
+    width:1130px;
+    margin-top:20px;
+}
+
+@media(min-width:701px) and (max-width:1000px){
+    .content{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media(max-width:700px){
+    .content{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.video-preview{
+    /*border-style:solid;*/
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5),-2px -2px -2px rgba(0,0,0,0.5);
+}
+.video-info-grid{
+    display:grid;
+    grid-template-columns: 42px 1fr;
+}
+/*
+.video-description{
+    vertical-align:top;
+    position:relative;
+}*/
+
+.video-title{
+    height:44px;
+    width:100%;
+    font-size: 16px;
+    font-weight: bold;
+    color:rgb(56, 52, 52);
+    margin: 5px 2px 5px 5px;
+    padding: 1px;
+}
+
+.video-author{
+    color: rgb(96, 96, 96);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 6px 2px 2px 5px;
+}
+.author-profile{
+    position:relative;
+}
+.video-author-profile{
+    height:40px;
+    width:40px;
+    border-radius:20px;
+    margin-left:2px;
+    margin-top: 7px;
+
+}
+.about{
+    display:flex;
+    flex-direction: column;
+}
+.author-name{
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    margin: 3px 3px;
+}
+.subscribers{
+    font-size: 12px;
+    font-weight: 500;
+    color:gray;
+    white-space: nowrap;
+    margin: 3px 3px;
+}
+
+.video-author-profile-tooltip{
+    display:flex;
+    flex-direction: row;
+    height: 60px;
+    width: 215px;
+    position:absolute;
+    top:54px;
+    left:30px;
+    opacity:0;
+    border-radius: 10px;
+    box-shadow: 1.5px 1.5px 2px rgba(0, 0, 0, 0.276), -1.5px -1.5px 2px rgba(0,0,0,0.276);
+}
+
+.author-profile:hover .video-author-profile-tooltip{
+    opacity:1;
+}
+.video-info-grid:hover .video-author{
+    opacity:0;
+}
+.video-info-grid:hover .video-views-n-date{
+    opacity:0;
+}
+
+.video-views-n-date{
+    color: rgb(96, 96, 96);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 5px 2px 0px 5px;
+}
+.video-img{
+    width:100%;
+    font-size: 10px;
+    border-radius: 15px;
+    object-fit: cover;
+    font-family:Arial, sans-serif;
+    transition: border-radius 0.50s;
+}
+
+.video-img:hover{
+    border-radius: 0px;
+}
+
+.video{
+    position:relative;
+    z-index:0;
+}
+
+.video-length{
+    background-color:black;
+    color:white;
+    font-size:12px;
+    padding:2px 2px;
+    border-radius:3px;
+    opacity:0.7;
+    position:absolute;
+    right:4px;
+    bottom:4px;
+}
+.genre{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:center;
+    flex:1;
+    background-color: white;
+    z-index:50;
+    position:fixed;
+    top:52px;
+    right:0;
+    left: 60px;
+}
+.genre button{
+    background-color:rgba(0,0,0,0.05);
+    border-radius:8px;
+    border:none;
+    color:rgb(15,15,15);
+    font-size:14px;
+    font-weight:500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:0px 12px 0px 12px;
+    height: 32px;
+}
+
+.vertical-icon{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    flex:1;
+    background-color:white;
+    position: fixed;
+    top: 50px;
+    left:5;
+    width:55px;
+    bottom:0;
+}
+.vt-in{
+    height: 70px;
+    width:70px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex:1;
+    transition: background-color 0.15s, border-radius 0.15s;
+}
+
+.vt-in:hover{
+    background-color:rgb(224, 222, 222);
+    border-radius: 25px;
+}
+.text{
+    text-align:center;
+    font-size:10px;
+    font-weight:500;
+    margin:-18px;
+}
+
+.home{
+    height: 65px;
+    width:65px;
+    object-fit:contain;
+}
+.shorts{
+    height: 33px;
+    width:33px;
+    object-fit:contain;
+    padding: 20px 16px 20px 16px;
+}
+.sub{
+    height: 24px;
+    width:24px;
+    object-fit:contain;
+    padding: 20px 20px 20px 20px;
+}
+
+.you{
+    height: 25px;
+    width:25px;
+    object-fit:contain;
+    padding: 20px 20px 20px 20px;
+}
+
+.horizontal-icon{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin:-6px;
+    flex:1;
+    padding-top:5px;
+    background-color:white;
+    z-index:100;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height: 60px;
+}
+
+.horizontal-left-section{
+    width:250px;
+    display:flex;
+    align-items:center;
+    margin-left:7px;
+}
+.horizontal-middle-section{
+    flex:3;
+    margin-left:35px;
+    margin-right:25px;
+    max-width: 550px;
+    display:flex;
+    align-items:center;
+}
+.horizontal-right-section{
+    width:300px;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items:center;
+}
+.search{
+    height:70%;
+    width:70%;
+    font-size:medium;
+    border-color:rgb(204,204,204);
+    border-radius:20px 0px 0px 20px;
+    border-style:solid;
+    padding: 0px 5px 0px 15px;
+    margin: 0px 0px 0px 22px;
+    border-width:1px;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.05);
+    margin-right:0;
+}
+
+.toggle-button{
+    height: 42px;
+    width: 62px;
+    border-color:rgb(204,204,204);
+    border-radius:0px 20px 20px 0px;
+    border-style:solid;
+    border-width:1px;
+    border-right-width: none;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.05);
+    margin-left:-3px;
+    background-color:rgb(245, 245, 245);
+    position:relative;
+}
+
+
+.search-icon{
+    height:20px;
+    width:20px;
+    border-color:rgb(204,204,204);
+    object-fit:cover;
+    padding-left: 20px;
+    padding-top:11px;
+    background-color:rgb(245, 245, 245);
+}
+
+.mic-icon{
+    height:35px;
+    width:35px;
+    border-style:solid;
+    border-color:rgb(204,204,204);
+    border-radius:19px;
+    border-width:1.8px;
+    object-fit:cover;
+    object-position:center;
+    background-color: rgb(204,204,204);
+    margin-left:15px;
+    transition: background-color 0.15s border-color 0.15s;
+}
+
+.mic-icon:hover{
+    background-color: rgb(131, 134, 131);
+    border-color: rgb(131, 133, 131);
+}
+
+.logo{
+    height:50px;
+    width:110px;
+    background-color:white;
+    object-fit:cover;
+    object-position: center;
+    margin-left:5px;
+}
+
+.bars{
+    height:25px;
+    width:35px;
+    object-fit:contain;
+    object-position: center;
+    border-radius: 5px;
+    margin-bottom:7px;
+    margin-left:20px;
+    transition: box-shadow 0.15s;
+}
+
+.bars:hover{
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.create,.notify,.profile{
+    height:35px;
+    width:35px;
+    object-fit:contain;
+    object-position: center;
+    border-radius:17px;
+    background-color: rgb(240, 232, 232);
+    margin-right:20px;
+    transition: box-shadow 0.15s;
+}
+
+.create:hover,.notify:hover,.profile:hover{
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.profile{
+    object-fit:cover;
+}
+
+.create-icon{
+    position:relative;
+}
+.notify-no{
+    background-color:rgb(209, 14, 14);
+    color:white;
+    padding: 1px 2px;
+    font-size:12px;
+    border-radius: 8px;
+    text-align: center;
+    position:absolute;
+    top:-15px;
+    right:8px;
+    width:18px;
+}
+
+
+.tooltip{
+    padding:5px 10px 5px 10px;
+    border-radius: 8px;
+    background-color: rgb(50, 48, 48);
+    color:white;
+    z-index:55;
+    opacity:0;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+    pointer-events:none;
+    position:absolute;
+    top:50px;
+    right:-5px;
+}
+
+.create-icon:hover .tooltip{
+    opacity:0.8;
+}
+
+.toggle-button:hover .tooltip{
+    opacity:0.8;
+}

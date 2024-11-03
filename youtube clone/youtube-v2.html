@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <link rel="stylesheet" href="youtube-v2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="yt">
+        <header class="horizontal-icon">
+            <div class="horizontal-left-section">
+                <img class="bars"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8AAADg4ODk5OT29vb5+fn09PTb29sjIyP8/PweHh4XFxcREREhISHc3NwaGhoKCgpTU1NYWFjp6ekqKioxMTHV1dU4dqBSAAAC7UlEQVR4nO3djXKjIBSG4ZiAAsFIU5v7v9Q9B5Ptzs5so5VGxn2fNj8KpnwSDZlh7OEAAAAAAAAAAAAAAAAAAAAAAACApfzWDfgnX6pp7bFObaF8p2tTq+tpfTx/eN86xpfeCySstwfVdf1Zou4ubJr1x2K3dYQnutUJ260jPFHgfPq2dYYvXdcHrPxAXH8uFad6e7HE52HWnupUakwDAAAAAAAAAAAAAAD+F96aeuevlmCtl4xbt+IHJwn7g2lb4+13ty7F/Ngs3+54O3an2ze3LtX3Fc+Jejut78clc4SjW9zE+BGd60O/eMOH9wJv1fk96OJ5Qdti0vtxjMNHSEuD/fa2Ot+S+aXLErqpx4Nb3vN/Wj+37TLzL51DyglT0JgxTP2Shj7m4hiGfJuEEFNwIWjdc/yrOEnp/IQvmyPsYnK9JIx9GmUpJMmrR2ZKg8uR5LmEGHPlMTUuhSbpgyS9F4eUD+R4XzdTgfPprOOwlyBREzpJ15yH6MZGkza9i3GQbon9FCJo3NS7QXrKOakbBznNONk9UtxrbHmFUV5vZsD1x+HMc6mTGHocpnxalGC9vlvPsdc8Tp5Mt5B7SfuvefSTJszF56lYnssOmn1yLXAu9Xv/PMyej2m6rrvIj/52x6PeX47T41T0+XiZ1uritELuL7dc/HgBWaEveXnZmGbO+M/K8NnKCNrKSFqH05mMqWWtyauNfonIxXaqczC5UFZPY+9c5PNyrtC2zz8HXvmlxLfWmFbaaYyMor00/b5oZWDdynJ7kBUyzNYSm9uuVaSylWKrVWUALsUSzeTBuCSs61uVN/ds5rGkCaXd0lPGyw6QnWD0pkVT0yXbfQvZA/nR5q1trmFm9CEAAAAAAAAAAAAAANijvV9zr+45UQXs/9qX9fagKnD90v1fg3buHOGtrJ8jXPdhWKAP93897/qvyV5gBuPOr6uf7f1/IxT7JxLlVdw0AAAAAAAAAAAAAAAAAAAAAACAav0C4esuuVXlENcAAAAASUVORK5CYII="
+                    alt="menu bars">
+                <a href="https://www.youtube.com"><img class="logo"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAw1BMVEX/////AAAoKCgAAAAlJSUGBgYxMTEZGRkSEhIfHx+xsbEXFxcbGxsiIiKnp6fb29vi4uLR0dGSkpKbm5tPT09paWkPDw//zs739/dAQEDGxsa5ubn/+vo0NDTm5ubKysp2dnb/RUX/7e3/Ghr/2dn/Jib/v7/w8PBcXFxnZ2dBQUH/TU1QUFCBgYGKior/p6f/lZX/dHT/YmL/ODj/EhL/Li7/Vlb/iIj/1dX/goL/jo7/nZ3/4+P/bm7/fHz/YGD/tLQPf5QKAAAGAElEQVR4nO2a/3uaOhSHkcAggiBaGbXV0m6ttqt27bpu3Xbv3f//V92ck4CW+qWitnv2fN5fxJhAXgick6BlAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8LRwb3rofO+Ps+8XN58fbu4fTL1/PP9zfN0ru7z+cf/1y+nB3++3nzcXHs7fuaS0+3jZezvmPPUrGkaK5893+2MCPuSg7lChi84W2k9HKI2XtCtUKTREE6WC3epb1bVPBRuO9aRoJ1xVCb8dq2xXx0sMQfVHhmaFv287hjgU/bi7YaJi2Q2HbttBXIqLOrTn9/dSex5GvYvhPHcPfpvGhY9vpEW/m0rbDyR9oeFxHsPFgWk9DpTXlzYGSdftrDHloOmQXvtoo/VXL8L7osroorTFt8YANstUHy2JF+51S9LqjoeI1DC9qGTZMxMhc1aOQto6Uqxy/6JBk6EcLf9qH4c96ht9N84OWetTQA5TG65JuV3llw8d6hkVI7AaqtxSir1vlU3Udr2x4t1Dg55c1hjemeaxuP5mrDeraOy5qR5Ne3jkpKhCUBwx564lhuyji+zPOZobtTq83OwfDbn55mXef3bUv43TJILxZbfi5aG87HAVj15hml8IPpfTEoQ7+/MjsqI0pbfhPDMdURFfshGvFxvDK6gpPynRgEqSO8KXC591szvlCAZW0HK8cv49FewqD6YjjPQXG7NAzwa6lx2xIj9gu9dMrrnJp2FNtWwdkqM6P7RaGB5HgPXg9PsJEFPFTvOw+r7BYgNOyX5+WG94W7ekZmvZZVKhzPgk41vmkeFXP0B60fCHZiC5iQoIeR1HHXxONNjVUoeTDMsO7ov1IsIFKbqivI0pavOmoSZ8iqWfoeM1hTu04W6Jz53WsIWUUaZ1px0rD5cHkodyBcpOXFBfJg66oY6vSyyKHq2GohoSV8VigbMkhM/MQCvPNBZckbaWhdbY4b/1UVpiE6umXuDosqi867keB6XyN+5DOEEcfeameqsKU0CG48q4N1eTjdEGF0/LnPh256+nej1vm0vHFlFktQ66Um98oL+QIWaru3tCy/l1lmFHPrxwdK6jzPLZ4FuGO6htSjkRhiEq4jk5892L467+V15Cvm2Mym9Dhx4IxpHhR17CoXg53Nkz3YHi8eAlgdh9yKCwe7bQ5ZxhvaWjrtJDrjNiwRrhYY/h78e9zz1K+Qcz0Pkt3Ztil6o42dA77R0d0MXdv+P7rEsFZPLQ4cTNeezK0nTRN6XPXhmeLs3Lmdm4XFCJsN9mjoS0Noobh8rx05SLj49wujujuC7PdGnbmDd/1DOMahqdLDJfdgIbPc7ug2GdLPvbuDDlaGMPW9eZeMxaPxJsVSbeusNjQs3cVLWjoP4kWtdlyjl8xfBrxxXC7nIZymTLiW0k8HNWZW2y5TlMxPJjP2mxvi6yN8gganfSTXtdwhOs6NQy3W2urGtKZp3yZB5dDE8Qyy1lmSJWS54YUgigRpFTGYbHQWbumvpDt1kurhlExN6DO81yHe9ozJRVDHonSNJsZ0q5oVURXGpjZE60ItV62XPmU7da8q4ac3wSdjIsErYDTLMiWR0metp4ZciTwOnE3kPPzw9ZVs0leepmSJ2T5MKYd8XDfmK3eW1QNrbHkNQfuKA+pDkds3w0O1J1VMTzhfM9zA0lXszSU0vedIhHUGbcUgk6Qu/rl3RK2eff03LDty3IlKuEC/ZrCEbGKcBVDa9AyK0wn6czQi65CXazXLCK9B9pjzXenW7w/NIb8FtE8yIfXIgilDMQg0QVNEcgwDfv0slGvJoZUnw3bgU9Vu+o86HePTfpMsrHwZCimxf4d4XuBL65OrJrUfwesGfHb3/JrHE3y2Yowre7mk2ZmqlEBV9fLu6Mo1yu9VDRX52Tam872aCVRp9tc/fJ1NX/Oe/w9wv/F+PaC/2L8PX8/+ev+TwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8Eb8DxYVhFR4Kd1cAAAAAElFTkSuQmCC"
+                        alt="youtube logo" title="Youtube Home"></a>
+            </div>
+            <div class="horizontal-middle-section">
+                <input class="search" type="text" placeholder="Search">
+                <div class="toggle-button"><img class="search-icon"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZxrmD6HJ5s3uQ_wwS7ix2kpKd6qVTSG9kl77ehRwGLOkA98oU7sNHOIQ1zTzjqfFxKY&usqp=CAU"
+                        alt="search-icon" title="Search">
+                    <div class="tooltip">Search</div>
+                </div>
+                <div class="create-icon">
+                    <img class="mic-icon" src="https://i.pinimg.com/736x/74/ce/14/74ce14befb22695743659cf8a8290c2b.jpg"
+                        alt="mic">
+                    <div class="tooltip">Search with your voice</div>
+                </div>
+            </div>
+            <div class="horizontal-right-section">
+                <div class="create-icon">
+                    <img class="create"
+                        src="https://png.pngtree.com/png-vector/20190420/ourmid/pngtree-vector-add-icon-png-image_967107.jpg"
+                        alt="create">
+                    <div class="tooltip">Create</div>
+                </div>
+                <div class="create-icon">
+                    <img class="notify" src="https://cdn.pixabay.com/photo/2020/09/27/10/25/youtube-5606316_960_720.png"
+                        alt="notify">
+                    <p class="notify-no">7+</p>
+                    <div class="tooltip">Notifications</div>
+                </div>
+                <img class="profile"
+                    src="https://t4.ftcdn.net/jpg/05/77/15/27/360_F_577152756_1JOoPlDYw4rTRRNB5kFEvsjW6Ejh4mjn.jpg"
+                    alt="profile">
+            </div>
+        </header>
+
+        <div class="yt-layout">
+            <nav class="sidebars">
+                <div class="yt-vertical">
+                    <div class="vertical-icon">
+                        <div class="vt-in"><img class="home"
+                                src="https://icon-library.com/images/home-icon/home-icon-8.jpg" alt="Home" title="Home">
+                            <p class="text">Home</p>
+                        </div>
+                        <div class="vt-in"><img class="shorts"
+                                src="data:image/png;base64,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"
+                                alt="shorts" title="Shorts">
+                            <p class="text">Shorts</p>
+                        </div>
+                        <div class="vt-in"><img class="sub"
+                                src="https://brandeps.com/icon-download/C/Collection-play-icon-vector-01.svg"
+                                alt="Subscription" title="Subscription">
+                            <p class="text">Subscriptions</p>
+                        </div>
+                        <div class="vt-in"><img class="you"
+                                src="https://cdn-icons-png.flaticon.com/128/1946/1946429.png" alt="You" title="You">
+                            <p class="text">You</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <main class="main-content">
+                <section class="yt-rcmnd">
+                    <div class="genre">
+                        <button>All</button>
+                        <button>Popular</button>
+                        <button>Music</button>
+                        <button>Gaming</button>
+                        <button>Sports</button>
+                        <button>News &amp; Politics</button>
+                        <button>Film &amp; Animation</button>
+                        <button>Travel &amp; Events</button>
+                        <button>Science &amp; Technology</button>
+                        <button>More</button>
+                    </div>
+                </section>
+                <section class="yt-content">
+                    <div class="content">
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=DG8F-csoRAQ">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/DLwj7X0rOYc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBpN_o1O3PDK2nondgIHrKo-jfKJw"
+                                        alt="pahile pahile chath puja" title="pahile pahile chath puja">
+                                </a>
+                                <p class="video-length">7:00</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/ytc/AIdro_k8oU3a_6W7ekpOVJ47e-yp5QDamytXIThxfw6sljG1mKA=s68-c-k-c0x00ffffff-no-rj"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/ytc/AIdro_k8oU3a_6W7ekpOVJ47e-yp5QDamytXIThxfw6sljG1mKA=s68-c-k-c0x00ffffff-no-rj"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">Worldwide Records Bhojpuri</p>
+                                            <p class="subscribers">35.9M subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=DG8F-csoRAQ">
+                                        <p class="video-title">Pahile Pahil Chhathi Maiya | #Sharda Sinha | Chhath Song
+                                        </p>
+                                    </a>
+                                    <p class="video-author">Worldwide Records Bhojpuri</p>
+                                    <p class="video-views-n-date">54M views &bull; 7 years ago</p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=J8DGjUv-Vjc">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/J8DGjUv-Vjc/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD9yM6gTY9lrKdrHOLNNGls2a5Kzw"
+                                        alt="Minimalism" title="Minimalism">
+                                </a>
+                                <p class="video-length">1:18:00</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/Nzo9Ec1l8EMCz5berZOCRgenewlY2dfL0xoCSo_X-ctN5IhxwtDSBRhd7JaS4oWP2YEui835kg=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/Nzo9Ec1l8EMCz5berZOCRgenewlY2dfL0xoCSo_X-ctN5IhxwtDSBRhd7JaS4oWP2YEui835kg=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">The Minimalists</p>
+                                            <p class="subscribers">563K subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=J8DGjUv-Vjc">
+                                        <p class="video-title">MINIMALISM: Official Netflix Documentary (Entire Film)
+                                        </p>
+                                    </a>
+                                    <p class="video-author">The Minimalists </p>
+                                    <p class="video-views-n-date">10M view &bull; 1 year ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=X9NdWDG-4Lk">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/X9NdWDG-4Lk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCQrZqe2tnFSIcgVE_nMRQAWj78mg"
+                                        alt="Advice" title="Advice to daughters">
+                                </a>
+                                <p class="video-length">9:18</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/sUlAGCzqy1-rmmEcntREJ4DpH_w2Kb1yTQGR9UcrovV8nwYy6LzQVNiZPvhZf_cRB6wGz8A1pJ4=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/sUlAGCzqy1-rmmEcntREJ4DpH_w2Kb1yTQGR9UcrovV8nwYy6LzQVNiZPvhZf_cRB6wGz8A1pJ4=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">FemForward</p>
+                                            <p class="subscribers">93.8K subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=X9NdWDG-4Lk">
+                                        <p class="video-title">If you were my daughter, I'd share these 7 harsh truths
+                                            about
+                                            men.</p>
+                                    </a>
+                                    <p class="video-author">FemForward</p>
+                                    <p class="video-views-n-date">811K views &bull; 4 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=B3SNjPX615Y">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/B3SNjPX615Y/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLATQ_1yRVT5rpGK-Lm8Vq6eFW8Fyg"
+                                        alt="Success" title="How to get better">
+                                </a>
+                                <p class="video-length">5:13</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/nHXl9PDHUCt3fpCbn1F3pTREGcVMxek--Dcd9uzYRND2Zs3hHbpY3MQLuEl9X66X0Mr3nR_u0cs=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/nHXl9PDHUCt3fpCbn1F3pTREGcVMxek--Dcd9uzYRND2Zs3hHbpY3MQLuEl9X66X0Mr3nR_u0cs=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">Simplifying Ideas</p>
+                                            <p class="subscribers">18.7K subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=B3SNjPX615Y">
+                                        <p class="video-title">How to actually OUTWORK everyone (the easy way)</p>
+                                    </a>
+                                    <p class="video-author">Simplifying Ideas</p>
+                                    <p class="video-views-n-date">549K view &bull; 3 weeks ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=KUpwupYj_tY">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/2CXSw1oPj3I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC_2Y36GBQm6kGjfTRDeJxNlyppGg"
+                                        alt="Song" title="Tere Hawale">
+                                </a>
+                                <p class="video-length">5:30</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s160-c-k-c0x00ffffff-no-rj"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s160-c-k-c0x00ffffff-no-rj"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">T-Series</p>
+                                            <p class="subscribers">277M subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=KUpwupYj_tY">
+                                        <p class="video-title">Tere Hawaale: Laal Singh Chaddha | Aamir, Kareena |
+                                            Arijit,
+                                            Shilpa</p>
+                                    </a>
+                                    <p class="video-author">T-Series</p>
+                                    <p class="video-views-n-date">40M views &bull; 2 years ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=SEyzZw7xiPo">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/SEyzZw7xiPo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCJC1vkMsZoRGeFprSrhIuaIYVSwA"
+                                        alt="Song" title="Do Gallan Kariye">
+                                </a>
+                                <p class="video-length">4:38</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/91h2axp-RsM1qlRJG1jjDLGVwTstOZWsSwnzAuP9p-iwQDbdW01M19AYbuTzm4lFrtiPk44eTQ=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/91h2axp-RsM1qlRJG1jjDLGVwTstOZWsSwnzAuP9p-iwQDbdW01M19AYbuTzm4lFrtiPk44eTQ=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">Fresh Media Records</p>
+                                            <p class="subscribers">7.49M subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=SEyzZw7xiPo">
+                                        <p class="video-title">LETS TALK (DO GALLAN ) | Full Video | GARRY SANDHU |</p>
+                                    </a>
+                                    <p class="video-author">Fresh Media Records</p>
+                                    <p class="video-views-n-date">111M views &bull; 5 years ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=TVbI55pDdaI"><img class="video-img"
+                                        src="https://i.ytimg.com/vi/4R2WjSSPkBU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAWspGeZv-JTywsTW6E6A_u60wzYQ"
+                                        alt="Song" title="Tu hai toh"></a>
+                                <p class="video-length">4:49</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/Q3Hm_Y4J05A-VATeZ1QF89FnL0Zhq748MMXGXkZvAaqrceMTeq_cjEZI0M0E8kIZKrZ_NoJaMw=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/Q3Hm_Y4J05A-VATeZ1QF89FnL0Zhq748MMXGXkZvAaqrceMTeq_cjEZI0M0E8kIZKrZ_NoJaMw=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">SonyMusicIndiaVEVO</p>
+                                            <p class="subscribers">52.6M subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=TVbI55pDdaI">
+                                        <p class="video-title">Tu Hain Toh - Lyric Video|Mr. & Mrs. Mahi|
+                                            Rajkummar,Janhvi</p>
+                                    </a>
+                                    <p class="video-author">SonyMusicIndiaVEVO</p>
+                                    <p class="video-views-n-date">19M views &bull; 4 months ago </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=3MATEbuimm0">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/3MATEbuimm0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD_QWqInDUUFuP3eJ20nkyw7XZ8hQ"
+                                        alt="Standup" title="To make you happy">
+                                </a>
+                                <p class="video-length">10:56</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/IrCSs7n0KZvorhhZM8PTZTNFIOMSEme0B674ExVSstuLJhFvQ6pfhmujw_9CGZLu0GxR9qfQQQ=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/IrCSs7n0KZvorhhZM8PTZTNFIOMSEme0B674ExVSstuLJhFvQ6pfhmujw_9CGZLu0GxR9qfQQQ=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">Shubham Shandilya</p>
+                                            <p class="subscribers">138K subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=3MATEbuimm0">
+                                        <p class="video-title">ALPHA FEMALE | Stand Up Comedy | Shubham Shandilya</p>
+                                    </a>
+                                    <p class="video-author">Shubham Shandilya</p>
+                                    <p class="video-views-n-date">224K views &bull; 3 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-preview">
+                            <div class="video">
+                                <a href="https://www.youtube.com/watch?v=5o-tRub-0pQ">
+                                    <img class="video-img"
+                                        src="https://i.ytimg.com/vi/5o-tRub-0pQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD6HooANG5CrHggLSg-hIyxuDYVOQ"
+                                        alt="Documentary" title="Screen time is slowly frying your brain!">
+                                </a>
+                                <p class="video-length">1:30:56</p>
+                            </div>
+                            <div class="video-info-grid">
+                                <div class="author-profile">
+                                    <img class="video-author-profile"
+                                        src="https://yt3.ggpht.com/xSwK9eN4KTkDzIA0Qfv6ng_QQ1JrI_GxGFRp_97TWPaO5euI6Z1gxjNUksfktPka6b26l_zx=s176-c-k-c0x00ffffff-no-rj-mo"
+                                        alt="profile">
+                                    <div class="video-author-profile-tooltip">
+                                        <img class="video-author-profile"
+                                            src="https://yt3.ggpht.com/xSwK9eN4KTkDzIA0Qfv6ng_QQ1JrI_GxGFRp_97TWPaO5euI6Z1gxjNUksfktPka6b26l_zx=s176-c-k-c0x00ffffff-no-rj-mo"
+                                            alt="profile">
+                                        <div class="about">
+                                            <p class="author-name">The Diary of A CEO</p>
+                                            <p class="subscribers">7.89M subscribers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-description">
+                                    <a href="https://www.youtube.com/watch?v=5o-tRub-0pQ">
+                                        <p class="video-title">Praciticing Neuroscientist:The Shocking Link
+                                            Between Exercise And Dementia!</p>
+                                    </a>
+                                    <p class="video-author">The Diary of A CEO</p>
+                                    <p class="video-views-n-date">7.2M views &bull; 5 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
