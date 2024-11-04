@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+*,*::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    background-color:black;
+}
