@@ -1,0 +1,137 @@
+@import url('https://fonts.cdnfonts.com/css/amazon-ember');
+*,*::before,*::after{
+    box-sizing: border-box;
+    font-family: 'Amazon Ember', 'Arial',sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+.item-types{
+    font-size:14px;
+    line-height: 14px;
+    color:white;
+    max-height:39px;
+    padding: 0 11px;
+    background-color: rgb(35, 47, 62);
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap:nowrap;
+}
+
+.variations,.all{
+    margin: 6px 0 6px 6px;
+    padding: 9px 9px;
+    cursor:pointer;
+    transition:border-style 0.25s, margin 0.25s,border-color 0.25s,border-radius 0.25s , border-width 0.25s, outline-color 0.25s, padding 0.25s;
+}
+
+.variations:hover, .all:hover{
+    padding: 10px 9px;
+    margin: 2px 0 0px 2px;
+    border:0.666667px solid rgb(255, 255, 255);
+    border-radius: 2px;
+    outline-color: rgb(255, 255, 255);
+}
+
+.all{
+    font-weight:800;
+}
+
+.sign-in{
+    padding: 40px 0 20px;
+    color:rgb(15, 17, 17);
+}
+.sign-in-border{
+    border: 1px solid  rgb(221, 221, 221);
+    text-align:center;
+    border-radius: 5px;
+    padding: 40px 0px 15px;
+    line-height: 32px;
+}
+
+.sign-in-btn{
+    border:1.5px solid rgb(235, 182, 31) ;
+    border-radius: 3px;
+    background-color: rgb(255, 190, 8);
+    color:black;
+    font-weight: 700;
+    margin-top:7px;
+    padding: 0px 90px;
+    cursor:pointer;
+    box-shadow:inset 0px 10px 4px rgb(255, 214, 147);
+    font-size:12px;
+    height: 28px;
+
+}
+
+.sign-in-add-customer{
+    line-height: 25px;
+    font-size: 11px;
+}
+
+.sign-in-start{
+    color: rgb(0, 113, 133);
+    cursor:pointer;
+}
+
+.sign-in-start:hover{
+    color:rgb(199, 81, 31);
+    text-decoration-line: underline;
+    text-decoration-color: rgb(199, 81, 31);
+}
+
+.back-to-top{
+    text-align:center;
+    background-color:  rgb(35, 47, 62);
+    color:white;
+    padding: 15px 0;
+    font-size: 13px;
+    line-height: 19px;
+    opacity:0.92;
+    transition:opacity 0.15s;
+}
+
+.back-to-top:hover{
+    opacity:0.78;
+}
+
+a .back-to-top {
+    color:white;
+    text-decoration: none;
+}
+
+a .back-to-top:visited{
+    color:white;
+    text-decoration: none;
+}
+
+a .back-to-top:active{
+    color:white;
+    text-decoration: none;
+}
+
+.footer{
+    background-color:  rgb(35, 47, 62);
+    color:white;
+    padding: 40px 0;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.footer-section{
+    line-height:  25px;
+}
+
+.footer-section p{
+    font-size: 14px;
+    color:rgb(221,221,221);
+    cursor:pointer;
+    transition: text-decoration-line 0.15s;
+}
+
+.footer-section p:hover{
+    text-decoration-line: underline;
+}
