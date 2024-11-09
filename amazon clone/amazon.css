@@ -80,16 +80,14 @@
 .content{
     display:grid;
     grid-template-columns: 1fr;
-    margin-left:-10px;
 }
-.row1,.row2,.row11,.row12,.row8{
+.row1,.row2,.row5,.row8,.row9{
     display:flex;
-    justify-content: space-evenly;
-    margin: 20px 0px;
+    justify-content: flex-start;
 }
 
 .area{
-    margin: 0 4px;
+    margin:0;
     padding: 15px 5px 15px 5px;
     height:420px;
     width: 300px;
@@ -168,6 +166,17 @@ h2{
     object-fit: contain;
     border: 2px solid blue;
     border-radius: 10px;
+}
+
+.horizontal-photos{
+    display:flex;
+    flex-direction: row;
+}
+
+.brand-photos{
+    height: 160px;
+    width: 160px;
+    object-fit: contain;
 }
 /*----Bottom Section-----------*/
 
