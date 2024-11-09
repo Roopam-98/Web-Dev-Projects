@@ -80,6 +80,7 @@
 .content{
     display:grid;
     grid-template-columns: 1fr;
+    margin-left: 15px;
 }
 .row1,.row2,.row5,.row8,.row9{
     display:flex;
@@ -176,8 +177,28 @@ h2{
 .brand-photos{
     height: 160px;
     width: 160px;
+    padding: 7px;
     object-fit: contain;
 }
+
+::-webkit-scrollbar{
+    width:2px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(203, 197, 197);
+    border-radius: 10px;
+}
+.row3,.row4,.row6,.row10{
+    overflow:scroll;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+
 /*----Bottom Section-----------*/
 
 .sign-in{
