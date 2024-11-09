@@ -82,15 +82,15 @@
     grid-template-columns: 1fr;
     margin-left:-10px;
 }
-.row1,.row2{
+.row1,.row2,.row11,.row12,.row8{
     display:flex;
     justify-content: space-evenly;
     margin: 20px 0px;
 }
 
 .area{
-    margin: 0 10px;
-    padding: 15px 10px 15px 10px;
+    margin: 0 4px;
+    padding: 15px 5px 15px 5px;
     height:420px;
     width: 300px;
     display:flex;
@@ -100,7 +100,7 @@
     border: 4px dotted red;
 }
 
-.area h2{
+h2{
     font-size: 22px;
     line-height: 27px;
     margin-top:5px;
@@ -112,13 +112,13 @@
     cursor:pointer;
     display:grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
+    column-gap: 5px;
     row-gap:25px;
 }
 
 .area-photo{
     height:102px;
-    width: 102px;
+    width: 122px;
     object-fit:cover;
 }
 
@@ -138,7 +138,37 @@
     color:rgb(199, 81, 31);
 }
 
+.just-photo{
+    height: 130px;
+    width: 130px;
+    object-fit:contain;
+}
 
+.single-photo{
+    height: 400px;
+    width: 270px;
+    object-fit: cover;
+}
+
+.unique-photo{
+    height: 200px;
+    width: 200px;
+    border: 2px solid blue;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.images{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.small-photo{
+    height: 65px;
+    width: 60px;
+    object-fit: contain;
+    border: 2px solid blue;
+    border-radius: 10px;
+}
 /*----Bottom Section-----------*/
 
 .sign-in{
