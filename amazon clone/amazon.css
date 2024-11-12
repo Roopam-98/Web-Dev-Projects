@@ -80,41 +80,48 @@
 .content{
     display:grid;
     grid-template-columns: 1fr;
-    margin-left: 7px;
+    background-color: rgb(229, 229, 229);
+    padding: 20px 15px 20px 15px;
 }
+
+/*-------Row{1,2,5,8,9}----------*/
 .row1,.row2,.row5,.row8,.row9{
+    margin: 0 0 15px 0;
     display:flex;
-    justify-content: space-evenly;
-    margin:7px;
-    border: 2px solid blue;
+    justify-content:space-around;
 }
 
 .area{
     margin:0;
-    padding: 5px 5px 15px 10px;
+    padding: 5px 10px 10px 10px;
     height:420px;
-    width: 300px;
+    width: 290px;
     display:flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content:space-evenly;
     background-color:white;
-    border: 4px dotted red;
 }
 
 h2{
     font-size: 22px;
     line-height: 27px;
     margin-top:5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.photos{
-    padding-left: 13px;
+.photos,.only-photos{
+    padding-left: 5px;
+    height: 290px;
     cursor:pointer;
     display:grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5px;
-    row-gap:25px;
+    row-gap:15px;
+}
+
+.only-photos{
+    height: 300px;
+    margin-bottom: 20px;
 }
 
 .area-photo{
@@ -140,44 +147,63 @@ h2{
 }
 
 .just-photo{
-    height: 130px;
-    width: 130px;
+    height: 125px;
+    width: 125px;
     object-fit:contain;
 }
-
+/*-----area with just photos---------*/
 .single-photo{
-    height: 400px;
+    height: 290px;
     width: 270px;
     object-fit: cover;
 }
 
+/*------------Area with one image and four small images ------*/
 .unique-photo{
-    height: 200px;
-    width: 200px;
-    border: 2px solid blue;
+    height: 180px;
+    width: 180px;
     object-fit: contain;
+    margin-top: -10px;
     margin-bottom: 10px;
+    margin-left: 35px;
 }
+
+.unique-photo-desc{
+    font-size: 14px;
+}
+
 .images{
     display: flex;
     justify-content: space-evenly;
+}
+
+.price{
+    font-size: 17px;
+    margin:4px 0 4px;
+    font-weight: 500;
+}
+
+.original-price{
+    padding-left:7px;
+    font-size: 13px;
+    color:gray;
 }
 
 .small-photo{
     height: 65px;
     width: 60px;
     object-fit: contain;
-    border: 2px solid blue;
+    border: 1px solid gray;
     border-radius: 10px;
 }
 
+/*----------------horizontal rows : row{3,4,6,10}----------*/
 .row3,.row4,.row6,.row10{
-    width:1230px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     position:relative;
-    margin: 10px 7px;
-    border: 2px solid blue;
+    margin: 0px 10px 20px 10px;
+    background-color: white;
 }
 
 ::-webkit-scrollbar{
@@ -238,6 +264,79 @@ h2{
 }
 .horizontal-photos:hover{
     overflow-x:scroll;
+}
+
+/*-------------Live-section:row-7-------------*/
+.row7{
+    background-color: white;
+    height: 300px;
+    margin: 0 10px 25px 10px;
+    position:relative;
+}
+.live-section{
+    display:grid;
+    grid-template-columns: 430px 1fr;
+}
+
+.vdo{
+    height: 230px;
+    width: 400px;
+    margin-top:-5px;
+    margin-left: 10px;
+}
+
+.live-products{
+    display:flex;
+    flex-direction: row;
+    margin-top: -5px;
+    overflow-x: scroll;
+}
+.live-product-photo{
+    height: 170px;
+    width: 170px;
+    margin: 3px 0px 0px;
+    object-fit: contain;
+}
+.live-amzn-chnl{
+    font-size: 10px;
+    margin:0;
+}
+.live-amzn-inf{
+    color:gray;
+}
+
+.previous-btn,.next-btn{
+    color:rgb(188, 181, 181);
+    background-color: white;
+    font-size: 2.1em;
+    text-align:center;
+    border:none;
+    margin: 0 3px;
+    padding: 12px 10px 12px 10px;
+    height: 80px;
+    cursor:pointer;
+    border-radius: 5px;
+    visibility:hidden;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.previous-btn{
+    position:absolute;
+    top: 110px;
+    left: 435px;
+}
+.next-btn{
+    position:absolute;
+    top: 110px;
+    right:5px;
+}
+
+.live-products:hover .previous-btn{
+    visibility: visible;
+}
+
+.live-products:hover .next-btn{
+    visibility: visible;
 }
 
 /*----Bottom Section-----------*/
