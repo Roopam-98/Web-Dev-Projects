@@ -35,6 +35,7 @@
     height:40px;
     margin:70px;
     flex:1;
+    position:relative;
 }
 
 .logo{
@@ -45,6 +46,40 @@
     object-fit:contain;
 }
 
+.control{
+    height:40px;
+    width: 20px;
+    border:none;
+    background-color: rgb(214, 207, 207);
+    color:black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 20px 24px;
+    margin-right:0;
+    position: absolute;
+    left:0;
+}
+
+.srch-bar{
+    width: 450px;
+    border:none;
+    border-radius: 0px;
+    padding: 10.8px 17px;
+    font-size:15px;
+    margin-left:40px;
+}
+
+.search-icon{
+    height: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(246, 246, 243);
+    color: #000;
+    position: absolute;
+    right:0;
+}
+
+/*---------Variations in items---------*/
 .item-types{
     font-size:14px;
     line-height: 14px;
