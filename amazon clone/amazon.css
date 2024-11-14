@@ -18,11 +18,12 @@
     padding: 0 11px;
     display: flex;
     align-items: center;
+    z-index:10;
     justify-content: space-between;
-}
-
-.header div{
-    border:1px solid white;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
 }
 
 .header-left,.header-right,.header-center{
@@ -33,21 +34,31 @@
 
 .header-center{
     height:40px;
-    margin:70px;
+    margin: 0 30px 0 30px;
     flex:1;
+    display:flex;
     position:relative;
+}
+.header-right{
+    flex:0.8;
+    display:grid;
+    grid-template-columns:80px 135px 90px 75px;
+}
+
+.header-right div{
+    padding: 7px 3px 7px 3px;
 }
 
 .logo{
     height:45px;
-    border: 1px dotted white;
     width: 95px;
+    margin-right: 15px;
     background-color: rgb(19, 25, 33);
     object-fit:contain;
 }
 
 .control{
-    height:40px;
+    height:41px;
     width: 20px;
     border:none;
     background-color: rgb(214, 207, 207);
@@ -61,23 +72,74 @@
 }
 
 .srch-bar{
-    width: 450px;
     border:none;
+    flex:1;
     border-radius: 0px;
-    padding: 10.8px 17px;
+    padding: 11.5px 17px;
     font-size:15px;
     margin-left:40px;
+    position:absolute;
+    right:40px;
+    left:7px;
 }
 
-.search-icon{
-    height: 40px;
+.search{
+    height: 41px;
+    width: 45px;
+    padding-left: 10px;
+    padding-top:10px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: rgb(246, 246, 243);
-    color: #000;
+    background-color: rgb(247, 193, 15);
     position: absolute;
     right:0;
 }
+
+.search-icon{
+    height: 20px;
+    background-color: rgb(247, 193, 15);
+    color: #000;
+    object-fit:contain;
+}
+
+.country{
+    display:grid;
+    grid-template-columns: 30px 1fr;
+    padding: 10px;
+}
+.country-flag{
+    height: 20px;
+    width:30px;
+    margin-top: -3px;
+    border-radius: 3px;
+    object-fit:cover;
+}
+.country-code{
+    margin-left: 3px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.triangle{
+    color:rgb(174, 169, 169);
+}
+
+.loc-text{
+    font-size: 12px;
+    color: rgb(228, 218, 218);
+}
+
+.sup-text{
+    font-size: 12px;
+}
+
+.cart-img{
+    height: 30px;
+    width: 30px;
+    /*transform: rotateY(180deg);*/
+    object-fit:contain;
+}
+
 
 /*---------Variations in items---------*/
 .item-types{
@@ -88,8 +150,11 @@
     padding: 0 11px;
     background-color: rgb(35, 47, 62);
     display:flex;
+    z-index:7;
     justify-content: space-evenly;
     flex-wrap:nowrap;
+    position:relative;
+    top: 60px;
 }
 
 .variations,.all{
@@ -117,6 +182,9 @@
     grid-template-columns: 1fr;
     background-color: rgb(229, 229, 229);
     padding: 20px 15px 20px 15px;
+    z-index: 5;
+    position:relative;
+    top: 61px;
 }
 
 /*-------Row{1,2,5,8,9}----------*/
