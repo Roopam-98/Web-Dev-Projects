@@ -1,0 +1,144 @@
+*,*::before,*::after{
+    box-sizing:border-box;
+    font-family: 'Roboto',Arial, sans-serif;
+}
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efefef;
+}
+
+.slide-container{
+    max-width: 1000px;
+    width: 100%;
+    min-width: 100px;
+    /*height: 26em;*/
+    background-color: gray;
+    padding: 30px ;
+}
+
+.slide-content{
+    padding: 20px;
+    margin:30px 30px;
+}
+.card-wrapper{
+    display:flex;
+    justify-content: space-around;
+
+}
+.card{
+    width: 200px;
+    aspect-ratio: 1/1.2;
+    border-radius: 10px;
+    object-fit:contain;
+    padding: 6px 10px 10px 10px;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card-image{
+    padding: 20px;
+}
+
+.card-img{
+    width: 90px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: 0.5s all ease;
+    border: 0.2em solid rgb(14, 80, 248);
+    outline: 0.2em solid white;
+}
+
+.card-img:hover{
+    width: 97px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 0.2em solid rgb(14, 80, 248);
+    outline: 0.2em solid white;
+}
+
+.image-content{
+    background-color: rgb(14, 80, 248);
+    padding: 5px;
+    border-radius: 15px 15px 0px 15px;
+    position: relative;
+}
+
+.image-content::before,.image-content::after{
+    content: "";
+    height: 40px;
+    width: 40px;
+    background-color: rgb(14, 80, 248);
+    position: absolute;
+    bottom:-2.5em;
+    right:0;
+}
+
+.image-content::after{
+    border-radius: 0 20px 0 0;
+    height: 41px;
+    width: 41px;
+    background-color:white;
+    position: absolute;
+    bottom:-2.56em;
+    right:0;
+
+}
+.card-content,.image-content{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card-content{
+    padding: 5px;
+    height: 11em;
+}
+
+.name{
+    font-size: 1.1rem;
+    text-align: center;
+    color:black;
+}
+
+.job{
+    margin-top: 0.06em;
+    font-size: 0.8rem;
+
+}
+.description{
+    margin-top: 0.3em;
+    font-size:0.8rem;
+    color:gray;
+    text-align:center;
+    padding-right: 20px;
+    font-weight: 500;
+}
+
+.view-more{
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    padding: 6px 10px;
+    background-color:  rgb(14, 80, 248);
+    border:none;
+    border-radius: 9px;
+    color:white;
+    font-weight: 500;
+    transition: 0.5s all ease;
+}
+
+.view-more:hover{
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
