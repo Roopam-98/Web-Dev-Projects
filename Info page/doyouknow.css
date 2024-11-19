@@ -1,3 +1,4 @@
+
 *,*::before,*::after{
     box-sizing:border-box;
     font-family:Tahoma,Arial,sans-serif;
@@ -8,11 +9,40 @@
     padding:0;
 }
 
+::-webkit-scrollbar{
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #DAC0A3;
+    outline: 0.15em solid #d3b490;
+    outline-offset: -0.1em;
+    border: 0.15em solid white;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #F8F0E5;
+    border-radius: 10px;
+}
+
+.header-section{
+    background-color: #493628;
+    padding: 1.8em 1.8em;
+    border-radius: 0 0 7px 7px;
+    color:white;
+}
+
+h2{
+    color:#493628;
+    margin: 1.2em 0 0 1.2em;
+}
+
 .content{
     display:flex;
     flex-direction:column;
     justify-content: space-evenly;
-    background-color: #efefef;
 }
 .flower-section,.succulent-card{
     margin-left: 20px;
@@ -20,14 +50,19 @@
     height: 280px;
     border-radius: 50px 50px 50px 50px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
-    background-color: white;
+    background-color: #F8F0E5;
+    outline: 0.2em solid #d3b490;
+    outline-offset: 0.1em;
+    border: 0.2em solid white;
+    cursor:pointer;
 }
 
 .flower-row-imgs,.succulent-row-imgs{
-    padding: 15px;
-    border-radius: 10px;
-    background-color: gray;
-    width:100vw;
+    width: 91vw;
+    margin: 0.7em 3em 1.2em 3em;
+    padding: 1.2em;
+    border-radius: 25px;
+    background-color: #EADBC8;
     display:flex;
     overflow-x:scroll;
 }
@@ -48,4 +83,35 @@
     text-align:center;
     font-size:1rem;
     font-weight: 600;
+    color: #493628;
+}
+
+.back-to-top{
+    margin: 1.5em 0 0;
+    padding: 1em 1em;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #AB886D;
+    border-radius: 7px 7px 0 0;
+    color: #ffffff;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:#ffffff;
+    text-decoration: underline;
+}
+a:visited{
+    color:white;
+    text-decoration:none;
+}
+
+.about-section{
+    padding: 5em 5em;
+    background-color: #493628 ;
+    color: #ffffff;
 }
