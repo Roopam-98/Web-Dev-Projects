@@ -38,7 +38,10 @@
 
 
 .header-left{
-    width: 240px;
+    width: 300px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .header-center{
@@ -48,7 +51,31 @@
 .header-right{
     width: 303px;
     display:flex;
-    justify-content: flex-grow;
+    justify-content: flex-end;
+}
+
+.menu{
+    width: 1.9em;
+    height: 1.9em;
+    object-fit: cover;
+    mix-blend-mode:overlay;
+    background-color: white;
+    border-radius: 13px;
+    scale:0.9;
+}
+
+.menu-icon{
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background-color: #d8ad8c;
+    overflow: hidden;
+    padding: 1px;
+    transition: 0.5s all ease-in-out;
+}
+
+.menu-icon:hover{
+    scale: 1.2;
 }
 
 .web-name{
@@ -70,11 +97,77 @@
     width: 35em;
 }
 
-.header-right{
-    display: flex;
-    justify-content: flex-end;
+.log-in{
+    width: 7em;
+    height: 2.6em;
+    padding: 5px 6px 5px 22px;
+    border-radius: 10px 25px 25px 10px;
+    background-color: #ffffff;
+    transition: 0.5s all ease-in-out;
+    font-size: 1rem;
+    font-weight: 500;
+    border:none;
+    z-index:1;
+}
+.log-in:hover{
+    background-color:#d3b490;
+}
+.sign-in{
+    width: 7em;
+    height: 2.6em;
+    padding: 5px 10px 5px 9px;
+    border-radius: 25px;
+    background-color: #EADBC8;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: -2.3em;
+    z-index: 2;
+    border:none;
+    transition: 0.5s all ease-in-out;
 }
 
+.sign-in:hover,.log-in:hover{
+    scale: 1.08;
+}
+
+.theme{
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 50%;
+    object-fit:contain;
+    background-color: white;
+}
+
+.dark,.light{
+    height: 2.4em;
+    width: 2.4em;
+    margin-top: 0.2em;
+    margin-right: 1em;
+    transition: 0.5s all ease-in-out;
+}
+
+.dark{
+    z-index:2;
+    position:relative;
+}
+
+.light{
+    z-index: -1;
+    transition: 0.5s all ease-in-out;
+    position:absolute;
+    top:-0.2em;
+    left:-0.1em;
+}
+
+.dark:active .light{
+    z-index:3;
+}
+
+.dark:hover,.light:hover{
+    scale:1.1;
+}
+
+/*
 .profile-photo,.settings{
     height: 40px ;
     width: 40px;
@@ -85,7 +178,7 @@
 .settings{
     background-color: #493628;
     object-fit: contain;
-}
+}*/
 
 h2{
     color:#493628;
