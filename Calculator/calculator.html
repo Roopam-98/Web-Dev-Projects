@@ -5,107 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: black;
-            border: 1px solid white;
-            display: flex;
-            justify-content: center;
-            height: 95vh;
-            width: 35%;
-        }
-
-        button {
-            font-size: 15px;
-            font-weight: 500;
-            height: 40px;
-            width: 40px;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 8px;
-            border: none;
-            transition: 0.11s all ease-in-out;
-        }
-
-        button:hover {
-            border-radius: 50%;
-            background-color: rgb(243, 177, 24);
-            color: black;
-        }
-
-        .equal-to {
-            font-weight: 600;
-            background-color: rgb(12, 146, 235);
-            color: white;
-        }
-
-        /*
-        .equal-to:hover {
-            background-color: rgb(16, 140, 223);
-            color: white;
-        }*/
-
-        .numbers {
-            background-color: rgb(220, 214, 214);
-        }
-
-        .operators {
-            font-weight: 600;
-            background-color: rgb(158, 155, 155);
-            color: white;
-        }
-
-        .specials {
-            font-weight: 600;
-
-        }
-
-        .del {
-            padding: 3px;
-            margin: -6px;
-            height: 80%;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .displayOutput {
-            font-size: 25px;
-            color: white;
-            height: 100px;
-            border-radius: 10px;
-            background-color: rgb(7, 4, 4);
-            border: 2px solid white;
-            position: relative;
-        }
-
-        .output {
-            position: absolute;
-            right: 5px;
-            bottom: -40px;
-        }
-    </style>
+    <link rel="stylesheet" href="calculator.css">
 </head>
 
 <body>
-    <div>
+    <div class="calculator">
         <div class="displayOutput">
             <p class="output"></p>
         </div>
 
         <div>
             <button class="operators" onclick="
-        calculation='';
-        saveCalculation(calculation);
-        showCalculation(calculation);">AC</button>
-            <button class="operators">( )</button>
-            <button class="operators" onclick="calculation+=' % ';
+            calculation='';
             saveCalculation(calculation);
-            showCalculation(calculation)">%</button>
+            showCalculation(calculation);">AC</button>
             <button class="operators" onclick="
-        calculation+=' / ';
-        saveCalculation(calculation);
-        showCalculation(calculation);">/</button>
+            calculation+= ' ( ';
+            saveCalculation(calculation);
+            showCalculation(calculation);">(</button>
+            <button class=" operators" onclick="
+            calculation+= ' ) ';
+            saveCalculation(calculation);
+            showCalculation(calculation);">)</button>
+            <button class="operators" onclick="
+            calculation+=' / ';
+            saveCalculation(calculation);
+            showCalculation(calculation);">/</button>
         </div>
 
         <div>
@@ -158,32 +83,21 @@
 
         <div>
             <button class='specials' onclick="
-        calculation+='.';
-        showCalculation(calculation);">.</button>
+            calculation+='.';
+            showCalculation(calculation);">.</button>
             <button class="numbers" onclick="
-        calculation+='0';
-        showCalculation(calculation);">0</button>
+            calculation+='0';
+            showCalculation(calculation);">0</button>
             <button class='specials'><img class='del' src="images/del.png" alt=""></button>
             <button class='equal-to' onclick="
-        calculation=eval(calculation);
-        saveCalculation(calculation);
-        showCalculation(calculation);">=</button>
+            calculation=eval(calculation);
+            saveCalculation(calculation);
+            showCalculation(calculation);">=</button>
         </div>
     </div>
 
 </body>
 
-<script>
-    let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
-
-    function saveCalculation(calculation) {
-        localStorage.setItem('calculation', JSON.stringify(calculation));
-    }
-
-    function showCalculation(calculation) {
-        document.querySelector('.output').innerHTML = `<p>${calculation}</p>`;
-    }
-
-</script>
+<script src="calculator.js"></script>
 
 </html>
