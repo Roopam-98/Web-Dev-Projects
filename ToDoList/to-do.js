@@ -1,15 +1,13 @@
-let toDoList = [];
-    let taskList = [];
+let taskList = [];
     function addToDoList() {
-        let taskName = document.querySelector('.list').value;
-        toDoList.push(taskName);
-        document.querySelector('.list').value = '';
-        let taskDate = document.querySelector('.dateSelector').value;
-        document.querySelector('.dateSelector').value = '';
+        let taskName = document.querySelector('.list');
+        let taskDate = document.querySelector('.dateSelector');
         const taskDeleteButton = 'Delete';
-        taskList.push([taskName, taskDate, taskDeleteButton]);
+        taskList.push([taskName.value, taskDate.value, taskDeleteButton]);
+        //console.log(taskList);
         displayTasks(taskList);
-
+        taskName.value = '';
+        taskDate.value = '';
     }
 
     function displayTasks(taskList) {
@@ -17,22 +15,20 @@ let toDoList = [];
         for (let i = 0; i < taskList.length; i++) {
             for (let j = 0; j < taskList[i].length; j++) {
                 if (j === 0) {
-                    document.querySelector('.result').innerHTML += `<button class="result-todo">${taskList[i][j]}</button>`;
+                    document.querySelector('.result').innerHTML+= `<p class="result-todo">${taskList[i][j]}</p>`;
                 }
                 else if (j === 1) {
-                    document.querySelector('.result').innerHTML += `<button class="result-date">${taskList[i][j]}</button>`;
+                    document.querySelector('.result').innerHTML += `<p class="result-date">${taskList[i][j]}</p>`;
                 }
                 else {
-                    document.querySelector('.result').innerHTML += `<button class="del-btn" onclick="deleteTask(${1});">${taskList[i][j]}</button><br>`;
+                    document.querySelector('.result').innerHTML += `<button class="del-btn" onclick="deleteTask(${i});">${taskList[i][j]}</button>`;
 
                 }
             }
         }
     }
 
-    function deleteTask(n) {
-        for (let i = 0; i < n; i++) {
-            taskList.pop();
-        }
+    function deleteTask(i) {
+        taskList.splice(i,1);
         displayTasks(taskList);
     }
