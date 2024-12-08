@@ -32,6 +32,7 @@
     color:white;
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgb(5, 88, 5);
+    cursor:pointer;
 }
 
 .del-btn{
@@ -43,6 +44,8 @@
 .result,.input-values{
     display:grid;
     grid-template-columns: 200px 155px 95px;
+    column-gap: 10px;
+    align-items:center;
 }
 
 .result-todo,.result-date{

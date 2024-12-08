@@ -10,6 +10,7 @@ let taskList = [];
         taskDate.value = '';
     }
 
+/*     //display task list on screen
     function displayTasks(taskList) {
         document.querySelector('.result').innerHTML = '';
         for (let i = 0; i < taskList.length; i++) {
@@ -26,6 +27,17 @@ let taskList = [];
                 }
             }
         }
+    }
+    */
+
+    function displayTasks(taskList){
+        let showResult = document.querySelector('.result');       //displaying task on screen in simpler way.
+        showResult.innerHTML =  '';
+        taskList.forEach(function(task,index){
+            showResult.innerHTML += `<p class="result-todo">${task[0]}</p>`;
+            showResult.innerHTML += `<p class="result-date">${task[1]}</p>`;
+            showResult.innerHTML += `<button class="del-btn" onclick="deleteTask(${index});">${task[2]}</button>`;
+        });
     }
 
     function deleteTask(i) {
