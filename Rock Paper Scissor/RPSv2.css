@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    width: 70px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+}
+
+button {
+    width: 100px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: white;
+    margin: 10px;
+    outline: 2px solid white;
+    outline-offset: 2px;
+    outline-width: 3px;
+}
+
+.result {
+    width: 90%;
+    height: 30%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-content {
+    height: 95vh;
+    width: 35%;
+    border: 2px solid white;
+    padding: 0px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.reset-button {
+    width: 150px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.move {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0.5em;
+}
+
+.movesPlayed {
+    display: flex;
+    align-items: center;
+}
+
+.stopPlaying {
+    background-color: white;
+    color: orangered;
+    border: 2px solid orangered;
+}

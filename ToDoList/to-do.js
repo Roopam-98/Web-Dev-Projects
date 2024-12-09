@@ -1,4 +1,9 @@
 let taskList = [];
+
+const addButtonElement = document.querySelector('.js-add-btn');
+addButtonElement.addEventListener('click',()=>{
+    addToDoList();
+})
     function addToDoList() {
         let taskName = document.querySelector('.list');
         let taskDate = document.querySelector('.dateSelector');
@@ -33,14 +38,21 @@ let taskList = [];
     function displayTasks(taskList){
         let showResult = document.querySelector('.result');       //displaying task on screen in simpler way.
         showResult.innerHTML =  '';
-        taskList.forEach(function(task,index){
+        taskList.forEach((task,index) => {   // replaced function(task,index) to arrow function (task,index) =>
             showResult.innerHTML += `<p class="result-todo">${task[0]}</p>`;
             showResult.innerHTML += `<p class="result-date">${task[1]}</p>`;
-            showResult.innerHTML += `<button class="del-btn" onclick="deleteTask(${index});">${task[2]}</button>`;
+            showResult.innerHTML += `<button class="del-btn js-del-btn">${task[2]}</button>`;
         });
+        document.querySelectorAll('.js-del-btn').forEach((btn, index) => {
+            btn.addEventListener('click', () => {// initially we were passing index but it considered index of previous loop causing issue
+                deleteTask(index);
+            });
+        })
     }
+
 
     function deleteTask(i) {
         taskList.splice(i,1);
         displayTasks(taskList);
     }
+

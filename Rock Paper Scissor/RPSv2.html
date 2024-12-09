@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="RPSv2.css">
+</head>
+
+<body>
+    <div class="game-content">
+        <h1>Rock Paper Scissor</h1>
+        <div>
+            <button class='js-rock-btn'><!--onclick="playGame('Rock')"-->
+                <img src="images\Rock.png" class="image">
+            </button>
+
+
+            <button class='js-paper-btn'> <!--onclick="playGame('Paper')"-->
+                <img src="images\Paper.png" class="image" alt="">
+            </button>
+
+
+            <button class='js-scissor-btn'> <!--onclick="playGame('Scissor')"-->
+                <img src="images\Scissor.png" alt="" class="image">
+            </button>
+
+
+        </div>
+
+        <div class='js-result result'>
+            <p>Current Score: None</p>
+            <p>Play Game to build score!!!</p>
+        </div>
+        <div><button class='reset-button js-rst-btn'>Reset</button> <!-- onclick="resetScore();"-->
+            <button class='reset-button js-autoPlay'>Auto Play</button> <!--onclick="autoPlay();"-->
+        </div>
+    </div>
+
+
+</body>
+
+<script src="RPSv2.js"></script>
+
+</html>
