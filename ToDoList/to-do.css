@@ -15,7 +15,7 @@
     border-radius: 5px;
 }
 
-.dateSelector{
+.dateSelector,.timeSelector{
     padding: 8px 15px;
     font-size: 0.9rem;
     border:1px solid black;
@@ -43,7 +43,7 @@
 
 .result,.input-values{
     display:grid;
-    grid-template-columns: 200px 155px 95px;
+    grid-template-columns: 200px 155px 105px 100px;
     column-gap: 10px;
     align-items:center;
 }
