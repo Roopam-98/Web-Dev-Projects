@@ -85,3 +85,23 @@ button {
     color: orangered;
     border: 2px solid orangered;
 }
+
+.confirm-reset{
+    display:flex;
+    align-items:center;
+}
+
+.reset-yes,.reset-no{
+    outline:none;
+    border:none;
+    margin: 7px;
+    font-weight: 600;
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+.reset-yes:hover, .reset-no:hover{
+    color:orangered;
+}
