@@ -8,6 +8,10 @@
     box-sizing:border-box;
 }
 
+main{
+    background-color: rgb(197, 192, 192);
+}
+
 
 .header-section{
     border: 1px solid black;
@@ -51,6 +55,7 @@
     width: 60px;
     height: 40px;
     border:none;
+    border-radius: 7px 0 0 7px;
     background-color: rgb(229, 227, 227);
 }
 
@@ -93,6 +98,7 @@
     padding: 6px 65px;
     border:none;
     border-radius: 16px;
+    cursor:pointer;
     background-color: rgb(255, 216, 20);
     transition: 0.5s all ease;
 }
@@ -106,6 +112,7 @@
     background-color:rgb(229, 225, 225);
     padding: 6px 0px;
     border-radius: 30%;
+    cursor:pointer;
 }
 
 .quantity-options:hover{
@@ -115,18 +122,76 @@
 /*----------------------------------------*/
 .image-size{
     width: 100%;
-    aspect-ratio: 1;
-    object-fit:cover;
+    height: 50%;
+    object-fit:contain;
 }
 /*-----------------------------------*/
 .products{
-    margin-left: 20px;
-    border: 2px solid red;
+    padding: 30px;
     display:grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
+    column-gap: 40px;
 }
 .product-items{
-    border: 1px solid black;
+    padding: 10px 5px;
+    background-color: white;
+    border-radius: 5px;
+    height: 400px;
+}
+
+/*-----------------------------------------------*/
+
+.description-section{
+    padding: 5px;
+    height: 50%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.description{
+    font-size:0.9rem;
+    font-weight: 500;
+    text-align: center;
+    height: 40px;
+}
+
+.rating-count{
+    color:rgb(1, 124, 182);
+    font-weight: 500;
+    cursor:pointer;
+}
+
+sup{
+    font-size: 0.7rem;
+}
+
+.discount{
+    color:red;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-right: 7px;
+}
+
+.cost{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.org-price{
+    color:gray;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 50px;
+}
+
+.description-common-section{
+    text-align:center;
+}
+
+.free-delivery{
+    font-size: 0.8rem;
+    margin-bottom: 8px;
 }
 
 /*-------Back to Top----------------*/
