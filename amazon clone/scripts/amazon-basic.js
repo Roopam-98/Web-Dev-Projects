@@ -29,9 +29,9 @@ products.forEach((value)=>{
             <div><p class="cost"><span class="discount">${value.discount}</span><sup>&#8377;</sup>${value.cost}<sup>00</sup><span  class="org-price">M.R.P.: <strike>&#8377;${value.originalPrice}</strike></span></p></div>
             <div class="description-common-section">
                 <p class="free-delivery">FREE Delivery over &#8377;499. Fulfilled by Amazon.</p>
-                <button class="js-addCart add-to-cart">Add to Cart</button>
-                <select class="js-quantity-options quantity-options"></select>
-                <p class="cart-updated"></p>
+                <button class="js-addCart add-to-cart" data-product-id="${value.id}" data-price="${value.cost}">Add to Cart</button>
+                <select class="js-quantity-options quantity-options js-quantity-selector-${value.id}"></select>
+                <p class="js-added-to-cart-${value.id} added-to-cart"></p>
             </div>
         </div>
         <br>
@@ -48,18 +48,44 @@ selectQuantityOption.forEach((value)=>{
 })
 
 //Code for Add to Cart updates
-let  cartQuantity = 0;
 const addToCart = document.querySelectorAll('.js-addCart');
 addToCart.forEach((value)=>{
     value.addEventListener('click',()=>{
-        if(cartQuantity <= 15){
-            cartQuantity++;
+
+        let productId = value.dataset.productId;
+        let price= value.dataset.price;
+        let matchingItem;
+        let quantitySelectorValue = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);  //fetched quantity selector value and converted into number
+
+        cart.forEach((item)=>{      //checking if product already exists in cart
+            if(productId === item.productId && price === item.price){
+                matchingItem = item;
+            };
+        })
+
+        if(matchingItem){       //if product exists in cart, increase quantity by 1 in existing object.
+            matchingItem.cartQuantity+=1;
         }
-        document.querySelector('.cart-count').innerHTML = cartQuantity;
-        /*document.querySelector('.cart-updated').innerHTML = 'Added!'; 
-        setTimeout(()=>{
-            document.querySelector('.cart-updated').innerHTML='';
-        },1000);*/
+        else{                                                   //if product doesn't exist in cart, add product to cart as new object.
+            cart.push({productId,cartQuantity:quantitySelectorValue,price});
+        }
+
+        //Calculating Total Cart quantity and Updating on webpage
+        let totalCartQuantity=0;
+        cart.forEach((item)=>{
+            totalCartQuantity += item.cartQuantity;
+        })
+        document.querySelector('.cart-count').innerHTML = totalCartQuantity;
+
+        console.log(cart);
+
+        //Code for showing that cart has been updated with item
+        const addedCart = document.querySelector(`.js-added-to-cart-${productId}`);
+        addedCart.innerHTML = '&check; Added!';
+        let timerId = setTimeout(()=>{
+            addedCart.innerHTML = '';
+        },2000);
+        //clearTimeout(timerId);
     });
 })
 

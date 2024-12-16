@@ -95,7 +95,8 @@ main{
 /*------------*/
 .add-to-cart{
     font-size: 0.87rem;
-    padding: 6px 65px;
+    padding: 0 65px;
+    height: 30px;
     border:none;
     border-radius: 16px;
     cursor:pointer;
@@ -104,6 +105,13 @@ main{
 }
 .add-to-cart:hover{
     background-color:rgb(255, 177, 21);
+}
+
+.added-to-cart{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color:green;
+    margin-top: 5px;
 }
 
 /*-----------------*/
@@ -182,7 +190,7 @@ sup{
     color:gray;
     font-size: 0.8rem;
     font-weight: 400;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .description-common-section{
