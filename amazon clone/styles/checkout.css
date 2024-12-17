@@ -1,0 +1,198 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+*,*::before,*::after{
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: rgb(212, 208, 208);
+}
+
+.order-summary{
+    margin-top: 5em;
+    /*border: 1.4px solid rgb(173, 166, 166);*/
+    border-radius: 6px;
+    background-color: white;
+    padding: 15px;
+    width: 68vw;
+}
+
+.item-container{
+    width: 100%;
+    height: 16em;
+}
+
+.items{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.image-size{
+    height: 12em;
+    width: 12em;
+    object-fit:contain;
+}
+
+.delivery-date{
+    color:rgb(11, 125, 11);
+    font-size: 1.3rem;
+    font-weight:bold;
+    margin: 8px;
+}
+
+.product-name,.product-cost,.quantity{
+    font-size: 1rem;
+    font-weight:600;
+    margin:5px;
+}
+
+.product-cost{
+    margin: 10px;
+    color:rgb(183, 13, 13);
+}
+
+.product-quantity{
+    padding: 0px 5px;
+    width: 6em;
+    border: 2.4px solid rgb(255, 214, 6);
+    border-radius: 20px;
+    margin: 10px;
+    display:grid;
+    grid-template-columns: 1fr;
+}
+
+.product-quantity:hover{
+    border: 2.6px solid rgb(247, 158, 15);
+}
+
+.remove,.addup{
+    border:none;
+    height: 15px;
+    width: 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 4px;
+}
+
+/*
+.product-quantity:hover .remove, .product-quantity:hover .addup{
+    background-color: rgb(225, 222, 222);
+}*/
+
+.update,.delete{
+    font-size: 1rem;
+    font-weight:600;
+    margin:5px;
+    color: green;
+    border:none;
+    background: none;
+}
+
+.update:hover,.delete:hover{
+    color:rgb(8, 177, 228);
+}
+
+.select-delivery-date{
+    padding: 5px;
+}
+
+.radio-type{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.select-delivery-date{
+    display:flex;
+    height: 95%;
+    flex-direction:column;
+    justify-content: space-evenly;
+}
+
+.date{
+    vertical-align: top;
+    color:green;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.delivery-type{
+    color:rgb(143, 139, 139);
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+
+/*--------------------Shopping Cart Cost Calculator design-----------------------*/
+
+.order-cost{
+    background-color: white;
+    /*border: 1.4px solid rgb(173, 166, 166);*/
+    border-radius: 6px;
+    width: 24vw;
+    height: 50vh;
+    padding: 10px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 5em;
+}
+
+.order-cost-header{
+    font-size:1.3rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.order-cost-details{
+    font-size: 0.87rem;
+    padding: 5px;
+    position: relative;
+}
+
+.total-item-cost-line{
+    background-color: rgb(193, 189, 189);
+    margin: 6px 20px 6px 75%;
+    width: 20%;
+    height: 1px;
+    border:none;
+}
+
+.total-line,.item-separator{
+    background-color: rgb(193, 189, 189);
+    margin: 6px 20px 6px 23px;
+    width: 85%;
+    height: 1.4px;
+    border:none;
+}
+
+.item-separator{
+    margin: 6px 20px;
+    width: 95%;
+}
+
+.amount{
+    position: absolute;
+    right:15px;
+}
+
+.place-order{
+    padding: 7px 80px;
+    border:none;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: rgb(255, 203, 62);
+}
+
+.place-order:hover{
+    background-color: rgb(255, 177, 21);
+}

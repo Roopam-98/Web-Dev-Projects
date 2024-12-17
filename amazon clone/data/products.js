@@ -46,7 +46,43 @@ let item3={
     originalPrice: '1,299.00' ,
     deliveryDate: 'Get it by Wednesday,December 18',
 }
-const products=[item0,item1,item2,item3];
+let item4={
+    id: '22197318962',
+    image: 'office-chair',
+    description:'Da URBAN® Merlion Office Chair',
+    rating:{
+    stars: 4.4,
+    count: '3,034'},
+    discount: '-76%',
+    cost: 6499 ,
+    originalPrice: '26,999.00' ,
+    deliveryDate: 'Get it by Wednesday,December 18',
+}
+let item5={
+    id: '81865465786',
+    image: 'pine-cone',
+    description:'eCraftIndia Natural Pine Cone for Christmas Tree Decoration (Pack of 6)',
+    rating:{
+    stars: 4.0,
+    count: 22},
+    discount: '-26%',
+    cost: 148 ,
+    originalPrice: '199.00' ,
+    deliveryDate: 'Get it by Wednesday,December 18',
+}
+let item6={
+    id: '80505361775',
+    image: 'swan',
+    description:'amazon basics Modern Elite Swan Pair Ceramic Art Figurine',
+    rating:{
+    stars: 4.4,
+    count: 174},
+    discount: '-63%',
+    cost: 1196 ,
+    originalPrice: '3,199.00' ,
+    deliveryDate: 'Get it by Wednesday,December 18',
+}
+export const products=[item0,item1,item2,item3,item4,item5,item6];
 
 
 /*

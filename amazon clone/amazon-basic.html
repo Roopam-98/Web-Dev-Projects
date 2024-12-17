@@ -28,8 +28,11 @@
             <button class="sign-in">Hello, sign in <br> Account & Lists</button>
             <button class="returns-orders">Returns <br> & Orders</button>
             <button class="cart">
-                <img src="" class="cart-icon">
-                <p class="cart-count">0</p>
+                <a href="checkout.html">
+                    <img src="https://uploads-ssl.webflow.com/60a40bb9c2c237b72ea4fbac/60db9229430fdade5a2bdfa6_shopping-cart.png"
+                        class="cart-icon">
+                    <p class="cart-count">0</p>
+                </a>
             </button>
         </div>
     </header>
@@ -89,9 +92,11 @@
     </footer>
 </body>
 
+<!--  Converted into modules and imported in amazon-basic.js
 <script src="data/cart.js"></script>
 <script src="data/products.js"></script>
+-->
 
-<script src="scripts/amazon-basic.js"></script>
+<script type="module" src="scripts/amazon-basic.js"></script>
 
 </html>

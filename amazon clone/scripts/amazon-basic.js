@@ -1,3 +1,6 @@
+import {cart,manageCart} from '../data/cart.js';
+import {products} from '../data/products.js';
+
 // Created selection array for search bar
 let searchArea = ['All','All Categories','Alexa Skills',
     'Amazon Devices', 'Amazon Fashion', 'Amazon Pharmacy', 'Appliances', 'Apps & Games',
@@ -45,7 +48,25 @@ selectQuantityOption.forEach((value)=>{
     for(let i=0;i<10;i++){
         value.innerHTML += `<option>${i+1}</option>`;
     }
-})
+});
+
+function displayCart(productId){      //function to calculate n display cart items on webpage
+    let totalCartQuantity= 0;//||
+
+    cart.forEach((cartItem)=>{
+        totalCartQuantity += cartItem.cartQuantity;
+    })
+    localStorage.setItem('totalCartQuantity',JSON.stringify(totalCartQuantity));
+    showCartItem();
+
+        //Code for showing that cart has been updated with item
+    const addedCart = document.querySelector(`.js-added-to-cart-${productId}`);
+    addedCart.innerHTML = '&check; Added!';
+        //clearTimeout(timerId);
+    let timerId = setTimeout(()=>{
+        addedCart.innerHTML = '';
+    },2000);
+}
 
 //Code for Add to Cart updates
 const addToCart = document.querySelectorAll('.js-addCart');
@@ -54,38 +75,16 @@ addToCart.forEach((value)=>{
 
         let productId = value.dataset.productId;
         let price= value.dataset.price;
-        let matchingItem;
-        let quantitySelectorValue = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);  //fetched quantity selector value and converted into number
-
-        cart.forEach((item)=>{      //checking if product already exists in cart
-            if(productId === item.productId && price === item.price){
-                matchingItem = item;
-            };
-        })
-
-        if(matchingItem){       //if product exists in cart, increase quantity by 1 in existing object.
-            matchingItem.cartQuantity+=1;
-        }
-        else{                                                   //if product doesn't exist in cart, add product to cart as new object.
-            cart.push({productId,cartQuantity:quantitySelectorValue,price});
-        }
+        manageCart(productId,price);
 
         //Calculating Total Cart quantity and Updating on webpage
-        let totalCartQuantity=0;
-        cart.forEach((item)=>{
-            totalCartQuantity += item.cartQuantity;
-        })
-        document.querySelector('.cart-count').innerHTML = totalCartQuantity;
-
-        console.log(cart);
-
-        //Code for showing that cart has been updated with item
-        const addedCart = document.querySelector(`.js-added-to-cart-${productId}`);
-        addedCart.innerHTML = '&check; Added!';
-        let timerId = setTimeout(()=>{
-            addedCart.innerHTML = '';
-        },2000);
-        //clearTimeout(timerId);
+        displayCart(productId);
     });
 })
 
+function showCartItem(){
+    let totalCart = JSON.parse(localStorage.getItem('totalCartQuantity'));
+    document.querySelector('.cart-count').innerHTML = totalCart;
+}
+
+showCartItem();
