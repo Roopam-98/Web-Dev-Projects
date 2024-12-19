@@ -42,7 +42,7 @@ cart.forEach((cartItem)=>{
 renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost);
 
 
-//Function to add cart Items to Webpage
+//Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
     const addItems = document.querySelector('.order-summary');
     addItems.innerHTML +=`
@@ -63,19 +63,19 @@ function addItemOrder(product,cartItem){
                                 class="addup">+</button></p>
                     </div>
                     <div><button class="update">Update</button>
-                        <button class="delete">Delete</button>
+                        <button class="delete js-delete">Delete</button>
                     </div>
                 </div>
                 <div class="product-delivery">
                     <p class="product-name">Choose a delivery option:</p>
                     <div class="select-delivery-date">
-                        <div><input type="radio" id="" class="radio-type"><label class="date">Friday <br><span
+                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Friday <br><span
                                     class="delivery-type"> Free
                                     Delivery</span></label></div>
-                        <div><input type="radio" class="radio-type"><label class="date">Thursday <br><span
+                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Thursday <br><span
                                     class="delivery-type">Fast
                                     Delivery</span> </label></div>
-                        <div><input type="radio" class="radio-type"><label class="date">Tomorrow <br><span
+                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Tomorrow <br><span
                                     class="delivery-type">Prime
                                     Delivery</span> </label></div>
                     </div>
@@ -85,7 +85,7 @@ function addItemOrder(product,cartItem){
     `;
 }
 
-//To call function to add cart Items
+//To call function to add cart Items to checkout page
 cart.forEach((cartItem)=>{
     let matchingProduct;
     products.forEach((product)=>{

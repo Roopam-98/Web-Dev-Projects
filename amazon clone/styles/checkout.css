@@ -110,6 +110,10 @@ body{
     margin-right: 5px;
 }
 
+#radio-selector{
+    accent-color: green;
+}
+
 .select-delivery-date{
     display:flex;
     height: 95%;
