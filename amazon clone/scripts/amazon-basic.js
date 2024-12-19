@@ -50,23 +50,16 @@ selectQuantityOption.forEach((value)=>{
     }
 });
 
-function displayCart(productId){      //function to calculate n display cart items on webpage
+function displayCart(){      //function to calculate n display cart items on webpage
     let totalCartQuantity= 0;//||
-
     cart.forEach((cartItem)=>{
         totalCartQuantity += cartItem.cartQuantity;
     })
-    localStorage.setItem('totalCartQuantity',JSON.stringify(totalCartQuantity));
-    showCartItem();
-
-        //Code for showing that cart has been updated with item
-    const addedCart = document.querySelector(`.js-added-to-cart-${productId}`);
-    addedCart.innerHTML = '&check; Added!';
-        //clearTimeout(timerId);
-    let timerId = setTimeout(()=>{
-        addedCart.innerHTML = '';
-    },2000);
+    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
 }
+displayCart();
+
+
 
 //Code for Add to Cart updates
 const addToCart = document.querySelectorAll('.js-addCart');
@@ -78,13 +71,15 @@ addToCart.forEach((value)=>{
         manageCart(productId,price);
 
         //Calculating Total Cart quantity and Updating on webpage
-        displayCart(productId);
+        displayCart();
+
+            //Code for showing that cart has been updated with item
+        const addedCart = document.querySelector(`.js-added-to-cart-${productId}`);
+        addedCart.innerHTML = '&check; Added!';
+            //clearTimeout(timerId);
+        let timerId = setTimeout(()=>{
+            addedCart.innerHTML = '';
+        },2000);
     });
 })
 
-function showCartItem(){
-    let totalCart = JSON.parse(localStorage.getItem('totalCartQuantity'));
-    document.querySelector('.cart-count').innerHTML = totalCart;
-}
-
-showCartItem();

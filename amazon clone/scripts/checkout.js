@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart,manageCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 // Shipping calculator
@@ -30,9 +30,12 @@ function renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCo
     `;
 }
 
+//Function to calculate shipping item cost
+function updateShippingItemCost(){
 let totalCartQuantity = 0;
 let totalAmount =0;
 let totalShippingCost = 0;
+
 cart.forEach((cartItem)=>{
     totalCartQuantity+= Number(cartItem.cartQuantity);
     let amount = Number(cartItem.cartQuantity) * Number(cartItem.price);
@@ -40,14 +43,15 @@ cart.forEach((cartItem)=>{
 })
 
 renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost);
+}
 
+updateShippingItemCost();
 
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
     const addItems = document.querySelector('.order-summary');
     addItems.innerHTML +=`
-        <hr class="item-separator">
-        <div class="item-container">
+        <div class="item-container product-${product.id}">
             <div class="delivery-date">Delivery date:</div>
             <div class="items">
                 <div class="product-image"><img src="images/${product.image}.jpg" class="image-size"></div>
@@ -63,7 +67,7 @@ function addItemOrder(product,cartItem){
                                 class="addup">+</button></p>
                     </div>
                     <div><button class="update">Update</button>
-                        <button class="delete js-delete">Delete</button>
+                        <button class="delete js-delete" data-product-id="${product.id}">Delete</button>
                     </div>
                 </div>
                 <div class="product-delivery">
@@ -82,6 +86,7 @@ function addItemOrder(product,cartItem){
                 </div>
             </div>
         </div>
+        <hr class="item-separator">
     `;
 }
 
@@ -93,5 +98,22 @@ cart.forEach((cartItem)=>{
             matchingProduct = product;
             addItemOrder(matchingProduct,cartItem);
         }
+    })
+})
+
+//Adding delete function for each cart Item
+const deleteButton = document.querySelectorAll('.js-delete');
+deleteButton.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        let productId = button.dataset.productId;
+        cart.forEach((cartItem,index)=>{
+            if(productId === cartItem.productId){
+                cart.splice(index,1);
+                let productContainer = document.querySelector(`.product-${productId}`);
+                productContainer.remove();
+                updateShippingItemCost();
+                localStorage.setItem('Cart',JSON.stringify(cart));
+            }
+        })
     })
 })
