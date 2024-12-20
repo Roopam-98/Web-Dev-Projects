@@ -1,6 +1,7 @@
 import {cart,manageCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
+
 // Shipping calculator
 function renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost){
 
@@ -42,6 +43,15 @@ cart.forEach((cartItem)=>{
     totalAmount += amount;
 })
 
+//header of the webpage
+if(totalCartQuantity > 1){
+    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} items)`;
+}
+else{
+    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
+}
+
+//calling to display total cost
 renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost);
 }
 
@@ -66,7 +76,10 @@ function addItemOrder(product,cartItem){
                         <p><button class="remove">-</button><span class="quantity">${cartItem.cartQuantity}</span><button
                                 class="addup">+</button></p>
                     </div>
-                    <div><button class="update">Update</button>
+                    <div>
+                        <button class="update js-update update-${product.id}" data-product-id="${product.id}">Update</button>
+                        <input type="text" placeholder="Quantity" class="quantity-input not-editing-quantity quantity-input-${product.id}">
+                        <button data-product-id="${product.id}" class="save-quantity-link link-primary not-editing-quantity save-${product.id}">Save</button>
                         <button class="delete js-delete" data-product-id="${product.id}">Delete</button>
                     </div>
                 </div>
@@ -85,12 +98,13 @@ function addItemOrder(product,cartItem){
                     </div>
                 </div>
             </div>
+            <hr class="item-separator">
         </div>
-        <hr class="item-separator">
     `;
 }
 
 //To call function to add cart Items to checkout page
+function updateOrderSummary(){
 cart.forEach((cartItem)=>{
     let matchingProduct;
     products.forEach((product)=>{
@@ -100,6 +114,9 @@ cart.forEach((cartItem)=>{
         }
     })
 })
+}
+
+updateOrderSummary();
 
 //Adding delete function for each cart Item
 const deleteButton = document.querySelectorAll('.js-delete');
@@ -115,5 +132,35 @@ deleteButton.forEach((button)=>{
                 localStorage.setItem('Cart',JSON.stringify(cart));
             }
         })
+    })
+})
+
+
+document.querySelectorAll('.js-update')
+    .forEach((updateButton)=>{
+        updateButton.addEventListener('click',()=>{
+            let productId = updateButton.dataset.productId;
+            document.querySelector(`.quantity-input-${productId}`).classList.remove('not-editing-quantity');
+            document.querySelector(`.save-${productId}`).classList.remove('not-editing-quantity');
+            updateButton.classList.add('not-editing-quantity');
+        })
+    });
+
+document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
+    saveButton.addEventListener('click',()=>{
+        let productId = saveButton.dataset.productId;
+        document.querySelector(`.quantity-input-${productId}`).classList.add('not-editing-quantity');
+        document.querySelector(`.update-${productId}`).classList.remove('not-editing-quantity');
+        saveButton.classList.add('not-editing-quantity');
+
+        let updatedQuantity = document.querySelector(`.quantity-input-${productId}`).value;
+        cart.forEach((cartItem)=>{
+            if(productId === cartItem.productId){
+                cartItem.cartQuantity = Number(updatedQuantity);
+                updateShippingItemCost();
+                localStorage.setItem('Cart',JSON.stringify(cart));
+                updateOrderSummary();
+            }
+        });
     })
 })

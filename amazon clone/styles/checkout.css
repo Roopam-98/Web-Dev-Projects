@@ -8,12 +8,29 @@
     box-sizing:border-box;
 }
 
+
 body{
     display:flex;
     justify-content: space-evenly;
     background-color: rgb(212, 208, 208);
 }
 
+/*---------------Header section -----------------------*/
+.header-section{
+    height:2em;
+    width:100vw;
+    color:white;
+    background-color: rgb(15,17,17);
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 15px;
+    position: fixed;
+    top:0;
+    left:0;
+}
+
+/*--------------Body of the page ----------------------*/
 .order-summary{
     margin-top: 5em;
     /*border: 1.4px solid rgb(173, 166, 166);*/
@@ -87,7 +104,7 @@ body{
     background-color: rgb(225, 222, 222);
 }*/
 
-.update,.delete{
+.update,.delete,.save-quantity-link{
     font-size: 1rem;
     font-weight:600;
     margin:5px;
@@ -96,8 +113,19 @@ body{
     background: none;
 }
 
-.update:hover,.delete:hover{
+.update:hover,.delete:hover,.save-quantity-link:hover{
     color:rgb(8, 177, 228);
+}
+
+.quantity-input{
+    border:none;
+    padding: 5px;
+    height: 2em;
+    width: 5em;
+}
+
+.not-editing-quantity{
+    display:none;
 }
 
 .select-delivery-date{
@@ -135,7 +163,6 @@ body{
     font-size: 0.87rem;
 }
 
-
 /*--------------------Shopping Cart Cost Calculator design-----------------------*/
 
 .order-cost{
@@ -149,6 +176,7 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 5em;
+   
 }
 
 .order-cost-header{
