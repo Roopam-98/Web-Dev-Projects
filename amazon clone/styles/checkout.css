@@ -163,6 +163,25 @@ body{
     font-size: 0.87rem;
 }
 
+.empty-cart{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2em;
+    text-align: center;
+}
+.view-products{
+    margin: 1.2em;
+    border:none;
+    background-color: rgb(255, 214, 6);
+    color:black;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.view-products:hover{
+    background-color: rgb(247, 158, 15);
+}
+
 /*--------------------Shopping Cart Cost Calculator design-----------------------*/
 
 .order-cost{
@@ -176,7 +195,6 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 5em;
-   
 }
 
 .order-cost-header{

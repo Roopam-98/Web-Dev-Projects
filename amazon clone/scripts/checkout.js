@@ -47,6 +47,12 @@ cart.forEach((cartItem)=>{
 if(totalCartQuantity > 1){
     document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} items)`;
 }
+else if(totalCartQuantity<=0){
+    if(cart.length === 0){
+        document.querySelector('.order-summary').innerHTML += `<p class="empty-cart">Cart is empty!<br> <a href="amazon-basic.html"><button class="view-products">View Products</button></a></p>`;
+    }
+    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
+}
 else{
     document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
 }
@@ -59,7 +65,7 @@ updateShippingItemCost();
 
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
-    const addItems = document.querySelector('.order-summary');
+    let addItems = document.querySelector('.order-summary');
     addItems.innerHTML +=`
         <div class="item-container product-${product.id}">
             <div class="delivery-date">Delivery date:</div>
@@ -73,7 +79,7 @@ function addItemOrder(product,cartItem){
                         <p>&#8377;${product.cost}</p>
                     </div>
                     <div class="product-quantity">
-                        <p><button class="remove">-</button><span class="quantity">${cartItem.cartQuantity}</span><button
+                        <p><button class="remove">-</button><span class="quantity js-quantity-${product.id}">${cartItem.cartQuantity}</span><button
                                 class="addup">+</button></p>
                     </div>
                     <div>
@@ -159,8 +165,10 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
                 cartItem.cartQuantity = Number(updatedQuantity);
                 updateShippingItemCost();
                 localStorage.setItem('Cart',JSON.stringify(cart));
-                updateOrderSummary();
+                console.log(JSON.parse(localStorage.getItem('Cart')));
+                document.querySelector(`.js-quantity-${productId}`).innerHTML =  `${cartItem.cartQuantity}`;
             }
         });
     })
 })
+
