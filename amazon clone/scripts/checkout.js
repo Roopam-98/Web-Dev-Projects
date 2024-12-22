@@ -252,6 +252,7 @@ function isChecked(){       //to update deliveryOption in cart and confirm that 
             }
         })
     })
+    showDeliveryDate();
     calculateTotalShippingCost();
 }
 isChecked();
