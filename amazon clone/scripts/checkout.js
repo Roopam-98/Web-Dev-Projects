@@ -94,17 +94,17 @@ function addItemOrder(product,cartItem){
                     <p class="product-name">Choose a delivery option:</p>
                     <div class="select-delivery-date">
                         <div>
-                            <input type="radio" id="free-shipping-${product.id}" checked class="radio-type" name="${product.id}">
+                            <input type="radio" id="free-shipping-${product.id}" class="radio-type radio-type-${product.id}" name="${product.id}" data-delivery-id="0">
                             <label class="date" for="free-shipping-${product.id}">${deliveryOptions[0].deliveryDate}<br>
                             <span class="delivery-type"> Free shipping</span></label>
                         </div>
                         <div>
-                            <input type="radio" id="fast-shipping-${product.id}" class="radio-type" name="${product.id}">
+                            <input type="radio" id="fast-shipping-${product.id}" class="radio-type radio-type-${product.id}" name="${product.id}" data-delivery-id="1">
                             <label class="date" for="fast-shipping-${product.id}">${deliveryOptions[1].deliveryDate}<br>
                             <span class="delivery-type"> &#8377;40 - Shipping cost</span> </label>
                         </div>
                         <div>
-                            <input type="radio" id="prime-shipping-${product.id}" class="radio-type" name="${product.id}">
+                            <input type="radio" id="prime-shipping-${product.id}" class="radio-type radio-type-${product.id}" name="${product.id}" data-delivery-id="2">
                             <label class="date" for="prime-shipping-${product.id}">${deliveryOptions[2].deliveryDate}<br>
                             <span class="delivery-type">&#8377;70 - Shipping cost</span> </label>
                         </div>
@@ -221,14 +221,18 @@ function calculateTotalShippingCost(){
 
         if(primeShipping.checked){
             shippingCost.push(70);
+            cartItem.deliveryId = 2;
         }
         else if(fastShipping.checked){
             shippingCost.push(40);
+            cartItem.deliveryId = 1;
         }
         else{
             shippingCost.push(0);
+            cartItem.deliveryId = 0;
         }
     })
+    localStorage.setItem('Cart',JSON.stringify(cart));
 
     totalShippingCost = 0;
     for(let i=0; i<shippingCost.length; i++){
@@ -236,3 +240,19 @@ function calculateTotalShippingCost(){
     }
     updateShippingItemCost(totalShippingCost);
 }
+
+
+function isChecked(){       //to update deliveryOption in cart and confirm that same option is checked even after refresh
+    cart.forEach((cartItem)=>{
+        let productId = cartItem.productId;
+        document.querySelectorAll(`.radio-type-${productId}`).forEach((selector)=>{
+            let deliveryId = selector.dataset.deliveryId;
+            if(Number(deliveryId) === cartItem.deliveryId){
+                selector.checked = true;
+            }
+        })
+    })
+    calculateTotalShippingCost();
+}
+isChecked();
+
