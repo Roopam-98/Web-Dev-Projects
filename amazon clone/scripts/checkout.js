@@ -1,5 +1,6 @@
 import {cart,manageCart} from '../data/cart.js';
 import {products} from '../data/products.js';
+import { deliveryOptions } from '../data/deliveryOptions.js';
 
 
 // Shipping calculator
@@ -41,6 +42,7 @@ cart.forEach((cartItem)=>{
     totalCartQuantity+= Number(cartItem.cartQuantity);
     let amount = Number(cartItem.cartQuantity) * Number(cartItem.price);
     totalAmount += amount;
+    //totalShippingCost += shippingCost;
 })
 
 //header of the webpage
@@ -68,7 +70,7 @@ function addItemOrder(product,cartItem){
     let addItems = document.querySelector('.order-summary');
     addItems.innerHTML +=`
         <div class="item-container product-${product.id}">
-            <div class="delivery-date">Delivery date:</div>
+            <div class="delivery-date"></div>
             <div class="items">
                 <div class="product-image"><img src="images/${product.image}.jpg" class="image-size"></div>
                 <div class="product-details">
@@ -92,15 +94,21 @@ function addItemOrder(product,cartItem){
                 <div class="product-delivery">
                     <p class="product-name">Choose a delivery option:</p>
                     <div class="select-delivery-date">
-                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Friday <br><span
-                                    class="delivery-type"> Free
-                                    Delivery</span></label></div>
-                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Thursday <br><span
-                                    class="delivery-type">Fast
-                                    Delivery</span> </label></div>
-                        <div><input type="radio" id="radio-selector" class="radio-type" name="${product.id}"><label class="date">Tomorrow <br><span
-                                    class="delivery-type">Prime
-                                    Delivery</span> </label></div>
+                        <div>
+                            <input type="radio" id="free-shipping" checked class="radio-type" name="${product.id}">
+                            <label class="date" for="free-shipping">${deliveryOptions[0].deliveryDate}<br>
+                            <span class="delivery-type"> Free shipping</span></label>
+                        </div>
+                        <div>
+                            <input type="radio" id="fast-shipping" class="radio-type" name="${product.id}">
+                            <label class="date" for="fast-shipping">${deliveryOptions[1].deliveryDate}<br>
+                            <span class="delivery-type"> &#8377;40 - Shipping cost</span> </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="prime-shipping" class="radio-type" name="${product.id}">
+                            <label class="date" for="prime-shipping">${deliveryOptions[2].deliveryDate}<br>
+                            <span class="delivery-type">&#8377;70 - Shipping cost</span> </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,7 +117,7 @@ function addItemOrder(product,cartItem){
     `;
 }
 
-//To call function to add cart Items to checkout page
+//Call function to add cart Items to checkout page
 function updateOrderSummary(){
 cart.forEach((cartItem)=>{
     let matchingProduct;
@@ -142,8 +150,8 @@ deleteButton.forEach((button)=>{
 })
 
 
-document.querySelectorAll('.js-update')
-    .forEach((updateButton)=>{
+//Added function to Update button
+document.querySelectorAll('.js-update').forEach((updateButton)=>{
         updateButton.addEventListener('click',()=>{
             let productId = updateButton.dataset.productId;
             document.querySelector(`.quantity-input-${productId}`).classList.remove('not-editing-quantity');
@@ -152,6 +160,7 @@ document.querySelectorAll('.js-update')
         })
     });
 
+//Added function to Save button
 document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
     saveButton.addEventListener('click',()=>{
         let productId = saveButton.dataset.productId;
@@ -172,3 +181,36 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
     })
 })
 
+
+
+function showDeliveryDate(){
+    const freeDelivery = document.getElementById('free-shipping');
+    const fastDelivery = document.getElementById('fast-shipping');
+    const primeDelivery = document.getElementById('prime-shipping');
+    const finalizedDate = document.querySelector('.delivery-date');
+    let shippingCost =0;
+
+    if(primeDelivery.checked){
+        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
+        shippingCost = 70;
+    }
+    else if(fastDelivery.checked) {
+        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
+        shippingCost = 40;
+    }
+    else{
+        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
+        shippingCost =0;
+    }
+    return shippingCost;
+}
+let shippingCost = showDeliveryDate();
+
+
+let selector = document.querySelectorAll('.radio-type');
+selector.forEach((select)=>{
+    select.addEventListener('click',()=>{
+        let shippingCost = showDeliveryDate();
+        console.log(shippingCost);
+    })
+});

@@ -15,7 +15,7 @@ export function manageCart(productId,price){  //function to add products into ca
         localStorage.setItem('Cart',JSON.stringify(cart));
     }
     else{                                                   //if product doesn't exist in cart, add product to cart as new object.
-        cart.push({productId,cartQuantity:quantitySelectorValue,price:Number(price)});
+        cart.push({productId,cartQuantity:quantitySelectorValue,price:Number(price),deliveryId:0});
         localStorage.setItem('Cart',JSON.stringify(cart));
     }
 }
