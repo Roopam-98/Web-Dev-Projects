@@ -1,7 +1,7 @@
 import {cart,manageCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
-
+let totalShippingCost = 0;
 
 // Shipping calculator
 function renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost){
@@ -33,10 +33,9 @@ function renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCo
 }
 
 //Function to calculate shipping item cost
-function updateShippingItemCost(){
+function updateShippingItemCost(totalShippingCost){
 let totalCartQuantity = 0;
 let totalAmount =0;
-let totalShippingCost = 0;
 
 cart.forEach((cartItem)=>{
     totalCartQuantity+= Number(cartItem.cartQuantity);
@@ -63,7 +62,7 @@ else{
 renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost);
 }
 
-updateShippingItemCost();
+updateShippingItemCost(totalShippingCost);
 
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
@@ -95,17 +94,17 @@ function addItemOrder(product,cartItem){
                     <p class="product-name">Choose a delivery option:</p>
                     <div class="select-delivery-date">
                         <div>
-                            <input type="radio" id="free-shipping-${product.id}" checked class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <input type="radio" id="free-shipping-${product.id}" checked class="radio-type" name="${product.id}">
                             <label class="date" for="free-shipping-${product.id}">${deliveryOptions[0].deliveryDate}<br>
                             <span class="delivery-type"> Free shipping</span></label>
                         </div>
                         <div>
-                            <input type="radio" id="fast-shipping-${product.id}" class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <input type="radio" id="fast-shipping-${product.id}" class="radio-type" name="${product.id}">
                             <label class="date" for="fast-shipping-${product.id}">${deliveryOptions[1].deliveryDate}<br>
                             <span class="delivery-type"> &#8377;40 - Shipping cost</span> </label>
                         </div>
                         <div>
-                            <input type="radio" id="prime-shipping-${product.id}" class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <input type="radio" id="prime-shipping-${product.id}" class="radio-type" name="${product.id}">
                             <label class="date" for="prime-shipping-${product.id}">${deliveryOptions[2].deliveryDate}<br>
                             <span class="delivery-type">&#8377;70 - Shipping cost</span> </label>
                         </div>
@@ -142,7 +141,7 @@ deleteButton.forEach((button)=>{
                 cart.splice(index,1);
                 let productContainer = document.querySelector(`.product-${productId}`);
                 productContainer.remove();
-                updateShippingItemCost();
+                updateShippingItemCost(totalShippingCost);
                 localStorage.setItem('Cart',JSON.stringify(cart));
             }
         })
@@ -172,7 +171,7 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
         cart.forEach((cartItem)=>{
             if(productId === cartItem.productId){
                 cartItem.cartQuantity = Number(updatedQuantity);
-                updateShippingItemCost();
+                updateShippingItemCost(totalShippingCost);
                 localStorage.setItem('Cart',JSON.stringify(cart));
                 console.log(JSON.parse(localStorage.getItem('Cart')));
                 document.querySelector(`.js-quantity-${productId}`).innerHTML =  `${cartItem.cartQuantity}`;
@@ -182,30 +181,58 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
 })
 
 
-function showDeliveryDate(){
-document.querySelectorAll('.delivery-date').forEach((value)=>{
-    let productId = value.dataset.productId;
-    const freeShipping = document.getElementById(`free-shipping-${productId}`);
-    const fastShipping = document.getElementById(`fast-shipping-${productId}`);
-    const primeShipping = document.getElementById(`prime-shipping-${productId}`);
+function showDeliveryDate(){               //Function to Show expected delivery date
+    document.querySelectorAll('.delivery-date').forEach((value)=>{
+        let productId = value.dataset.productId;
+        const freeShipping = document.getElementById(`free-shipping-${productId}`);
+        const fastShipping = document.getElementById(`fast-shipping-${productId}`);
+        const primeShipping = document.getElementById(`prime-shipping-${productId}`);
 
-    if(primeShipping.checked){
-        value.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
-    }
-    else if(fastShipping.checked){
-        value.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
-    }
-    else{
-        value.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
-    }
-})
+
+        if(primeShipping.checked){
+            value.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
+        }
+        else if(fastShipping.checked){
+            value.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
+        }
+        else{
+            value.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
+        }
+    })
 }
 
 showDeliveryDate();
 
-document.querySelectorAll('.radio-type').forEach((inputValue)=>{
-    let productId = inputValue.dataset.productId;
+document.querySelectorAll('.radio-type').forEach((inputValue)=>{  //Event listener for all delivery option input
     inputValue.addEventListener('click',()=>{
         showDeliveryDate();
+        calculateTotalShippingCost();
     })
 })
+
+// Function to switch between delivery option and update Shipping Cost
+function calculateTotalShippingCost(){
+    let shippingCost = [];
+    cart.forEach((cartItem)=>{
+        let productId = cartItem.productId;
+        const freeShipping = document.getElementById(`free-shipping-${productId}`);
+        const fastShipping = document.getElementById(`fast-shipping-${productId}`);
+        const primeShipping = document.getElementById(`prime-shipping-${productId}`);
+
+        if(primeShipping.checked){
+            shippingCost.push(70);
+        }
+        else if(fastShipping.checked){
+            shippingCost.push(40);
+        }
+        else{
+            shippingCost.push(0);
+        }
+    })
+
+    totalShippingCost = 0;
+    for(let i=0; i<shippingCost.length; i++){
+        totalShippingCost +=shippingCost[i];
+    }
+    updateShippingItemCost(totalShippingCost);
+}
