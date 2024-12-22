@@ -70,7 +70,7 @@ function addItemOrder(product,cartItem){
     let addItems = document.querySelector('.order-summary');
     addItems.innerHTML +=`
         <div class="item-container product-${product.id}">
-            <div class="delivery-date"></div>
+            <div class="delivery-date delivery-${product.id}" data-product-id="${product.id}">Delivery date: Select from the available options </div>
             <div class="items">
                 <div class="product-image"><img src="images/${product.image}.jpg" class="image-size"></div>
                 <div class="product-details">
@@ -95,18 +95,18 @@ function addItemOrder(product,cartItem){
                     <p class="product-name">Choose a delivery option:</p>
                     <div class="select-delivery-date">
                         <div>
-                            <input type="radio" id="free-shipping" checked class="radio-type" name="${product.id}">
-                            <label class="date" for="free-shipping">${deliveryOptions[0].deliveryDate}<br>
+                            <input type="radio" id="free-shipping-${product.id}" checked class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <label class="date" for="free-shipping-${product.id}">${deliveryOptions[0].deliveryDate}<br>
                             <span class="delivery-type"> Free shipping</span></label>
                         </div>
                         <div>
-                            <input type="radio" id="fast-shipping" class="radio-type" name="${product.id}">
-                            <label class="date" for="fast-shipping">${deliveryOptions[1].deliveryDate}<br>
+                            <input type="radio" id="fast-shipping-${product.id}" class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <label class="date" for="fast-shipping-${product.id}">${deliveryOptions[1].deliveryDate}<br>
                             <span class="delivery-type"> &#8377;40 - Shipping cost</span> </label>
                         </div>
                         <div>
-                            <input type="radio" id="prime-shipping" class="radio-type" name="${product.id}">
-                            <label class="date" for="prime-shipping">${deliveryOptions[2].deliveryDate}<br>
+                            <input type="radio" id="prime-shipping-${product.id}" class="radio-type" name="${product.id}" data-product-id="${product.id}">
+                            <label class="date" for="prime-shipping-${product.id}">${deliveryOptions[2].deliveryDate}<br>
                             <span class="delivery-type">&#8377;70 - Shipping cost</span> </label>
                         </div>
                     </div>
@@ -182,35 +182,30 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
 })
 
 
-
 function showDeliveryDate(){
-    const freeDelivery = document.getElementById('free-shipping');
-    const fastDelivery = document.getElementById('fast-shipping');
-    const primeDelivery = document.getElementById('prime-shipping');
-    const finalizedDate = document.querySelector('.delivery-date');
-    let shippingCost =0;
+document.querySelectorAll('.delivery-date').forEach((value)=>{
+    let productId = value.dataset.productId;
+    const freeShipping = document.getElementById(`free-shipping-${productId}`);
+    const fastShipping = document.getElementById(`fast-shipping-${productId}`);
+    const primeShipping = document.getElementById(`prime-shipping-${productId}`);
 
-    if(primeDelivery.checked){
-        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
-        shippingCost = 70;
+    if(primeShipping.checked){
+        value.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
     }
-    else if(fastDelivery.checked) {
-        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
-        shippingCost = 40;
+    else if(fastShipping.checked){
+        value.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
     }
     else{
-        finalizedDate.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
-        shippingCost =0;
+        value.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
     }
-    return shippingCost;
+})
 }
-let shippingCost = showDeliveryDate();
 
+showDeliveryDate();
 
-let selector = document.querySelectorAll('.radio-type');
-selector.forEach((select)=>{
-    select.addEventListener('click',()=>{
-        let shippingCost = showDeliveryDate();
-        console.log(shippingCost);
+document.querySelectorAll('.radio-type').forEach((inputValue)=>{
+    let productId = inputValue.dataset.productId;
+    inputValue.addEventListener('click',()=>{
+        showDeliveryDate();
     })
-});
+})

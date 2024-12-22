@@ -2,7 +2,7 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 let date,month,year;
 date = dayjs().get('date');
-month = dayjs().get('month');
+month = dayjs().get('month')+1;
 year = dayjs().get('year');
 let currentDate = dayjs(`${year}-${month}-${date}`);
 let freeDeliveryDate = currentDate.add(6,'day').format('dddd, DD MMMM');
