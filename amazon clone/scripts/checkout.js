@@ -50,7 +50,7 @@ if(totalCartQuantity > 1){
 }
 else if(totalCartQuantity<=0){
     if(cart.length === 0){
-        document.querySelector('.order-summary').innerHTML += `<p class="empty-cart">Cart is empty!<br> <a href="amazon-basic.html"><button class="view-products">View Products</button></a></p>`;
+        document.querySelector('.order-summary').innerHTML = `<p class="empty-cart">Cart is empty!<br> <a href="amazon-basic.html"><button class="view-products">View Products</button></a></p>`;
     }
     document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
 }
