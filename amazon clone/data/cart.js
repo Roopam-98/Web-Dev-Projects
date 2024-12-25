@@ -1,8 +1,13 @@
 export let cart= JSON.parse(localStorage.getItem('Cart'))|| [];//
 //localStorage.setItem('Cart',JSON.stringify(cart));
 export function manageCart(productId,price){  //function to add products into cart
-    let matchingItem;
-    let quantitySelectorValue = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);  //fetched quantity selector value and converted into number
+    let matchingItem, quantitySelectorValue;
+      //fetched quantity selector value and converted into number
+    let quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+    if(quantitySelector){
+        quantitySelectorValue = Number(quantitySelector.value);
+    }
+
 
     cart.forEach((cartItem)=>{      //checking if product already exists in cart
         if(productId === cartItem.productId){
