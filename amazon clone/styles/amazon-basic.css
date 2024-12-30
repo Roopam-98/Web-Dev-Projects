@@ -47,7 +47,7 @@ main{
 }
 .amazon-logo{
     border: 1px solid white;
-    height: 33px;
+    height: 40px;
     object-fit: cover;
     margin-left: 5px;
 }
@@ -102,18 +102,18 @@ main{
     position:relative;
 }
 .cart-icon{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     margin-top: 10px;
 }
 .cart-count{
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color:rgb(255, 177, 21);
     position:absolute;
-    top:2px;
-    left: 14px;
+    top:-3px;
+    left: 16px;
 }
 
 /*------------*/
@@ -263,23 +263,10 @@ a .back-to-top:active{
 .footer{
     background-color:  rgb(35, 47, 62);
     color:white;
-    padding: 40px 0;
-    display:flex;
-    justify-content: space-evenly;
+    padding: 40px;
 }
 
-.footer-section{
-    line-height:  25px;
-}
-
-.footer-section p{
-    font-size: 14px;
-    color:rgb(221,221,221);
-    cursor:pointer;
-    transition: text-decoration-line 0.15s;
-}
-
-.footer-section p:hover{
-    text-decoration-line: underline;
+.footer *{
+    margin: 5px;
 }
 

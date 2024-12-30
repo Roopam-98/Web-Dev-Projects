@@ -1,71 +1,10 @@
-import {cart,manageCart} from '../data/cart.js';
+import {cart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
-let totalShippingCost = 0;
+import {updateShippingItemCost} from './checkout/shippingCost.js';
+import { isChecked,showDeliveryDate,calculateTotalShippingCost } from './checkout/checkoutFeatures.js';
 
-// Shipping calculator
-function renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost){
-
-    let totalCostBeforeTax = (totalAmount + totalShippingCost).toFixed(2);
-    let estimatedTax = (totalCostBeforeTax*0.05).toFixed(2);
-    let orderTotal = Number(totalCostBeforeTax) + Number(estimatedTax);
-
-    const shippingCalculator = document.querySelector('.order-cost');
-    shippingCalculator.innerHTML = `
-            <div>
-                <p class="order-cost-header">Order Summary</p>
-            </div>
-            <div>
-                <p class="order-cost-details">Items(${totalCartQuantity}) : <span class="amount">&#8377;${totalAmount.toFixed(2)}</span></p>
-                <p class="order-cost-details">Shipping & handling : <span class="amount">&#8377;${totalShippingCost.toFixed(2)}</span></p>
-            </div>
-            <hr class="total-item-cost-line">
-            <div>
-                <p class="order-cost-details">Total before tax : <span class="amount">&#8377;${totalCostBeforeTax}</span></p>
-                <p class="order-cost-details">Estimated tax(5%) : <span class="amount">&#8377;${estimatedTax}</span></p>
-            </div>
-            <hr class="total-line">
-            <div>
-                <p class="order-cost-header">Order total: <span class="amount">&#8377;${orderTotal}</span></p>
-            </div>
-            <div><button class="place-order">Place your order</button></div>
-    `;
-}
-
-//Function to calculate shipping item cost
-function updateShippingItemCost(totalShippingCost){
-let totalCartQuantity = 0;
-let totalAmount =0;
-
-cart.forEach((cartItem)=>{
-    totalCartQuantity+= Number(cartItem.cartQuantity);
-    let amount = Number(cartItem.cartQuantity) * Number(cartItem.price);
-    totalAmount += amount;
-    //totalShippingCost += shippingCost;
-})
-
-//header of the webpage
-if(totalCartQuantity > 1){
-    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} items)`;
-    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
-}
-else if(totalCartQuantity<=0){
-    if(cart.length === 0){
-        document.querySelector('.order-summary').innerHTML = `<p class="empty-cart">Cart is empty!<br> <a href="amazon-basic.html"><button class="view-products">View Products</button></a></p>`;
-    }
-    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} item)`;
-    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
-}
-else{
-    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} item)`;
-    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
-}
-
-//calling to display total cost
-renderShippingItemsCost(totalCartQuantity, totalAmount, totalShippingCost);
-}
-
-updateShippingItemCost(totalShippingCost);
+let totalShippingCost;
 
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
@@ -135,6 +74,7 @@ cart.forEach((cartItem)=>{
 
 updateOrderSummary();
 
+
 document.querySelectorAll('.remove').forEach((removeButton)=>{      // to decrease cart quantity by 1.
     let productId= removeButton.dataset.productId;
     removeButton.addEventListener('click',()=>{
@@ -169,6 +109,7 @@ document.querySelectorAll('.add-up').forEach((addButton)=>{         // to increa
     });
 });
 
+
 //Adding delete function for each cart Item
 const deleteButton = document.querySelectorAll('.js-delete');
 deleteButton.forEach((button)=>{
@@ -179,8 +120,8 @@ deleteButton.forEach((button)=>{
                 cart.splice(index,1);
                 let productContainer = document.querySelector(`.product-${productId}`);
                 productContainer.remove();
-                updateShippingItemCost(totalShippingCost);
                 localStorage.setItem('Cart',JSON.stringify(cart));
+                updateShippingItemCost(totalShippingCost);
             }
         })
     })
@@ -218,80 +159,17 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
     })
 })
 
-
-function showDeliveryDate(){               //Function to Show expected delivery date
-    document.querySelectorAll('.delivery-date').forEach((value)=>{
-        let productId = value.dataset.productId;
-        const freeShipping = document.getElementById(`free-shipping-${productId}`);
-        const fastShipping = document.getElementById(`fast-shipping-${productId}`);
-        const primeShipping = document.getElementById(`prime-shipping-${productId}`);
-
-
-        if(primeShipping.checked){
-            value.innerHTML = `Delivery date: ${deliveryOptions[2].deliveryDate}`;
-        }
-        else if(fastShipping.checked){
-            value.innerHTML = `Delivery date: ${deliveryOptions[1].deliveryDate}`;
-        }
-        else{
-            value.innerHTML = `Delivery date: ${deliveryOptions[0].deliveryDate}`;
-        }
-    })
-}
-
+//Function to Show expected delivery date
 showDeliveryDate();
 
-document.querySelectorAll('.radio-type').forEach((inputValue)=>{  //Event listener for all delivery option input
+//Event listener for all delivery option input
+document.querySelectorAll('.radio-type').forEach((inputValue)=>{
     inputValue.addEventListener('click',()=>{
         showDeliveryDate();
         calculateTotalShippingCost();
     })
 })
 
-// Function to switch between delivery option and update Shipping Cost
-function calculateTotalShippingCost(){
-    let shippingCost = [];
-    cart.forEach((cartItem)=>{
-        let productId = cartItem.productId;
-        const freeShipping = document.getElementById(`free-shipping-${productId}`);
-        const fastShipping = document.getElementById(`fast-shipping-${productId}`);
-        const primeShipping = document.getElementById(`prime-shipping-${productId}`);
-
-        if(primeShipping.checked){
-            shippingCost.push(70);
-            cartItem.deliveryId = 2;
-        }
-        else if(fastShipping.checked){
-            shippingCost.push(40);
-            cartItem.deliveryId = 1;
-        }
-        else{
-            shippingCost.push(0);
-            cartItem.deliveryId = 0;
-        }
-    })
-    localStorage.setItem('Cart',JSON.stringify(cart));
-
-    totalShippingCost = 0;
-    for(let i=0; i<shippingCost.length; i++){
-        totalShippingCost +=shippingCost[i];
-    }
-    updateShippingItemCost(totalShippingCost);
-}
-
-
-function isChecked(){       //to update deliveryOption in cart and confirm that same option is checked even after refresh
-    cart.forEach((cartItem)=>{
-        let productId = cartItem.productId;
-        document.querySelectorAll(`.radio-type-${productId}`).forEach((selector)=>{
-            let deliveryId = selector.dataset.deliveryId;
-            if(Number(deliveryId) === cartItem.deliveryId){
-                selector.checked = true;
-            }
-        })
-    })
-    showDeliveryDate();
-    calculateTotalShippingCost();
-}
+//to update deliveryOption in cart and confirm that same option is checked even after refresh
 isChecked();
 
