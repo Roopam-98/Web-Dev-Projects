@@ -4,7 +4,7 @@ import { deliveryOptions } from '../data/deliveryOptions.js';
 import {updateShippingItemCost} from './checkout/shippingCost.js';
 import { isChecked,showDeliveryDate,calculateTotalShippingCost } from './checkout/checkoutFeatures.js';
 
-let totalShippingCost;
+let totalShippingCost=0;
 
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
@@ -80,7 +80,6 @@ document.querySelectorAll('.remove').forEach((removeButton)=>{      // to decrea
     removeButton.addEventListener('click',()=>{
         cart.forEach((cartItem)=>{
             if(productId === cartItem.productId){
-                console.log(productId);
                 if(cartItem.cartQuantity > 1){
                     cartItem.cartQuantity--;
                     localStorage.setItem('Cart',JSON.stringify(cart));
@@ -97,7 +96,6 @@ document.querySelectorAll('.add-up').forEach((addButton)=>{         // to increa
     addButton.addEventListener('click',()=>{
         cart.forEach((cartItem)=>{
             if(productId === cartItem.productId){
-                console.log(productId);
                 if(cartItem.cartQuantity < 10){
                     cartItem.cartQuantity++;
                     localStorage.setItem('Cart',JSON.stringify(cart));
@@ -150,9 +148,8 @@ document.querySelectorAll('.save-quantity-link').forEach((saveButton)=>{
         cart.forEach((cartItem)=>{
             if(productId === cartItem.productId){
                 cartItem.cartQuantity = Number(updatedQuantity);
-                updateShippingItemCost(totalShippingCost);
                 localStorage.setItem('Cart',JSON.stringify(cart));
-                console.log(JSON.parse(localStorage.getItem('Cart')));
+                updateShippingItemCost(totalShippingCost);
                 document.querySelector(`.js-quantity-${productId}`).innerHTML =  `${cartItem.cartQuantity}`;
             }
         });
