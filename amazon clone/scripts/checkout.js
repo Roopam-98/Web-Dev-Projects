@@ -46,16 +46,19 @@ cart.forEach((cartItem)=>{
 
 //header of the webpage
 if(totalCartQuantity > 1){
-    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} items)`;
+    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} items)`;
+    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
 }
 else if(totalCartQuantity<=0){
     if(cart.length === 0){
         document.querySelector('.order-summary').innerHTML = `<p class="empty-cart">Cart is empty!<br> <a href="amazon-basic.html"><button class="view-products">View Products</button></a></p>`;
     }
-    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
+    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} item)`;
+    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
 }
 else{
-    document.querySelector('.header-section').innerHTML = `Checkout (${totalCartQuantity} item)`;
+    document.querySelector('.header-section-checkout').innerHTML = `Checkout (${totalCartQuantity} item)`;
+    document.querySelector('.cart-count').innerHTML = totalCartQuantity;
 }
 
 //calling to display total cost
@@ -80,8 +83,9 @@ function addItemOrder(product,cartItem){
                         <p>&#8377;${product.cost}</p>
                     </div>
                     <div class="product-quantity">
-                        <p><button class="remove">-</button><span class="quantity js-quantity-${product.id}">${cartItem.cartQuantity}</span><button
-                                class="addup">+</button></p>
+                        <button class="remove" data-product-id="${product.id}">-</button>
+                        <span class="quantity js-quantity-${product.id}">${cartItem.cartQuantity}</span>
+                        <button class="add-up" data-product-id="${product.id}">+</button>
                     </div>
                     <div>
                         <button class="update js-update update-${product.id}" data-product-id="${product.id}">Update</button>
@@ -130,6 +134,40 @@ cart.forEach((cartItem)=>{
 }
 
 updateOrderSummary();
+
+document.querySelectorAll('.remove').forEach((removeButton)=>{      // to decrease cart quantity by 1.
+    let productId= removeButton.dataset.productId;
+    removeButton.addEventListener('click',()=>{
+        cart.forEach((cartItem)=>{
+            if(productId === cartItem.productId){
+                console.log(productId);
+                if(cartItem.cartQuantity > 1){
+                    cartItem.cartQuantity--;
+                    localStorage.setItem('Cart',JSON.stringify(cart));
+                    calculateTotalShippingCost();
+                    document.querySelector(`.js-quantity-${productId}`).innerHTML = `${cartItem.cartQuantity}`;
+                }
+            }
+        })
+    });
+});
+
+document.querySelectorAll('.add-up').forEach((addButton)=>{         // to increase cart quantity by 1
+    let productId= addButton.dataset.productId;
+    addButton.addEventListener('click',()=>{
+        cart.forEach((cartItem)=>{
+            if(productId === cartItem.productId){
+                console.log(productId);
+                if(cartItem.cartQuantity < 10){
+                    cartItem.cartQuantity++;
+                    localStorage.setItem('Cart',JSON.stringify(cart));
+                    calculateTotalShippingCost();
+                    document.querySelector(`.js-quantity-${productId}`).innerHTML = `${cartItem.cartQuantity}`;
+                }
+            }
+        })
+    });
+});
 
 //Adding delete function for each cart Item
 const deleteButton = document.querySelectorAll('.js-delete');
