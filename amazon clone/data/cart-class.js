@@ -1,9 +1,9 @@
 class Cart{
-    cartItems=JSON.parse(localStorage.getItem(this.localStorageKey))|| [];
-    localStorageKey;
+    #localStorageKey;
+    cartItems=JSON.parse(localStorage.getItem(this.#localStorageKey))|| [];
 
     constructor(localStorageKey){
-        this.localStorageKey = localStorageKey;
+        this.#localStorageKey = localStorageKey;
     }
     manageCart(productId,price){  //function to add products into cart
         let matchingItem, quantitySelectorValue;
@@ -23,22 +23,19 @@ class Cart{
 
         if(matchingItem){       //if product exists in cart, increase quantity by 1 in existing object.
             matchingItem.cartQuantity+=1;
-            localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+            localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
         }
         else{                                                   //if product doesn't exist in cart, add product to cart as new object.
             this.cartItems.push({productId,cartQuantity:quantitySelectorValue,price:Number(price),deliveryId:0});
-            localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+            localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
         }
     }
 
 }
 
 const cartVal = new Cart('cartVal');
-cartVal.manageCart('0301018450181',299);
-cartVal.manageCart('80505361775',1196);
-
 const businessCart = new Cart('bus-cart');
 
-console.log(cartVal);
-console.log(businessCart);
-console.log(businessCart instanceof Cart);
+//console.log(cartVal);
+//console.log(businessCart);
+//console.log(businessCart instanceof Cart);

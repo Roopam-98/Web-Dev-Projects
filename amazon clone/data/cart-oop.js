@@ -1,5 +1,6 @@
 function Cart(localStorageKey){
     const cart = {
+        cartItems:JSON.parse(localStorage.getItem(localStorageKey))|| [],
 
         manageCart(productId,price){  //function to add products into cart
             let matchingItem, quantitySelectorValue;
@@ -42,7 +43,7 @@ const businessCart =Cart('cart-business');
 businessCart.manageCart('80505361775',1196);
 
 
-console.log(cartVal);
-console.log(businessCart);
+//console.log(cartVal);
+//console.log(businessCart);
 /* local storage key is used as parameter to have different
 location for each cart object in the storage*/

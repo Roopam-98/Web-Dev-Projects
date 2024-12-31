@@ -1,3 +1,40 @@
+class Product{
+    id;
+    image;
+    description;
+    rating;
+    discount;
+    cost;
+    originalPrice;
+
+    constructor(productDetails){
+        this.id = productDetails.id;
+        this.image = productDetails.image;
+        this.description = productDetails.description;
+        this.rating = productDetails.rating;
+        this.discount = productDetails.discount;
+        this.cost = productDetails.cost;
+        this.originalPrice = productDetails.originalPrice;
+    }
+
+    getStars(){
+        return `${this.rating.stars}`;
+    }
+}
+/*
+const product0 = new Product({
+    id: '0301018301087',
+    image:'book',
+    description:'Before the Coffee Gets Cold',
+    rating:{
+    stars: 4.3,
+    count: '22,317'},
+    discount: '-32%',
+    cost: 374 ,
+    originalPrice: '550.00' ,
+});
+console.log(product0);*/
+
 let item0 = {
     id: '0301018301087',
     image:'book',
@@ -8,7 +45,6 @@ let item0 = {
     discount: '-32%',
     cost: 374 ,
     originalPrice: '550.00' ,
-    deliveryDate: 'Get it by Monday,December 16',
 };
 let item1 = {
     id: '0301018598088',
@@ -20,7 +56,6 @@ let item1 = {
     discount: '-53%',
     cost: 1399 ,
     originalPrice: '2,999.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 };
 let item2 = {
     id: '0301018450181',
@@ -32,7 +67,6 @@ let item2 = {
     discount: '-77%',
     cost: 299 ,
     originalPrice: '1,299.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 };
 let item3={
     id: '02010101581810',
@@ -44,7 +78,6 @@ let item3={
     discount: '-30%',
     cost: 11918 ,
     originalPrice: '1,299.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 }
 let item4={
     id: '22197318962',
@@ -56,7 +89,6 @@ let item4={
     discount: '-76%',
     cost: 6499 ,
     originalPrice: '26,999.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 }
 let item5={
     id: '81865465786',
@@ -68,7 +100,6 @@ let item5={
     discount: '-26%',
     cost: 148 ,
     originalPrice: '199.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 }
 let item6={
     id: '80505361775',
@@ -80,17 +111,8 @@ let item6={
     discount: '-63%',
     cost: 1196 ,
     originalPrice: '3,199.00' ,
-    deliveryDate: 'Get it by Wednesday,December 18',
 }
-export const products=[item0,item1,item2,item3,item4,item5,item6];
+export const products=[item0,item1,item2,item3,item4,item5,item6].map((value)=>{
+    return new Product(value);
+});
 
-
-/*
-deliveryCharge: function(){
-        if(cost<=499){
-            return 'FREE Delivery over &#8377;499. Fulfilled by Amazon.';
-        }
-        else{
-        return 'FREE Delivery Available.'
-        }},
-*/
