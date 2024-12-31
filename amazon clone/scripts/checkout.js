@@ -3,6 +3,10 @@ import {products} from '../data/products.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
 import {updateShippingItemCost} from './checkout/shippingCost.js';
 import { isChecked,showDeliveryDate,calculateTotalShippingCost } from './checkout/checkoutFeatures.js';
+import {cartVal, businessCart} from '../data/cart-oop.js';
+
+console.log(cartVal);
+console.log(businessCart);
 
 let totalShippingCost=0;
 
