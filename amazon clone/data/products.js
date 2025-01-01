@@ -21,8 +21,18 @@ class Product{
         return `${this.rating.stars}`;
     }
 }
-/*
-const product0 = new Product({
+
+/* child class-inheritance
+class Clothing extends Product{
+    sizeChartLink;
+
+    constructor(productDetails){
+        super(productDetails); //calls the constructor of parent class
+        this.sizeChartLink = 'small';
+    }
+}
+
+const tshirt = new Clothing({
     id: '0301018301087',
     image:'book',
     description:'Before the Coffee Gets Cold',
@@ -33,7 +43,8 @@ const product0 = new Product({
     cost: 374 ,
     originalPrice: '550.00' ,
 });
-console.log(product0);*/
+console.log(tshirt);
+console.log(tshirt.getStars());*/
 
 let item0 = {
     id: '0301018301087',
