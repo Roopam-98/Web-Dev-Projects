@@ -5,7 +5,7 @@ import {updateShippingItemCost} from './checkout/shippingCost.js';
 import { isChecked,showDeliveryDate,calculateTotalShippingCost } from './checkout/checkoutFeatures.js';
 import '../data/cart-oop.js';
 import '../data/cart-class.js';
-
+import '../data/backend-practice.js';
 let totalShippingCost=0;
 
 //Function to add cart Items to Webpage checkout
