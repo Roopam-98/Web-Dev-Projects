@@ -1,3 +1,4 @@
+/*
 // create request
 const xhr = new XMLHttpRequest();
 
@@ -9,3 +10,10 @@ xhr.addEventListener('load', ()=>{
 // setup request
 xhr.open('GET','https://supersimplebackend.dev/hello');
 xhr.send();
+
+*/
+fetch('https://supersimplebackend.dev/products').then((response)=>{
+    return response.json();
+}).then((productsData)=>{
+    console.log(productsData);
+});
