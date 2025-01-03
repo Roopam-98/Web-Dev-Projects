@@ -127,6 +127,6 @@ export const products=[item0,item1,item2,item3,item4,item5,item6].map((value)=>{
     return new Product(value);
 });
 
-//Built in class
+/*Built in class
 let date = new Date();
-console.log(date);
+console.log(date);*/

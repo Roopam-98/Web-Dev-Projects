@@ -3,30 +3,7 @@ import {products} from '../data/products.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
 import {updateShippingItemCost} from './checkout/shippingCost.js';
 import { isChecked,showDeliveryDate,calculateTotalShippingCost } from './checkout/checkoutFeatures.js';
-import '../data/cart-oop.js';
-import '../data/cart-class.js';
-import '../data/backend-practice.js';
 let totalShippingCost=0;
-
-async function loadPage(){
-    console.log('load page');
-    return 'true';
-}
-
-loadPage().then((value)=>{
-    console.log('next step');
-    console.log(value);
-})
-
-/*
-new Promise((resolve)=>{
-    console.log('Start Promise!!');
-    resolve();
-}).then(()=>{
-    console.log('Next step in Promise code');
-});
-
-*/
 
 
 //Function to add cart Items to Webpage checkout
