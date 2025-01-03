@@ -8,6 +8,17 @@ import '../data/cart-class.js';
 import '../data/backend-practice.js';
 let totalShippingCost=0;
 
+
+new Promise((resolve)=>{
+    console.log('Start Promise!!');
+    resolve();
+}).then(()=>{
+    console.log('Next step in Promise code');
+});
+
+
+
+
 //Function to add cart Items to Webpage checkout
 function addItemOrder(product,cartItem){
     let addItems = document.querySelector('.order-summary');
