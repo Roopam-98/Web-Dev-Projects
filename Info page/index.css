@@ -28,8 +28,8 @@
 }
 
 .header-section{
-    background-color: #493628;
-    padding: 1em 1.5em;
+    background-color: #114852;
+    padding: 0.7em;
     border-radius: 0 0 7px 7px;
     color:white;
     display:flex;
@@ -54,81 +54,66 @@
     justify-content: flex-end;
 }
 
-.menu{
-    width: 1.9em;
-    height: 1.9em;
-    object-fit: cover;
-    mix-blend-mode:overlay;
-    background-color: white;
-    border-radius: 13px;
-    scale:0.9;
-}
-
-.menu-icon{
-    width: 2.1em;
-    height: 2.1em;
-    border-radius: 50%;
-    background-color: #d8ad8c;
-    overflow: hidden;
-    padding: 1px;
-    transition: 0.5s all ease-in-out;
-}
-
-.menu-icon:hover{
-    scale: 1.2;
-}
-
-.web-name{
-    font-family: "Sour Gummy", sans-serif;
-    font-size: 2em;
+.logo-name{
+    font-size: 2.2em;
     font-weight: 600;
+    letter-spacing: 0.1ch;
+    position: relative;
 }
 
-.qstn-mrk{
-    font-size: 2.3rem;
+.fusion-style{
+    letter-spacing: 0.08ch;
+    position:absolute;
+    top:0;
+    right:4px;
+    color:#18BfB1;
 }
 
 .search{
+    border:none;
     margin-left: 2em;
     margin-right: 2em;
     border-radius: 20px;
-    padding: 10px 10px 10px 20px;
+    padding: 0.7em;
     font-size: 1rem;
     width: 35em;
 }
 
 .log-in{
-    width: 7em;
+    width: 6em;
     height: 2.6em;
     padding: 5px 6px 5px 22px;
     border-radius: 10px 25px 25px 10px;
     background-color: #ffffff;
     transition: 0.5s all ease-in-out;
+    outline: 2px solid white;
+    outline-offset: 3px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     border:none;
     z-index:1;
 }
 .log-in:hover{
-    background-color:#d3b490;
+    background-color:#edeee7;
 }
 .sign-in{
-    width: 7em;
+    width: 6em;
     height: 2.6em;
     padding: 5px 10px 5px 9px;
     border-radius: 25px;
-    background-color: #EADBC8;
+    background-color: #18BfB1;
     font-size: 1rem;
-    font-weight: 500;
-    margin-right: -2.3em;
+    font-weight: 600;
+    margin-right: -1.7em;
     z-index: 2;
     border:none;
     transition: 0.5s all ease-in-out;
 }
 
-.sign-in:hover,.log-in:hover{
-    scale: 1.08;
+.sign-in:hover{
+    color:white;
 }
+
 
 .theme{
     height: 2.2em;
@@ -181,7 +166,7 @@
 }*/
 
 h2{
-    color:#493628;
+    color:#114852;
     margin: 1.2em 0 0 1.2em;
 }
 
@@ -229,7 +214,7 @@ h2{
     text-align:center;
     font-size:1rem;
     font-weight: 600;
-    color: #493628;
+    color: #114852;
 }
 
 .back-to-top{
@@ -238,7 +223,7 @@ h2{
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
-    background-color: #AB886D;
+    background-color: #008080;
     border-radius: 7px 7px 0 0;
     color: #ffffff;
 }
@@ -258,6 +243,6 @@ a:visited{
 
 .about-section{
     padding: 5em 5em;
-    background-color: #493628 ;
+    background-color: #114852 ;
     color: #ffffff;
 }
