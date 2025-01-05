@@ -175,7 +175,7 @@ h2{
     flex-direction:column;
     justify-content: space-evenly;
 }
-.flower-section,.succulent-card{
+.flower-section,.succulent-card,.bird-section{
     margin-left: 20px;
     width: 200px;
     height: 280px;
@@ -197,7 +197,7 @@ h2{
     display:flex;
     overflow-x:scroll;
 }
-.flower-img,.succulent-img{
+.flower-img,.succulent-img,.bird-img{
     width: 199px;
     height:180px;
     object-fit: cover;
@@ -210,7 +210,7 @@ h2{
     border-radius: 10px;
 }
 
-.flower-name,.succulent-name{
+.flower-name,.succulent-name,.bird-name{
     text-align:center;
     font-size:1rem;
     font-weight: 600;

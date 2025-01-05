@@ -5,7 +5,7 @@ class Aquatics extends Flowers{
 
     constructor(aquaticAnimalName){
         super();
-        this.id = this.generateId;
+        this.id = this.generateId();
         this.name = aquaticAnimalName;
         this.type = this;
         this.image = `../images/AquaticAnimals/${this.name}.jpg`;

@@ -5,7 +5,7 @@ class LandAnimals extends Flowers{
 
     constructor(landAnimalName){
         super();
-        this.id = this.generateId;
+        this.id = this.generateId();
         this.name = landAnimalName;
         this.type = this;
         this.image = `../images/LandAnimals/${this.name}.jpg`;

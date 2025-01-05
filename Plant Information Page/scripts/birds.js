@@ -5,17 +5,30 @@ class Birds extends Flowers{
 
     constructor(birdsName){
         super();
-        this.id = this.generateId;
+        this.id = this.generateId();
         this.name = birdsName;
-        this.type = this;
-        this.image = `../images/Birds/${this.name}.jpg`;
+        this.type = 'Birds';
+        this.image = `./images/Birds/${birdsName}.jpg`;
     }
 
-}
+};
 
 let birdsNamesList = [];
 birdsNames.forEach((value,index)=>{
     birdsNamesList[index] = new Birds(value);
-})
+});
 
-console.log(birdsNamesList);
+function addBirds(bird){
+    let addFlower = document.querySelector('.bird-row-imgs');
+    addFlower.innerHTML+= `<div class="bird-section">
+                    <img class="bird-img" src="${bird.image}">
+                    <div class="desc">
+                        <p class="bird-name">${bird.name}</p>
+                    </div>
+            </div>`;
+}
+
+// Calling rendering function
+birdsNamesList.forEach((bird)=>{
+    addBirds(bird);
+});

@@ -23,7 +23,7 @@ export const aquaticAnimalsNames = ['Whale','Fish','Seal','Octopus','Shark','Sta
     'Killer Whale','Sea Lion','Sea Anemone','Piranha','Platypus','Anchovy','Eal','Salmon','Goldfish','Abalone','Albacore','Tuna','Angelfish','Barnacle',
     'Barracuda','Blue Crab','Blue Whale','Bull Shark'].sort();
 
-export const birdsNames = ['American Rhea','Buff-browed Chachalaca','Burrowing Owl','Chaco Chachalaca','Chestnut-headed Chachalaca','Chestnut-winged Chachalaca','Colombian Chachalaca',
-    'Common Ostrich','Darwin’s Rhea','Dwarf Cassowary','East Brazilian Chachalaca','Emu','Greater Roadrunner','Great Spotted Kiwi','Grey-headed Chachalaca','Lesser Roadrunner',
-    'Little Chachalaca','Little Spotted Kiwi','Northern Cassowary','North Island Brown Kiwi','Okarito Kiwi','Plain Chachalaca','Rufous-bellied Chachalaca','Rufous-headed Chachalaca',
-    'Rufous-vented Chachalaca','Scaled Chachalaca','Somali Ostrich','Southern Brown Kiwi','Southern Cassowary','Speckled Chachalaca','West Mexican Chachalaca','White-bellied Chachalaca'].sort();
+export const birdsNames = ['Parrots','Budgerigar','Chicken','Owl','Pigeons','Blue jay','Penguins','Humming Birds', 'Toucans','Falcon','Long tailed tit','Cassowaries',
+    'Bluebirds','Birds of paradise','Old World sparrows','Finches','Ostrich','Crows','Woodpeckers','Passerine','Herons','Atlantic canary','Blackbird','Peacock','Booby',
+    'Swallows','Cranes','Swans','Cuckoo','Common Kingfisher','Turkey','Emu','Pelican','Bald eagle','Mallard','Kingfisher','European robin','Stork','Barn swallow',
+    'Tit','Hornbill','Albatrosses','House sparrow','Japanese bush warbler','Golden eagle','Loons','European goldfinch','Plover','Turkey vulture','Eurasian chaffinch'].sort();
