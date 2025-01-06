@@ -8,7 +8,7 @@ class LandAnimals extends Flowers{
         this.id = this.generateId();
         this.name = landAnimalName;
         this.type = this;
-        this.image = `../images/LandAnimals/${this.name}.jpg`;
+        this.image = `./images/LandAnimals/${this.name}.jpeg`;
     }
 
 }
@@ -16,6 +16,17 @@ class LandAnimals extends Flowers{
 let landAnimalNamesList = [];
 landAnimalNames.forEach((value,index)=>{
     landAnimalNamesList[index] = new LandAnimals(value);
-})
+});
 
-console.log(landAnimalNamesList);
+function addLandAnimals(landAnimal){
+    let addLandAnimal = document.querySelector('.land-animals-row-imgs');
+    addLandAnimal.innerHTML+= `<div class="land-section">
+                    <img class="land-img" src="${landAnimal.image}">
+                    <div class="desc">
+                        <p class="land-name">${landAnimal.name}</p>
+                    </div>
+            </div>`;
+}
+landAnimalNamesList.forEach((value)=>{
+    addLandAnimals(value);
+});
