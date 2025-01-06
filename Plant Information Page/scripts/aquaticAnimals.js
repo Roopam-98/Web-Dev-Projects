@@ -7,8 +7,8 @@ class Aquatics extends Flowers{
         super();
         this.id = this.generateId();
         this.name = aquaticAnimalName;
-        this.type = this;
-        this.image = `../images/AquaticAnimals/${this.name}.jpg`;
+        this.type = 'Aquatic Animals';
+        this.image = `./images/AquaticAnimals/${this.name}.jpg`;
     }
 
 }
@@ -18,4 +18,16 @@ aquaticAnimalsNames.forEach((value,index)=>{
     aquaticAnimalsList[index] = new Aquatics(value);
 })
 
-console.log(aquaticAnimalsList);
+function addAquaticAnimals(aquaticAnimal){
+    let addAquaticAnimal = document.querySelector('.aquatic-animals-row-imgs');
+    addAquaticAnimal.innerHTML+= `<div class="aquatic-section">
+                    <img class="aquatic-img" src="${aquaticAnimal.image}">
+                    <div class="desc">
+                        <p class="aquatic-name">${aquaticAnimal.name}</p>
+                    </div>
+            </div>`;
+}
+
+aquaticAnimalsList.forEach((value)=>{
+    addAquaticAnimals(value);
+})

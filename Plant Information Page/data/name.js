@@ -19,7 +19,7 @@ export const landAnimalNames = ['Aardwolf', 'African Bush Elephant','African Cap
     'Volcano Rabbit','Western Grey Kangaroo','White Rhinoceros','Wood Mouse','Yellow-necked Mouse'].sort();
 
 export const aquaticAnimalsNames = ['Whale','Fish','Seal','Octopus','Shark','Starfish','Crab','Shrimp','Jellyfish','Squid','Lobster','Seahorse',
-    'Walrus','Penguin','Oyster','Clams','Seagull','Dolphin','Shells','Sea urchin','Cormorant','Otter','Pelican','Sea turtle','Coral','Water Turtle','Crocodile',
+    'Walrus','Penguin','Oyster','Clams','Seagull','Dolphin','Shells','Sea urchin','Cormorant','Otter','Pelican','Sea turtle','Coral','Crocodile',
     'Killer Whale','Sea Lion','Sea Anemone','Piranha','Platypus','Anchovy','Eal','Salmon','Goldfish','Abalone','Albacore','Tuna','Angelfish','Barnacle',
     'Barracuda','Blue Crab','Blue Whale','Bull Shark'].sort();
 
