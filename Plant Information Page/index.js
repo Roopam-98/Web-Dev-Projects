@@ -12,6 +12,7 @@ document.querySelector('.js-dark').addEventListener('click',()=>{
     document.querySelector('.js-light').classList.remove('visibility');
 })
 
+//Light theme
 document.querySelector('.js-light').addEventListener('click',()=>{
     document.body.classList.remove('dark-theme');
     document.querySelector('.js-dark').classList.remove('visibility');

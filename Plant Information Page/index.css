@@ -53,9 +53,10 @@
 }
 
 .header-right{
-    width: 303px;
+    width: 310px;
     display:flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .logo-name{
@@ -83,6 +84,16 @@
     width: 35em;
 }
 
+.play-area{
+    height: 2.2em;
+    width: 2.2em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.play-zone{
+    padding:0.2em;
+    margin:0 0.8em;
+}
 .log-in{
     width: 6em;
     height: 2.6em;
@@ -156,8 +167,9 @@
 
 h2{
     color:#114852;
-    margin: 1.2em;
+    margin: 0.7em;
     text-align: center;
+    font-size: 1.7em;
 }
 
 content{
@@ -166,27 +178,61 @@ content{
     justify-content: space-evenly;
     align-items: center;
 }
-.succulent-card,.aquatic-section,.land-section{
+
+.aquatic-section{
     margin-left: 20px;
+    background-image: linear-gradient(90deg,#114852,#008080,#18BfB1);
     width: 200px;
-    height: 280px;
-    border-radius: 50px;
+    height: 220px;
+    border-radius: 30px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
-    background-color: #F8F0E5;
-    outline: 0.2em solid #d3b490;
-    outline-offset: 0.1em;
-    border: 0.2em solid white;
     cursor:pointer;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.succulent-row-imgs,.aquatic-animals-row-imgs,.land-animals-row-imgs{
+.aquatic-animals-row-imgs{
     width: 91vw;
-    margin: 0.7em 3em 1.2em 3em;
     padding: 1.2em;
     border-radius: 25px;
     background-color: #114852;
     display:flex;
-    overflow-x:scroll;
+}
+.land-animals-row-imgs{
+    width: 100vw;
+    padding: 1em;
+    background-color: #114852;
+    outline: 3px solid #114852;
+    outline-offset: 4px;
+    display:flex;
+}
+
+.land-section{
+    margin: 0.8em;
+
+}
+
+.land-img{
+    width: 200px;
+    height:180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.land-name{
+    margin-top: 0.6em;
+    text-align:center;
+    font-size:1rem;
+    font-weight: 600;
+    color:#F8F0E5;
+}
+
+.birds{
+    width: 100vw;
+    padding: 0.8em 0;
+    background-color: #114852;
+    color: #F8F0E5;
 }
 
 .bird-row-imgs{
@@ -199,27 +245,57 @@ content{
     row-gap: 2.2em;
     overflow-y:scroll ;
 }
-.succulent-img,.bird-img,.aquatic-img,.land-img{
-    width: 199px;
+.aquatic-img{
+    width: 150px;
     height:180px;
     object-fit: cover;
-    /*border-radius: 50px 50px 0 0;*/
-    border-radius: 50%;
-    outline: 3px solid #114852;
-    outline-offset: 4px;
+    border-radius: 1.2em;
 }
 
+.succulent-row-imgs{
+    width: 100vw;
+    height: 60vh;
+    padding: 1.5em;
+    background-color: #114852;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(110px, 125px));
+    column-gap: 1.8em;
+    row-gap: 3em;
+    overflow-y:scroll;
+}
+.succulent-img{
+    width: 110px;
+    height:110px;
+    object-fit:cover;
+    border-radius: 1em;
+    margin-bottom: 0.8em;
+}
+
+.succulent-card{
+    background-color: #edeee7;
+    border-radius: 1em 1em 0.3em 1em;
+    position: relative;
+}
 /*.desc{
     width: 100%;
     height: 30px;
     border-radius: 10px;
 }*/
 
-.succulent-name,.aquatic-name,.land-name{
+.aquatic-name{
     text-align:center;
-    font-size:1rem;
+    margin-top: 0.6em;
+    font-size:0.95rem;
     font-weight: 600;
-    color: black;
+    color: #F8F0E5;
+}
+
+.succulent-name{
+    font-size:0.8rem;
+    font-weight: 600;
+    margin: 0.2em;
+    position: absolute;
+    color:#F8F0E5;
 }
 
 .flower-img,.bird-img{
@@ -256,12 +332,7 @@ content{
     height: 230px;
     border:none;
 }
-.bird-name{
-    border-radius: 5px 5px 0 0;
-    text-align:center;
-    left:0;
-    right: 2em;
-}
+
 .flower-name,.bird-name{
     font-size:1.2rem;
     font-weight: 600;
@@ -271,8 +342,16 @@ content{
     background-color: #114852;
 }
 
+.bird-name{
+    font-size:1.1rem;
+    border-radius: 5px 5px 0 0;
+    text-align:center;
+    left:0;
+    right: 2em;
+}
+
 .back-to-top{
-    margin: 1.5em 0 0;
+    margin: 1.5em 0 0 0;
     padding: 1em 1em;
     text-align: center;
     font-size: 1rem;
@@ -303,7 +382,7 @@ a:visited{
 
 
 .qotd{
-    margin: 1.5em;
+    margin: 0.8em;
     text-align: center;
     font-style: italic;
 }
