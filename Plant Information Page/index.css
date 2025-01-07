@@ -27,6 +27,10 @@
     border-radius: 10px;
 }
 
+.dark-theme{
+    background-color: gray;
+}
+
 .header-section{
     background-color: #114852;
     padding: 0.7em;
@@ -118,8 +122,9 @@
 .theme{
     height: 2.2em;
     width: 2.2em;
+    padding: 0.3em;
     border-radius: 50%;
-    object-fit:contain;
+    object-fit:cover;
     background-color: white;
 }
 
@@ -131,26 +136,10 @@
     transition: 0.5s all ease-in-out;
 }
 
-.dark{
-    z-index:2;
-    position:relative;
+.visibility{
+    display:none;
 }
 
-.light{
-    z-index: -1;
-    transition: 0.5s all ease-in-out;
-    position:absolute;
-    top:-0.2em;
-    left:-0.1em;
-}
-
-.dark:active .light{
-    z-index:3;
-}
-
-.dark:hover,.light:hover{
-    scale:1.1;
-}
 
 /*
 .profile-photo,.settings{
@@ -241,7 +230,6 @@ content{
 }
 
 .flower-row-imgs{
-    border: 1px solid white;
     width: 100vw;
     padding: 1em;
     height: 16em;
@@ -266,6 +254,7 @@ content{
 .bird-section{
     width: 210px;
     height: 230px;
+    border:none;
 }
 .bird-name{
     border-radius: 5px 5px 0 0;
