@@ -5,21 +5,29 @@ import './scripts/aquaticAnimals.js';
 import './scripts/landAnimals.js';
 import {quotes} from './quotesArray.js';
 
-let id;
-quotes.forEach((value)=>{
-    const currentQuote = document.querySelector('.quote');
-    if(id){
-        clearTimeout(id);
+document.querySelector('.change').addEventListener('click',()=>{
+    let currentQuoteVar = document.querySelector('.quote');
+    let currentQuote = currentQuoteVar.innerText;
+    console.log(currentQuote);
+    let matchingIndex;
+    quotes.forEach((value,index)=>{
+        if(value.quote === currentQuote){
+            matchingIndex = index;
+        }
+    })
+
+    if(matchingIndex === quotes.length-1){
+        currentQuoteVar.innerHTML = `${quotes[matchingIndex-(quotes.length-1)].quote}`;
     }
-    id=setTimeout(() => {
-        currentQuote.innerHTML = `${value.quote}`;
-        console.log(value.quote);
-    }, 5000);
+    else if(matchingIndex === 0 || matchingIndex > 0){
+        currentQuoteVar.innerHTML = `${quotes[matchingIndex+1].quote}`;
+    }
 
 });
 
 
-/* 
+
+/*
 //Dark theme
 document.querySelector('.js-dark').addEventListener('click',()=>{
     document.body.classList.add('dark-theme');

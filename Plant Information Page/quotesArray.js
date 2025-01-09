@@ -71,4 +71,4 @@ previewButton?.addEventListener('click',()=>{
 });
 
 
-document.querySelector('.submit').addEventListener('click',()=>{submit();});
+document.querySelector('.submit')?.addEventListener('click',()=>{submit();});
