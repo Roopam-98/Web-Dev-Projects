@@ -5,11 +5,11 @@ import './scripts/aquaticAnimals.js';
 import './scripts/landAnimals.js';
 import {quotes} from './quotesArray.js';
 
+
 document.querySelector('.change').addEventListener('click',()=>{
     let currentQuoteVar = document.querySelector('.quote');
     let currentQuote = currentQuoteVar.innerText;
-    console.log(currentQuote);
-    let matchingIndex;
+    let matchingIndex=0;
     quotes.forEach((value,index)=>{
         if(value.quote === currentQuote){
             matchingIndex = index;

@@ -5,6 +5,11 @@ const authorNameVar = document.querySelector('.author-name');
 
 console.log(quotesArray);
 
+/* To get window height & width
+var w = window.innerWidth;
+var h = window.innerHeight;
+console.log(w,h); */
+
 function storeItem(quote,author){
     quotesArray.push({id:quotesArray.length,quote,author});
             localStorage.setItem('quoteArray',JSON.stringify(quotesArray));
