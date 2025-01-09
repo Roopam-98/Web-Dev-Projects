@@ -1,4 +1,4 @@
-const quotesArray = JSON.parse(localStorage.getItem('quoteArray')) || [];
+let quotesArray = JSON.parse(localStorage.getItem('quoteArray')) || [];
 export let quotes = quotesArray;
 const quoteVar = document.querySelector('.quote');
 const authorNameVar = document.querySelector('.author-name');
@@ -28,15 +28,17 @@ function storeData(quote,author){
     }
 }
 
-function getData(){
+function getData(actionButton){
     let quote = quoteVar.value;
     let author = authorNameVar.value;
     if(!author){
         author='Unknown';
     }
 
-    storeData(quote,author);
-
+    if(actionButton === 'submit'){
+        storeData(quote,author);
+    }
+    console.log(JSON.parse(localStorage.getItem('quoteArray')));
     return {quote,author};
 }
 
@@ -46,7 +48,7 @@ function clearData(){
 }
 
 function submit(){
-    getData();
+    getData('submit');
     clearData();
 }
 
@@ -54,7 +56,7 @@ const previewButton = document.querySelector('.preview');
 previewButton?.addEventListener('click',()=>{
     const previewQuote = document.querySelector('.quote-generator');
     previewQuote.classList.add('preview-quote');
-    let data = getData();
+    let data = getData('preview');
     previewQuote.innerHTML = `
         <div>
             <h2 class="quote-preview-heading">Quote Preview</h2>
@@ -63,8 +65,10 @@ previewButton?.addEventListener('click',()=>{
         </div>
         <div class="author-preview ">- ${data.author}</div>
         <div><a href="quotes.html"><button class="preview">Discard</button></a>
-        <button class="submit" onclick="submit()">Submit</button></div>`;
+        <button class="submit">Submit</button></div>`;
+    document.querySelector('.submit').addEventListener('click',()=>{submit();});
 
 });
 
 
+document.querySelector('.submit').addEventListener('click',()=>{submit();});
