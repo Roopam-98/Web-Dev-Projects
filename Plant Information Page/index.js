@@ -3,7 +3,7 @@ import './scripts/succulent.js';
 import './scripts/birds.js';
 import './scripts/aquaticAnimals.js';
 import './scripts/landAnimals.js';
-import {quotes} from './quotesArray.js';
+import {quotes} from './Quotes/script.js';
 
 
 document.querySelector('.change').addEventListener('click',()=>{
