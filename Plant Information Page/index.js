@@ -1,14 +1,15 @@
-import './scripts/flower.js';
+/* import './scripts/flower.js';
 import './scripts/succulent.js';
 import './scripts/birds.js';
 import './scripts/aquaticAnimals.js';
-import './scripts/landAnimals.js';
-import {quotes} from './Quotes/script.js';
+import './scripts/landAnimals.js'; */
+import {quotes} from './quotes/script.js';
 
 
 document.querySelector('.change').addEventListener('click',()=>{
-    let currentQuoteVar = document.querySelector('.quote');
+    let currentQuoteVar = document.querySelector('.quote-text');
     let currentQuote = currentQuoteVar.innerText;
+    console.log(currentQuote);
     let matchingIndex=0;
     quotes.forEach((value,index)=>{
         if(value.quote === currentQuote){
@@ -24,7 +25,6 @@ document.querySelector('.change').addEventListener('click',()=>{
     }
 
 });
-
 
 
 /*

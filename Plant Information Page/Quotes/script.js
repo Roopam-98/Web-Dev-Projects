@@ -1,5 +1,20 @@
-let quotesArray = JSON.parse(localStorage.getItem('quoteArray')) || [];
+let defaultValue = [{id:0,
+    quote:'Never be bullied into silence. Never allow yourself to be made a victim. Accept no one’s definition of your life; define yourself.',
+    author:'Harvey Fierstein'},
+    {id:1,
+    quote:'Find ecstasy in life; the mere sense of living is joy enough.',
+    author:'Emily Dickinson'},
+    {id:2,
+    quote:'The whole secret of a successful life is to find out what is one’s destiny to do, and then do it.',
+    author:'Henry Ford'},
+    {id:3,
+    quote:'Don\'t let the success of others discourage you.',
+    author:'Unknown'}];
+let quotesArray = JSON.parse(localStorage.getItem('quoteArray')) || defaultValue;
+//localStorage.setItem('quoteArray',JSON.stringify(quotesArray));
+
 export let quotes = quotesArray;
+
 const quoteVar = document.querySelector('.quote');
 const authorNameVar = document.querySelector('.author-name');
 
@@ -12,7 +27,7 @@ console.log(w,h); */
 
 function storeItem(quote,author){
     quotesArray.push({id:quotesArray.length,quote,author});
-            localStorage.setItem('quoteArray',JSON.stringify(quotesArray));
+    localStorage.setItem('quoteArray',JSON.stringify(quotesArray));
 }
 function storeData(quote,author){
     if(quote !== ''){
@@ -35,6 +50,7 @@ function storeData(quote,author){
 
 function getData(actionButton){
     let quote = quoteVar.value;
+    quote = `${quote}`;
     let author = authorNameVar.value;
     if(!author){
         author='Unknown';
@@ -66,14 +82,23 @@ previewButton?.addEventListener('click',()=>{
         <div>
             <h2 class="quote-preview-heading">Quote Preview</h2>
         </div>
-        <div class="quote-preview-font"><img src="./images/double-quotes.png" class="quotation">${data.quote}.<img src="./images/double-quotes.png" class="quotation">
-        </div>
+        <div class="quote-preview-font"><span class="quote-style">&ldquo;</span>${data.quote}<span class="quote-style">&rdquo;</span></div>
         <div class="author-preview ">- ${data.author}</div>
-        <div><a href="quotes.html"><button class="preview">Discard</button></a>
+        <div><a href="index.html"><button class="preview">Discard</button></a>
         <button class="submit">Submit</button></div>`;
-    document.querySelector('.submit').addEventListener('click',()=>{submit();});
+    submitEvent();
 
 });
 
+function submitEvent(){
+    document.querySelector('.submit')?.addEventListener('click',()=>{submit();
+        document.querySelector('.snackbar').classList.add('snackbar-show');
+        setTimeout(()=>{
+            document.querySelector('.snackbar').classList.remove('snackbar-show');
+        },3000);
+    });
+}
 
-document.querySelector('.submit')?.addEventListener('click',()=>{submit();});
+submitEvent();
+
+
