@@ -8,7 +8,7 @@ import {quotes} from './quotes/script.js';
 
 setInterval(()=>{
     changeQuote();
-},8000);            //changes quote every 8 seconds
+},10000);            //changes quote every 8 seconds
 
 function changeQuote(){  //function that changes quote
     let currentQuoteVar = document.querySelector('.quote-text');

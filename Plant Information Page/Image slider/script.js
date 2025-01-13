@@ -17,20 +17,7 @@ const previousButton = document.querySelector('.previous');
 const nextButton = document.querySelector('.next');
 
 nextButton.addEventListener('click',()=>{
-    let currentImg = document.querySelector('.image').dataset.image;
-    let matchingIndex = 0;
-    for(let i=0;i<imageArray.length; i++){
-        if(currentImg === imageArray[i]){
-            matchingIndex = i;
-        }
-    }
-
-    if(matchingIndex === imageArray.length-1){
-        setImage(0);
-    }
-    else{
-        setImage(matchingIndex+1);
-    }
+    loopThroughImages();
 })
 
 previousButton.addEventListener('click',()=>{
@@ -50,3 +37,25 @@ previousButton.addEventListener('click',()=>{
     }
 
 })
+
+
+function loopThroughImages(){
+    let currentImg = document.querySelector('.image').dataset.image;
+    let matchingIndex = 0;
+    for(let i=0;i<imageArray.length; i++){
+        if(currentImg === imageArray[i]){
+            matchingIndex = i;
+        }
+    }
+
+    if(matchingIndex === imageArray.length-1){
+        setImage(0);
+    }
+    else{
+        setImage(matchingIndex+1);
+    }
+}
+
+setInterval(()=>{
+    loopThroughImages();
+},10000);
