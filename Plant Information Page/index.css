@@ -9,39 +9,91 @@
     padding:0;
 }
 
-.nav-section{
-    position:absolute;
+/* Heading Section */
+.header-section{
+    z-index:1;
+    width:100vw;
+    height: 60px;
+    background-color: white;
+    display:grid;
+    grid-template-columns: 200px 1fr 600px;
+    align-items: center;
+    position: fixed;
+    top:0;
     left:0;
-    top:30%;
-}
-.section{
-    width: 200px;
-    padding: 0.8em;
-    font-size: 1em;
-    font-weight: 600;
-    text-align: center;
-    border:none;
-    border-radius: 25px;
-    background-color: #114852;
-    color:white;
-    cursor:pointer;
-    transition: 0.5s all ease-in-out;
-}
-.section:hover{
-    border: 2px solid #114852;
-    background-color: rgba(255, 255, 255, 0.24);
-    color: black;
 }
 
-.section:focus{
-    outline:none;
+.header-section *{
+    border: 1px solid red;
 }
+.logo{
+    height:60px;
+    width: 60px;
+    background-color: white;
+}
+
+.species-list{
+    width: 150px;
+    display:flex;
+    flex-direction:column;
+    background-color: white;
+    opacity:0;
+    position:absolute;
+    top:3.5em;
+    left: 48%;
+}
+.species-list-show{
+    border-radius: 5px;
+    width: 150px;
+    display:flex;
+    flex-direction:column;
+    background-color: white;
+    opacity:1;
+    position:absolute;
+    top:3.5em;
+    left: 48%;
+}
+.subscribe,.donate,.species{
+    background-color: rgb(230, 230, 230);
+    color:black;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    padding: 0.6em 1.2em;
+    transition: 0.5s all ease-in-out;
+}
+
+.subscribe:hover,.donate:hover,.species:hover{
+    background-color: rgb(13, 138, 227);
+    color:white;
+}
+
+.subscribed{
+    display:none;
+    position: relative;
+    top:0;
+}
+
+.subscribed-show{
+    padding: 0.8em;
+    text-align:center;
+    width: 200px;
+    background-color: black;
+    color:white;
+    border-radius: 5px;
+    position:relative;
+    top: 0;
+    left: 15vw;
+}
+
+/* Image & Quote Section */
 
 .quote-section{
     display: grid;
     grid-template-columns: repeat(1,minmax(300px,670px));
     position: absolute;
-    top: 2em;
+    top: 5em;
 }
 .quote{
     text-align: center;
@@ -72,9 +124,6 @@
     color:black;
 }
 
-
-
-
 /* Main Content */
 
 
@@ -86,6 +135,7 @@ h2{
 }
 
 content{
+    z-index: 0;
     display:flex;
     flex-direction:column;
     justify-content: space-evenly;
@@ -276,15 +326,15 @@ content{
 }
 
 a{
-    color:white;
+    font-size: 0.9rem;
+    padding:0.3em 0 0.3em 0.5em;
+    color:black;
     text-decoration: none;
 }
 a:hover{
-    color:#ffffff;
-    text-decoration: underline;
+    background-color:rgb(230, 230, 230);
 }
 a:visited{
-    color:white;
     text-decoration:none;
 }
 

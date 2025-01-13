@@ -1,9 +1,22 @@
-/* import './scripts/flower.js';
+import './scripts/flower.js';
 import './scripts/succulent.js';
 import './scripts/birds.js';
 import './scripts/aquaticAnimals.js';
-import './scripts/landAnimals.js'; */
+import './scripts/landAnimals.js';
 import {quotes} from './quotes/script.js';
+
+
+document.querySelector('.species').addEventListener('click',()=>{
+    document.querySelector('.species-list').classList.add('species-list-show');
+    document.querySelector('.species-list-now').classList.remove('.species-list');
+});
+
+document.querySelector('.subscribe').addEventListener('click',()=>{
+    let state = false;
+    document.querySelector('.subscribed').classList.add('subscribed-show');
+    document.querySelector('.subscribed').classList.remove('subscribed');
+})
+
 
 
 setInterval(()=>{
