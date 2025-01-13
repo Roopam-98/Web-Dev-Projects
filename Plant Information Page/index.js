@@ -6,7 +6,11 @@ import './scripts/landAnimals.js'; */
 import {quotes} from './quotes/script.js';
 
 
-document.querySelector('.change-quote').addEventListener('click',()=>{
+setInterval(()=>{
+    changeQuote();
+},8000);            //changes quote every 8 seconds
+
+function changeQuote(){  //function that changes quote
     let currentQuoteVar = document.querySelector('.quote-text');
     let currentQuote = currentQuoteVar.innerText;
     let currentAuthorVar = document.querySelector('.quote-author');
@@ -26,23 +30,11 @@ document.querySelector('.change-quote').addEventListener('click',()=>{
         currentQuoteVar.innerHTML = `${quotes[matchingIndex+1].quote}`;
         currentAuthorVar.innerText = `- ${quotes[matchingIndex+1].author}`;
     }
+}
 
-});
+document.querySelector('.change-quote').addEventListener('click',()=>{
+    changeQuote();
+});     //changes quote when clicked
 
-
-/*
-//Dark theme
-document.querySelector('.js-dark').addEventListener('click',()=>{
-    document.body.classList.add('dark-theme');
-    document.querySelector('.js-dark').classList.add('visibility');
-    document.querySelector('.js-light').classList.remove('visibility');
-})
-
-//Light theme
-document.querySelector('.js-light').addEventListener('click',()=>{
-    document.body.classList.remove('dark-theme');
-    document.querySelector('.js-dark').classList.remove('visibility');
-    document.querySelector('.js-light').classList.add('visibility');
-}) */
 
 
