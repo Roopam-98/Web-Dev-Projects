@@ -85,7 +85,8 @@ previewButton?.addEventListener('click',()=>{
         <div class="quote-preview-font"><span class="quote-style">&ldquo;</span>${data.quote}<span class="quote-style">&rdquo;</span></div>
         <div class="author-preview ">- ${data.author}</div>
         <div><a href="index.html"><button class="preview">Discard</button></a>
-        <button class="submit">Submit</button></div>`;
+        <button class="submit">Submit</button></div>
+        <p class="snackbar">Your form has been submitted successfully!</p>`;
     submitEvent();
 
 });

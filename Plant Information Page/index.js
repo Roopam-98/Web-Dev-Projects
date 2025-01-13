@@ -6,9 +6,10 @@ import './scripts/landAnimals.js'; */
 import {quotes} from './quotes/script.js';
 
 
-document.querySelector('.change').addEventListener('click',()=>{
+document.querySelector('.change-quote').addEventListener('click',()=>{
     let currentQuoteVar = document.querySelector('.quote-text');
     let currentQuote = currentQuoteVar.innerText;
+    let currentAuthorVar = document.querySelector('.quote-author');
     console.log(currentQuote);
     let matchingIndex=0;
     quotes.forEach((value,index)=>{
@@ -19,9 +20,11 @@ document.querySelector('.change').addEventListener('click',()=>{
 
     if(matchingIndex === quotes.length-1){
         currentQuoteVar.innerHTML = `${quotes[matchingIndex-(quotes.length-1)].quote}`;
+        currentAuthorVar.innerText = `- ${quotes[matchingIndex-(quotes.length-1)].author}`;
     }
     else if(matchingIndex === 0 || matchingIndex > 0){
         currentQuoteVar.innerHTML = `${quotes[matchingIndex+1].quote}`;
+        currentAuthorVar.innerText = `- ${quotes[matchingIndex+1].author}`;
     }
 
 });
