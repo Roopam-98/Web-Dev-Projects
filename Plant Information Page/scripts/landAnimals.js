@@ -7,7 +7,7 @@ class LandAnimals extends Flowers{
         super();
         this.id = this.generateId();
         this.name = landAnimalName;
-        this.type = this;
+        this.type = "Land Animals";
         this.image = `./images/LandAnimals/${this.name}.jpeg`;
     }
 

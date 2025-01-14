@@ -14,7 +14,7 @@
     z-index:1;
     width:100vw;
     height: 50px;
-    background-color: white;
+    background-color:rgb(22, 53, 92);
     display:grid;
     grid-template-columns: 220px 1fr 400px;
     align-items: center;
@@ -26,14 +26,14 @@
 
 .nav-left{
     height: 50px;
-    background-color: white;
+    background-color: rgb(22, 53, 92);
     padding-left: 1em;
     display:flex;
     justify-content: flex-start;
     align-items: center;
 }
 .nav-left *{
-    background-color: white;
+    background-color: rgb(22, 53, 92);
 }
 .logo{
     height:46px;
@@ -42,7 +42,8 @@
 }
 .web-name{
     font-size: 2rem;
-    color:rgb(113, 110, 110);
+    color:white;
+    /* color:rgb(79, 73, 73); */
     font-family: Calibri,Arial,system-ui, 'Gill sans',sans-serif;
     font-weight: 600;
 }
@@ -125,8 +126,9 @@
 }
 
 .subscribe-btn:hover,.donate:hover,.species-btn:hover{
-    background-color: rgb(13, 138, 227);
-    color:white;
+    background-color: rgb(196, 196, 196);
+    /* background-color: rgb(9, 195, 9); */
+    /* background-color: rgb(13, 138, 227); */
 }
 
 .subscribe{
@@ -176,12 +178,13 @@
 
 .change-quote{
     margin-left: 60%;
-    width: 100px;
+    border:none;
+    width: 80px;
     padding: 0.5em;
     font-size: 0.7rem;
     font-weight: 500;
     background-color: rgba(128, 128, 128, 0.2);
-    border-radius: 10px;
+    border-radius: 8px;
     color:black;
 }
 
@@ -216,6 +219,7 @@ content{
     width:10em;
     height: 10em;
     object-fit: cover;
+    border: 1px solid red;
     border-radius: 10px;
 }
 
@@ -236,7 +240,7 @@ content{
 
 .flower-name,.bird-name,.aquatic-name,.land-name,.succulent-name{
     margin-top:0.5em;
-    font-size:1.2rem;
+    font-size:1rem;
     font-weight: 600;
     text-align:center;
 }
@@ -247,8 +251,7 @@ content{
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
-    background-color:#127486 ;
-    color: #ffffff;
+    background-color:rgb(230, 230, 230);
 }
 
 a{
@@ -258,7 +261,7 @@ a{
     text-decoration: none;
 }
 a:hover{
-    background-color:rgb(230, 230, 230);
+    background-color:rgb(216, 216, 216);
 }
 a:visited{
     text-decoration:none;
@@ -266,6 +269,6 @@ a:visited{
 
 .about-section{
     padding: 5em 5em;
-    background-color: #114852 ;
+    background-color: rgb(22, 53, 92);
     color: #ffffff;
 }

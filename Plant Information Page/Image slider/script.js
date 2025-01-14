@@ -1,5 +1,6 @@
 let imageArray = ['./images/bee-eater-trying-eat-insect-another-one-tree-branch.jpg','./images/red-tulips-white-background.jpg',
-    './images/seagulls-birds-fly-blue-sky.jpg','./images/pexels-nietjuh-776656.jpg'
+    './images/seagulls-birds-fly-blue-sky.jpg','./images/pexels-nietjuh-776656.jpg','./images/pexels-pixabay-46235.jpg',
+    './images/pexels-nietjuh-1906439.jpg','./images/pexels-pixabay-35060.jpg'
 ];
 //location of image should be changed based on the execution location of the script
 function setImage(i){

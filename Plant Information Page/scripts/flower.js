@@ -9,7 +9,7 @@ export class Flowers{
     constructor(flowerName){
         this.id = this.generateId();
         this.name = flowerName;
-        this.type = this;
+        this.type = "Flower";
         this.image = `./images/Flowers/${flowerName}.jpg`;
     }
 

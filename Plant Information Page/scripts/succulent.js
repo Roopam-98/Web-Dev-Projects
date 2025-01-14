@@ -10,7 +10,7 @@ class Succulents extends Flowers{
         super();
         this.id = this.generateId();
         this.name = succulentName;
-        this.type = this;
+        this.type = "Succulents";
         this.image = `./images/Succulents/${succulentName}.jpg`;
     }
 
