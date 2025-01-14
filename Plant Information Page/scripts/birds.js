@@ -21,7 +21,7 @@ birdsNames.forEach((value,index)=>{
 function addBirds(bird){
     let addFlower = document.querySelector('.bird-row-imgs');
     addFlower.innerHTML+= `<div class="bird-section">
-                    <img class="bird-img" src="${bird.image}">
+                    <img class="bird-img" src="${bird.image}"  alt="${bird.name}" title="${bird.name}">
                     <div class="desc">
                         <p class="bird-name">${bird.name}</p>
                     </div>

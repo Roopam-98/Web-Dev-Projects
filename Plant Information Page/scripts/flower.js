@@ -28,11 +28,13 @@ flowerNames.forEach((value,index)=>{
 });
 
 
+
+
 // Rendering function to create flower object on webpage
 function addItemFlower(flower){
     let addFlower = document.querySelector('.flower-row-imgs');
     addFlower.innerHTML+= `<div class="flower-section">
-                    <img class="flower-img" src="${flower.image}">
+                    <img class="flower-img" src="${flower.image}" alt="${flower.name}" title="${flower.name}">
                     <div class="desc">
                         <p class="flower-name">${flower.name}</p>
                     </div>
@@ -42,5 +44,6 @@ function addItemFlower(flower){
 // Calling rendering function
 flowerList.forEach((flower)=>{
     addItemFlower(flower);
-});
+})
+
 

@@ -27,7 +27,7 @@ succulentsNames.forEach((value,index)=>{
 function addItemSucculent(succulent){
     let addSucculent = document.querySelector('.succulent-row-imgs');
     addSucculent.innerHTML+=`<div class="succulent-card">
-                    <img src="${succulent.image}" class="succulent-img">
+                    <img src="${succulent.image}" class="succulent-img" alt="${succulent.name}" title="${succulent.name}">
                     <div class="desc">
                         <p class="succulent-name">${succulent.name}</p>
                     </div>

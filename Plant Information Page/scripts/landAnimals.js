@@ -21,7 +21,7 @@ landAnimalNames.forEach((value,index)=>{
 function addLandAnimals(landAnimal){
     let addLandAnimal = document.querySelector('.land-animals-row-imgs');
     addLandAnimal.innerHTML+= `<div class="land-section">
-                    <img class="land-img" src="${landAnimal.image}">
+                    <img class="land-img" src="${landAnimal.image}"  alt="${landAnimal.name}" title="${landAnimal.name}">
                     <div class="desc">
                         <p class="land-name">${landAnimal.name}</p>
                     </div>

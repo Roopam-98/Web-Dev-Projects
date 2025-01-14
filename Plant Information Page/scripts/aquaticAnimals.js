@@ -21,7 +21,7 @@ aquaticAnimalsNames.forEach((value,index)=>{
 function addAquaticAnimals(aquaticAnimal){
     let addAquaticAnimal = document.querySelector('.aquatic-animals-row-imgs');
     addAquaticAnimal.innerHTML+= `<div class="aquatic-section">
-                    <img class="aquatic-img" src="${aquaticAnimal.image}">
+                    <img class="aquatic-img" src="${aquaticAnimal.image}" alt="${aquaticAnimal.name}" title="${aquaticAnimal.name}">
                     <div class="desc">
                         <p class="aquatic-name">${aquaticAnimal.name}</p>
                     </div>

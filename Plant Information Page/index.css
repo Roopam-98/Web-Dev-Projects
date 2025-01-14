@@ -14,7 +14,7 @@
     z-index:1;
     width:100vw;
     height: 50px;
-    background-color:rgb(22, 53, 92);
+    background-color:rgb(15, 34, 58);
     display:grid;
     grid-template-columns: 220px 1fr 400px;
     align-items: center;
@@ -25,16 +25,12 @@
 
 
 .nav-left{
-    height: 50px;
-    background-color: rgb(22, 53, 92);
-    padding-left: 1em;
+    height: 50px;padding-left: 1em;
     display:flex;
     justify-content: flex-start;
     align-items: center;
 }
-.nav-left *{
-    background-color: rgb(22, 53, 92);
-}
+
 .logo{
     height:46px;
     width: 46px;
@@ -43,7 +39,6 @@
 .web-name{
     font-size: 2rem;
     color:white;
-    /* color:rgb(79, 73, 73); */
     font-family: Calibri,Arial,system-ui, 'Gill sans',sans-serif;
     font-weight: 600;
 }
@@ -251,7 +246,7 @@ content{
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
-    background-color:rgb(230, 230, 230);
+    background-color: rgb(196, 196, 196);
 }
 
 a{
@@ -268,7 +263,6 @@ a:visited{
 }
 
 .about-section{
-    padding: 5em 5em;
-    background-color: rgb(22, 53, 92);
+    background-color: rgb(15, 34, 58);
     color: #ffffff;
 }
