@@ -15,32 +15,40 @@
 
 <body>
     <header class="header-section">
-        <div>
-            <a href="index.html"><img src="./images/freepik__background__77813.png" alt="earth.img" class="logo"></a>
-            Planet IQ
+        <div class="nav-left">
+            <div class="nav-logo"><img src="./images/freepik__background__77813.png" alt="earth.img" class="logo"></div>
+            <div class="web-name">Planet IQ</div>
         </div>
-        <div></div>
-        <div>
-            <button class="species">Species</button>
-            <ul class="species-list">
-                <a href="flowers.html">Flowers</a>
-                <a href="succulents.html">Succulents</a>
-                <a href="birds.html">Birds</a>
-                <a href="aquatic.html">Aquatic </a>
-                <a href="land.html">Land</a>
-            </ul>
-            <button class="subscribe">Subscribe</button>
-            <button class="donate">Donate</button>
+        <div class="nav-center">
+            <div><input type="search" placeholder="Search" class="search-bar"></div>
         </div>
-        <div class="subscribed">Subscribed!</div>
+        <div class="nav-right">
+            <div class="species-dropdown">
+                <button class="species-btn">Species <span class="invert">&#x25BC;</span></button>
+                <div class="species-list">
+                    <a href="flowers.html" class="section-link">Flowers</a>
+                    <a href="succulents.html" class="section-link">Succulents</a>
+                    <a href="birds.html" class="section-link">Birds</a>
+                    <a href="aquatic.html" class="section-link">Aquatic </a>
+                    <a href="land.html" class="section-link">Land</a>
+                    <a href="" class="section-link">All</a>
+                </div>
+            </div>
+            <div class="subscribe">
+                <button class="subscribe-btn">Subscribe</button>
+                <div class="subscribed">Subscribed!</div>
+            </div>
+            <div><button class="donate">Donate</button></div>
+        </div>
+
     </header>
 
     <content>
         <div class="image-slider">
             <div>
-                <button class="previous">&lt;</button>
+                <button class="previous">&#9666;</button>
                 <div class="image-container"></div>
-                <button class="next">&gt;</button>
+                <button class="next">&#9656;</button>
             </div>
             <div class="quote-section">
                 <p class="quote">

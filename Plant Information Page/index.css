@@ -13,78 +13,139 @@
 .header-section{
     z-index:1;
     width:100vw;
-    height: 60px;
+    height: 50px;
     background-color: white;
     display:grid;
-    grid-template-columns: 200px 1fr 600px;
+    grid-template-columns: 220px 1fr 400px;
     align-items: center;
     position: fixed;
     top:0;
     left:0;
 }
 
-.header-section *{
-    border: 1px solid red;
+
+.nav-left{
+    height: 50px;
+    background-color: white;
+    padding-left: 1em;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.nav-left *{
+    background-color: white;
 }
 .logo{
-    height:60px;
-    width: 60px;
-    background-color: white;
+    height:46px;
+    width: 46px;
+    object-fit: contain;
+}
+.web-name{
+    font-size: 2rem;
+    color:rgb(113, 110, 110);
+    font-family: Calibri,Arial,system-ui, 'Gill sans',sans-serif;
+    font-weight: 600;
 }
 
+.nav-center{
+    padding-left: 6em;
+}
+.search-bar{
+    border-left: 1px solid rgb(209, 209, 209);
+    border-top: 1px solid rgb(209, 209, 209);
+    border-bottom: none;
+    border-right: none;
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.2);
+    color:black;
+    border-radius: 5px;
+    font-size:0.9rem;
+    min-width: 30%;
+    width:80%;
+    padding:0.7em;
+}
+.search-bar:focus{
+    border:none;
+    background-color:white;
+    outline: 2px solid rgb(13, 138, 227);
+}
+.nav-right{
+    height: 50px;
+    padding: 0.5em;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.species-dropdown{
+    position:relative;
+}
 .species-list{
     width: 150px;
-    display:flex;
-    flex-direction:column;
-    background-color: white;
-    opacity:0;
-    position:absolute;
-    top:3.5em;
-    left: 48%;
-}
-.species-list-show{
+    display:none;
+    border: 1.5px solid rgb(185, 183, 183);
     border-radius: 5px;
-    width: 150px;
+    background-color: white;
+    transition: 0.5s all ease-in-out;
+    overflow:hidden;
+    position:absolute;
+    top:2.5em;
+    left: 0;
+}
+
+.invert{
+    font-size: 0.6rem;
+}
+
+.species-dropdown:hover .species-list{
     display:flex;
     flex-direction:column;
-    background-color: white;
-    opacity:1;
-    position:absolute;
-    top:3.5em;
-    left: 48%;
 }
-.subscribe,.donate,.species{
+
+/* .section-link{
+    font-size: 0.9rem;
+    padding:0.3em 0 0.3em 0.5em;
+    color:black;
+    text-decoration: none;
+}
+
+.section-link:hover{
+    background-color:rgb(230, 230, 230);
+}
+.section-link:visited{
+    text-decoration:none;
+} */
+.subscribe-btn,.donate,.species-btn{
     background-color: rgb(230, 230, 230);
     color:black;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     border: none;
     border-radius: 5px;
-    padding: 0.6em 1.2em;
+    padding: 0.7em 1.2em;
     transition: 0.5s all ease-in-out;
 }
 
-.subscribe:hover,.donate:hover,.species:hover{
+.subscribe-btn:hover,.donate:hover,.species-btn:hover{
     background-color: rgb(13, 138, 227);
     color:white;
 }
 
+.subscribe{
+    position: relative;
+}
 .subscribed{
     display:none;
-    position: relative;
-    top:0;
 }
 
 .subscribed-show{
-    padding: 0.8em;
+    padding: 0.7em;
     text-align:center;
-    width: 200px;
-    background-color: black;
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.66);
     color:white;
     border-radius: 5px;
-    position:relative;
-    top: 0;
-    left: 15vw;
+    position:absolute;
+    top: 2.5em;
+    left: 0;
 }
 
 /* Image & Quote Section */
@@ -128,8 +189,6 @@
 
 
 h2{
-    color:#114852;
-    margin: 0.7em;
     text-align: center;
     font-size: 1.7em;
 }
@@ -142,177 +201,44 @@ content{
     align-items: center;
 }
 
-.aquatic-section{
-    margin-left: 20px;
-    background-image: linear-gradient(90deg,#114852,#008080,#18BfB1);
-    width: 200px;
-    height: 220px;
-    border-radius: 30px;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
-    cursor:pointer;
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.aquatic-animals-row-imgs{
-    width: 91vw;
-    padding: 1.2em;
-    border-radius: 25px;
-    background-color: #114852;
-    display:flex;
-}
-.land-animals-row-imgs{
-    width: 100vw;
-    padding: 1em;
-    background-color: #114852;
-    outline: 3px solid #114852;
-    outline-offset: 4px;
-    display:flex;
-}
-
-.land-section{
-    margin: 0.8em;
-    cursor:pointer;
-}
-
-.land-img{
-    width: 200px;
-    height:180px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.land-name{
-    margin-top: 0.6em;
-    text-align:center;
-    font-size:1rem;
-    font-weight: 600;
-    color:#F8F0E5;
-}
-
-.birds{
-    width: 100vw;
-    padding: 0.8em 0;
-    background-color: #114852;
-    color: #F8F0E5;
-}
-
-.bird-row-imgs{
+.flower-row-imgs,.bird-row-imgs,.aquatic-animals-row-imgs,.land-animals-row-imgs,.succulent-row-imgs{
     width: 100vw;
     height: 80vh;
     padding: 1em;
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,220px));
+    grid-template-columns: repeat(auto-fit,minmax(200px,200px));
     column-gap: 1.3em;
     row-gap: 2.2em;
     overflow-y:scroll ;
 }
-.aquatic-img{
-    width: 150px;
-    height:180px;
-    object-fit: cover;
-    border-radius: 1.2em;
-}
 
-.succulent-row-imgs{
-    width: 100vw;
-    height: 60vh;
-    padding: 1.5em;
-    background-color: #114852;
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(110px, 125px));
-    column-gap: 1.8em;
-    row-gap: 3em;
-    overflow-y:scroll;
-}
-.succulent-img{
-    width: 110px;
-    height:110px;
-    object-fit:cover;
-    border-radius: 1em;
-    margin-bottom: 0.8em;
-}
-
-.succulent-card{
-    background-color: #edeee7;
-    border-radius: 1em 1em 0.3em 1em;
-    position: relative;
-    cursor:pointer;
-}
-/*.desc{
-    width: 100%;
-    height: 30px;
-    border-radius: 10px;
-}*/
-
-.aquatic-name{
-    text-align:center;
-    margin-top: 0.6em;
-    font-size:0.95rem;
-    font-weight: 600;
-    color: #F8F0E5;
-}
-
-.succulent-name{
-    font-size:0.8rem;
-    font-weight: 600;
-    margin: 0.2em;
-    position: absolute;
-    color:#F8F0E5;
-}
-
-.flower-img,.bird-img{
-    width:11em;
-    height: 11em;
+.flower-img,.bird-img,.aquatic-img,.land-img,.succulent-img{
+    width:10em;
+    height: 10em;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.flower-row-imgs{
-    width: 100vw;
+.flower-section,.bird-section,.aquatic-section,.land-section,.succulent-card{
+    width: 200px;
+    height: 210px;
+    background-color:rgb(209, 209, 209);
     padding: 1em;
-    height: 16em;
-    background-color: #114852;
+    border-radius: 10px;
+    border:none;
+    cursor:pointer;
     display:flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-items: center;
     align-items: center;
 }
-.flower-section,.bird-section{
-    width: 100%;
-    height: 100%;
-    background-color:#114852 ;
-    padding: 1em;
-    margin: 1em;
-    border-radius: 10px;
-    border: 2px solid #F8F0E5;
-    cursor:pointer;
-    /*outline: 0.2em solid #d3b490;
-    outline-offset: 0.1em;*/
-    position: relative;
-}
 
-.bird-section{
-    width: 210px;
-    height: 230px;
-    border:none;
-}
 
-.flower-name,.bird-name{
+.flower-name,.bird-name,.aquatic-name,.land-name,.succulent-name{
+    margin-top:0.5em;
     font-size:1.2rem;
     font-weight: 600;
-    position:absolute;
-    top:-13px;
-    color:#F8F0E5;
-    background-color: #114852;
-}
-
-.bird-name{
-    font-size:1.1rem;
-    border-radius: 5px 5px 0 0;
     text-align:center;
-    left:0;
-    right: 2em;
 }
 
 .back-to-top{

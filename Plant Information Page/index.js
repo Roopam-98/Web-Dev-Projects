@@ -5,11 +5,19 @@ import './scripts/aquaticAnimals.js';
 import './scripts/landAnimals.js';
 import {quotes} from './quotes/script.js';
 
-
+/* let state = true;
 document.querySelector('.species').addEventListener('click',()=>{
-    document.querySelector('.species-list').classList.add('species-list-show');
-    document.querySelector('.species-list-now').classList.remove('.species-list');
-});
+    if(!state){
+        document.querySelector('.species-list-show').classList.add('species-list');
+        document.querySelector('.species-list').classList.remove('species-list-show');
+        state = true; 
+    }
+    else{
+        document.querySelector('.species-list').classList.add('species-list-show');
+        document.querySelector('.species-list-show').classList.remove('species-list');
+        state = false;
+    }
+}); */
 
 document.querySelector('.subscribe').addEventListener('click',()=>{
     let state = false;
