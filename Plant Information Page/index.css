@@ -8,7 +8,11 @@
     margin:0;
     padding:0;
 }
-
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 /* Heading Section */
 .header-section{
     z-index:1;
@@ -191,7 +195,7 @@ h2{
     font-size: 1.7em;
 }
 
-content{
+.content{
     z-index: 0;
     display:flex;
     flex-direction:column;
@@ -199,15 +203,20 @@ content{
     align-items: center;
 }
 
+.container{
+    margin-top:3.5em;
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr;
+}
 .flower-row-imgs,.bird-row-imgs,.aquatic-animals-row-imgs,.land-animals-row-imgs,.succulent-row-imgs{
-    width: 100vw;
-    height: 80vh;
-    padding: 1em;
+    padding: 1em 1.7em;
+    /* margin: 0 2.5em; */
     display:grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,200px));
-    column-gap: 1.3em;
-    row-gap: 2.2em;
-    overflow-y:scroll ;
+    column-gap: 1.1em;
+    row-gap: 0.3em;
+
 }
 
 .flower-img,.bird-img,.aquatic-img,.land-img,.succulent-img{
@@ -223,6 +232,7 @@ content{
     height: 210px;
     background-color:rgb(209, 209, 209);
     padding: 1em;
+    margin: 1em;
     border-radius: 10px;
     border:none;
     cursor:pointer;
@@ -240,6 +250,11 @@ content{
     text-align:center;
 }
 
+
+/* Footer section */
+.footer-section{
+    width:100%;
+}
 .back-to-top{
     margin: 1.5em 0 0 0;
     padding: 1em 1em;

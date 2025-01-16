@@ -28,6 +28,8 @@ function addAquaticAnimals(aquaticAnimal){
             </div>`;
 }
 
-aquaticAnimalsList.forEach((value)=>{
-    addAquaticAnimals(value);
-})
+export function renderAquatics(){
+    aquaticAnimalsList.forEach((value)=>{
+        addAquaticAnimals(value);
+    })
+}

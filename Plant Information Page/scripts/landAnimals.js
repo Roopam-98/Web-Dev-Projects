@@ -27,6 +27,9 @@ function addLandAnimals(landAnimal){
                     </div>
             </div>`;
 }
-landAnimalNamesList.forEach((value)=>{
-    addLandAnimals(value);
-});
+
+export function renderLands(){
+    landAnimalNamesList.forEach((value)=>{
+        addLandAnimals(value);
+    });
+}

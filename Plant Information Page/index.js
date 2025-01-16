@@ -1,8 +1,5 @@
-import './scripts/flower.js';
-import './scripts/succulent.js';
-import './scripts/birds.js';
-import './scripts/aquaticAnimals.js';
-import './scripts/landAnimals.js';
+import './header.js';
+import './footer.js';
 import {quotes} from './quotes/script.js';
 
 

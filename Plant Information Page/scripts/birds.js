@@ -29,6 +29,8 @@ function addBirds(bird){
 }
 
 // Calling rendering function
-birdsNamesList.forEach((bird)=>{
-    addBirds(bird);
-});
+export function renderBirds(){
+    birdsNamesList.forEach((bird)=>{
+        addBirds(bird);
+    });
+}

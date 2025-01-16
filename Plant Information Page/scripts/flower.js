@@ -42,8 +42,11 @@ function addItemFlower(flower){
 }
 
 // Calling rendering function
-flowerList.forEach((flower)=>{
-    addItemFlower(flower);
-})
+export function renderFlowers(){
+    flowerList.forEach((flower)=>{
+        addItemFlower(flower);
+    })
+}
+
 
 

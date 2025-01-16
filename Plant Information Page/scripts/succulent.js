@@ -35,6 +35,9 @@ function addItemSucculent(succulent){
 }
 
 //Calling rendering function to put data on website
-succulentList.forEach((succulent)=>{
-    addItemSucculent(succulent);
-})
+export function renderSucculents(){
+    succulentList.forEach((succulent)=>{
+        addItemSucculent(succulent);
+    })
+}
+
