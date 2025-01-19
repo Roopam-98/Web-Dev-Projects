@@ -1,8 +1,6 @@
-import './header.js';
-import './footer.js';
+import './scripts/header.js';
+import './scripts/footer.js';
 import {quotes} from './quotes/script.js';
-import './scripts/species.js';
-
 
 
 document.querySelector('.subscribe').addEventListener('click',()=>{

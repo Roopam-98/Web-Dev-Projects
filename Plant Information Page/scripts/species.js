@@ -1,4 +1,6 @@
 import {flowerNames,succulentsNames,landAnimalNames,aquaticAnimalsNames,birdsNames} from '../data/name.js';
+import './header.js';
+import './footer.js';
 
 export class Species{
     constructor(speciesType,speciesName){

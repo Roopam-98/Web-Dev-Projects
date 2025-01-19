@@ -7,22 +7,23 @@
     margin:0;
     padding:0;
 }
+
 .container{
     width:100%;
     display:grid;
     grid-template-columns: 1fr;
 }
-.flower-row-imgs,.bird-row-imgs,.aquatic-animals-row-imgs,.land-animals-row-imgs,.succulent-row-imgs{
+.flowers-rows,.land-animals-rows,.succulents-rows,.aquatic-animals-rows,.birds-rows{
     padding: 1em 1.7em;
-    margin: 0 2.5em;
+    /* margin: 0 2.5em; */
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,230px));
-    column-gap: 1.7em;
+    grid-template-columns: repeat(auto-fit,minmax(200px,200px));
+    column-gap: 1.1em;
     row-gap: 0.3em;
 
 }
 
-.flower-img,.bird-img,.aquatic-img,.land-img,.succulent-img{
+.species-img{
     width:10em;
     height: 10em;
     object-fit: cover;
@@ -30,7 +31,7 @@
     border-radius: 10px;
 }
 
-.flower-section,.bird-section,.aquatic-section,.land-section,.succulent-card{
+.species-section{
     width: 200px;
     height: 210px;
     background-color:rgb(209, 209, 209);
@@ -46,12 +47,13 @@
 }
 
 
-.flower-name,.bird-name,.aquatic-name,.land-name,.succulent-name{
+.species-name{
     margin-top:0.5em;
     font-size:1rem;
     font-weight: 600;
     text-align:center;
 }
+
 
 .filter button{
     border:none;
