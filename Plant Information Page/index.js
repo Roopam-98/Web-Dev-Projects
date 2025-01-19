@@ -1,6 +1,8 @@
 import './header.js';
 import './footer.js';
 import {quotes} from './quotes/script.js';
+import './scripts/species.js';
+
 
 
 document.querySelector('.subscribe').addEventListener('click',()=>{
@@ -12,7 +14,7 @@ document.querySelector('.subscribe').addEventListener('click',()=>{
 
 setInterval(()=>{
     changeQuote();
-},10000);            //changes quote every 8 seconds
+},10000);   //changes quote every 8 seconds
 
 function changeQuote(){  //function that changes quote
     let currentQuoteVar = document.querySelector('.quote-text');

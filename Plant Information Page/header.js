@@ -8,15 +8,10 @@ document.querySelector('.header-section').innerHTML =
             <div><input type="search" placeholder="Search" class="search-bar"></div>
         </div>
         <div class="nav-right">
+            <div><button class='language'><img src=""></button></div>
+            <div><button  class='mode'>dark mode</button></div>
             <div class="species-dropdown">
-                <button class="species-btn">Species <span class="invert">&#x25BC;</span></button>
-                <div class="species-list">
-                    <a href="species.html" class="section-link" id='flower' data-id='flower'>Flowers</a>
-                    <a href="species.html" class="section-link"  id='succulent' data-id='succulent'>Succulents</a>
-                    <a href="species.html" class="section-link"  id='bird' data-id='bird'>Birds</a>
-                    <a href="species.html" class="section-link"  id='aquatic' data-id='aquatic'>Aquatic </a>
-                    <a href="species.html" class="section-link"  id='land' data-id='land'>Land</a>
-                </div>
+                <a href="species.html"><button class="species-btn">Species</button></a>
             </div>
             <div class="subscribe">
                 <button class="subscribe-btn">Subscribe</button>
@@ -25,3 +20,7 @@ document.querySelector('.header-section').innerHTML =
             <div><button class="donate">Donate</button></div>
         </div>
 `;
+
+document.querySelector('.mode').addEventListener('click',()=>{
+    document.body.classList.toggle('dark-mode');
+})
