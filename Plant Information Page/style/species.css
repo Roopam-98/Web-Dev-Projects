@@ -54,9 +54,21 @@
     text-align:center;
 }
 
-
+.filter{
+    margin-left: 2.6em;
+}
 .filter button{
-    border:none;
+    border:1.5px solid rgba(254, 254, 254, 0.167);
+    margin:0.25em;
     border-radius: 10px;
     padding:0.7em 1.2em;
+}
+
+.filter button:hover{
+    border: 1.5px solid rgb(15, 34, 58);
+}
+
+.filter-enabled{
+    background-color:  rgb(15, 34, 58);
+    color:white;
 }

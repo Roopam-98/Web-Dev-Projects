@@ -58,12 +58,20 @@ function addItems(speciesItem,heading){
             </div>`;
 }
 
-function renderItems(speciesList){
+function renderItems(speciesList,isAllSpecies = false){
     let heading = speciesList[0].speciesType.replace(" ","-").toLowerCase();
-    document.querySelector(".container").innerHTML += `<div class="${speciesList[0].speciesType}">
+    if(isAllSpecies){
+        document.querySelector(".container").innerHTML += `<div class="${speciesList[0].speciesType}">
                 <h2>${speciesList[0].speciesType}</h2>
                 <div class="${heading}-rows"></div>
             </div>`;
+    }
+    else{
+        document.querySelector(".container").innerHTML = `<div class="${speciesList[0].speciesType}">
+                <h2>${speciesList[0].speciesType}</h2>
+                <div class="${heading}-rows"></div>
+            </div>`;
+    }
 
 
     speciesList.forEach((speciesItem)=>{
@@ -71,7 +79,45 @@ function renderItems(speciesList){
     })
 }
 
-[flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((value)=>{
-    renderItems(value);
+
+
+const filterBtn = document.querySelectorAll('.filter button');
+filterBtn.forEach((value)=>{
+    value.addEventListener('click',()=>{
+        document.querySelector('.filter-enabled').classList.remove('filter-enabled');
+        value.classList.add('filter-enabled');
+        let currentSectionClass = value.classList[0];
+        filterBasedRendering(currentSectionClass);
+    })
 })
 
+
+function filterBasedRendering(checkSpecies){
+    if(checkSpecies === 'flower-btn'){
+        renderItems(flowersList);
+    }
+    else if(checkSpecies === 'bird-btn'){
+        renderItems(birdsList);
+    }
+    else if(checkSpecies === 'succulent-btn'){
+        renderItems(succulentsList);
+    }
+    else if(checkSpecies === 'aquatic-btn'){
+        renderItems(aquaticAnimalsList);
+    }
+    else if(checkSpecies === 'land-btn'){
+        renderItems(landAnimalsList);
+    }
+    else{
+        [flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((valuelist)=>{
+            renderItems(valuelist,true);
+            console.log('working');
+        });
+    }
+
+}
+
+//Default value on species page is set to all
+[flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((valuelist)=>{
+    renderItems(valuelist,true);
+});
