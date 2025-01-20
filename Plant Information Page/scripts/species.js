@@ -2,7 +2,7 @@ import {flowerNames,succulentsNames,landAnimalNames,aquaticAnimalsNames,birdsNam
 import './header.js';
 import './footer.js';
 
-export class Species{
+export class Species{                              //Is class & creates list of objects for each species such as birds,flowers,succulents,etc.
     constructor(speciesType,speciesName){
         this.id = this.generateId();
         this.speciesType = speciesType;
@@ -10,7 +10,7 @@ export class Species{
         this.imagePath = this.getImgPath(speciesType,this.name);
     }
 
-    getImgPath(speciesType,speciesName){
+    getImgPath(speciesType,speciesName){                //to set image path for each object type
         let path;
         if(speciesType === 'Land Animals'){
             path = `./images/${speciesType}/${speciesName}.jpeg`;
@@ -21,7 +21,7 @@ export class Species{
         return path;
     }
 
-    generateId(){
+    generateId(){                           //generates unique id
         var S4 = ()=>{
             return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
         };
@@ -35,20 +35,20 @@ let aquaticAnimalsList=[];
 let birdsList=[];
 let succulentsList=[];
 
-function createObject(arrayName,arrayList,arrayType){
+function createObject(arrayName,arrayList,arrayType){               //Function that loops through class to create object.
     arrayName.forEach((value)=>{
         arrayList.push(new Species(arrayType,value));
     })
 }
 
-createObject(flowerNames,flowersList,"Flowers");
+createObject(flowerNames,flowersList,"Flowers");                    //Function call to create object
 createObject(landAnimalNames,landAnimalsList,"Land Animals");
 createObject(aquaticAnimalsNames,aquaticAnimalsList,"Aquatic Animals");
 createObject(birdsNames,birdsList,"Birds");
 createObject(succulentsNames,succulentsList,"Succulents");
 
 
-function addItems(speciesItem,heading){
+function addItems(speciesItem,heading){                             //Function renders each object on the webpage
     let addFlower = document.querySelector(`.${heading}-rows`);
     addFlower.innerHTML+= `<div class="species-section">
                     <img class="species-img" src="${speciesItem.imagePath}" alt="${speciesItem.name}" title="${speciesItem.name}">
@@ -58,36 +58,37 @@ function addItems(speciesItem,heading){
             </div>`;
 }
 
-function renderItems(speciesList,isAllSpecies = false){
-    let heading = speciesList[0].speciesType.replace(" ","-").toLowerCase();
-    if(isAllSpecies){
-        document.querySelector(".container").innerHTML += `<div class="${speciesList[0].speciesType}">
-                <h2>${speciesList[0].speciesType}</h2>
-                <div class="${heading}-rows"></div>
-            </div>`;
-    }
-    else{
-        document.querySelector(".container").innerHTML = `<div class="${speciesList[0].speciesType}">
-                <h2>${speciesList[0].speciesType}</h2>
-                <div class="${heading}-rows"></div>
-            </div>`;
-    }
+function renderItems(speciesList){                                   //Function to call addItems() for display of individual species
+    let heading = speciesList[0].speciesType.replace(" ","-").toLowerCase();    //Add section to place objects on page
+    document.querySelector(".container").innerHTML = `<div class="${speciesList[0].speciesType}">
+            <h2>${speciesList[0].speciesType}</h2>
+            <div class="${heading}-rows"></div>
+        </div>`;
 
-
-    speciesList.forEach((speciesItem)=>{
+    speciesList.forEach((speciesItem)=>{    //Calls addItems()
         addItems(speciesItem,heading);
     })
 }
 
+function renderAllItems(speciesList){                       //Function to call addItems() for display of all species
+    let heading = speciesList[0].speciesType.replace(" ","-").toLowerCase(); //Add section to place objects on page
+    document.querySelector(".container").innerHTML += `<div class="${speciesList[0].speciesType}">
+                <h2>${speciesList[0].speciesType}</h2>
+                <div class="${heading}-rows"></div>
+            </div>`;
 
+    speciesList.forEach((speciesItem)=>{        //Calls addItems()
+        addItems(speciesItem,heading);
+    })
+}
 
 const filterBtn = document.querySelectorAll('.filter button');
-filterBtn.forEach((value)=>{
+filterBtn.forEach((value)=>{                //Loops through buttons used for filtering and adds event listener to render item being clicked
     value.addEventListener('click',()=>{
-        document.querySelector('.filter-enabled').classList.remove('filter-enabled');
-        value.classList.add('filter-enabled');
-        let currentSectionClass = value.classList[0];
-        filterBasedRendering(currentSectionClass);
+        document.querySelector('.filter-enabled').classList.remove('filter-enabled');       //removes default filter
+        value.classList.add('filter-enabled');                  //adds filter to clicked button
+        let currentSectionClass = value.classList[0];           //identifies type of btn based on classname
+        filterBasedRendering(currentSectionClass);              //check class type and render similar object to page
     })
 })
 
@@ -109,9 +110,9 @@ function filterBasedRendering(checkSpecies){
         renderItems(landAnimalsList);
     }
     else{
+        document.querySelector(".container").innerHTML ='';
         [flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((valuelist)=>{
-            renderItems(valuelist,true);
-            console.log('working');
+            renderAllItems(valuelist);
         });
     }
 
@@ -119,5 +120,5 @@ function filterBasedRendering(checkSpecies){
 
 //Default value on species page is set to all
 [flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((valuelist)=>{
-    renderItems(valuelist,true);
+    renderAllItems(valuelist);
 });
