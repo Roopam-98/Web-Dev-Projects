@@ -55,7 +55,9 @@
 }
 
 .filter{
+    margin-top: 4em;
     margin-left: 2.6em;
+    margin-bottom: 0.5em;
 }
 .filter button{
     border:1.5px solid rgba(254, 254, 254, 0.167);
