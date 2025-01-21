@@ -1,6 +1,7 @@
 import './scripts/header.js';
 import './scripts/footer.js';
-import {quotes} from './quotes/script.js';
+import {quotes} from './quotes/quotescript.js';
+import './data/usermail.js';
 
 
 document.querySelector('.subscribe').addEventListener('click',()=>{
@@ -18,7 +19,6 @@ function changeQuote(){  //function that changes quote
     let currentQuoteVar = document.querySelector('.quote-text');
     let currentQuote = currentQuoteVar.innerText;
     let currentAuthorVar = document.querySelector('.quote-author');
-    console.log(currentQuote);
     let matchingIndex=0;
     quotes.forEach((value,index)=>{
         if(value.quote === currentQuote){

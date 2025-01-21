@@ -163,7 +163,32 @@ body{
     width:400px;
     height:400px;
     border: 2px solid red;
+    padding:2em;
+}
 
+.email{
+    width: 15em;
+    border:none;
+    outline: 1.5px solid gray;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.email:focus{
+    outline: 1.5px solid rgb(13, 138, 227);
+}
+
+.sub-submit{
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 1.5px solid rgb(13, 138, 227);
+    background-color: rgb(13, 138, 227);
+    color:white;
+}
+
+.sub-submit:hover{
+    border: 1.5px solid rgb(15, 34, 58);
+    background-color: rgb(15, 34, 58);
 }
 
 
