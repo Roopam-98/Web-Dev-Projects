@@ -3,14 +3,6 @@ import './scripts/footer.js';
 import {quotes} from './quotes/quotescript.js';
 import './data/usermail.js';
 
-
-document.querySelector('.subscribe').addEventListener('click',()=>{
-    let state = false;
-    document.querySelector('.subscribed').classList.add('subscribed-show');
-    document.querySelector('.subscribed').classList.remove('subscribed');
-})
-
-
 setInterval(()=>{
     changeQuote();
 },10000);   //changes quote every 8 seconds

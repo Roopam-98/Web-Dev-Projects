@@ -29,15 +29,17 @@ export class Species{                              //Is class & creates list of 
     }
 };
 
+//Separate arrays to store different species objects
 let flowersList=[];
 let landAnimalsList=[];
 let aquaticAnimalsList=[];
 let birdsList=[];
 let succulentsList=[];
 
-function createObject(arrayName,arrayList,arrayType){               //Function that loops through class to create object.
+function createObject(arrayName,arrayList,arrayType){               //Function that loops through class to create object of each species.
     arrayName.forEach((value)=>{
-        arrayList.push(new Species(arrayType,value));
+        let newObject = new Species(arrayType,value);
+        arrayList.push(newObject);
     })
 }
 
