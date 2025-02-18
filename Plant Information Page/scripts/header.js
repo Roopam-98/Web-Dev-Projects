@@ -2,13 +2,12 @@ document.querySelector('.header-section').innerHTML =
 `
         <div class="nav-left">
             <div class="nav-logo"><img src="./images/freepik__background__77813.png" alt="earth.img" class="logo"></div>
-            <div class="web-name">Planet IQ</div>
+            <div class="web-name">MediaWare</div>
         </div>
         <div class="nav-center">
             <div><input type="search" placeholder="Search" class="search-bar"></div>
         </div>
         <div class="nav-right">
-            <div><button class='language'><img src="https://www.svgrepo.com/show/348179/language.svg" class="icon-img"></button></div>
             <div><button  class='mode'>&#9788;</button></div>
             <div class="species-dropdown">
                 <a href="species.html"><button class="species-btn">Species</button></a>

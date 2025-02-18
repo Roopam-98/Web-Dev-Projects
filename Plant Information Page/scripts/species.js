@@ -53,7 +53,7 @@ createObject(succulentsNames,succulentsList,"Succulents");
 function addItems(speciesItem,heading){                             //Function renders each object on the webpage
     let addFlower = document.querySelector(`.${heading}-rows`);
     addFlower.innerHTML+= `<div class="species-section">
-                    <img class="species-img" src="${speciesItem.imagePath}" alt="${speciesItem.name}" title="${speciesItem.name}">
+                    <div class="images"><img class="species-img" src="${speciesItem.imagePath}" alt="${speciesItem.name}" title="${speciesItem.name}"></div>
                     <div class="desc">
                         <p class="species-name">${speciesItem.name}</p>
                     </div>
@@ -124,3 +124,9 @@ function filterBasedRendering(checkSpecies){
 [flowersList,birdsList,succulentsList,aquaticAnimalsList,landAnimalsList].forEach((valuelist)=>{
     renderAllItems(valuelist);
 });
+
+document.querySelectorAll(".species-section").forEach((section)=>{
+    section.addEventListener('click',()=>{
+        console.log("hello");
+    })
+})

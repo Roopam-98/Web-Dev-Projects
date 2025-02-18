@@ -33,4 +33,3 @@ document.querySelector('.change-quote').addEventListener('click',()=>{
 });     //changes quote when clicked
 
 
-

@@ -1,0 +1,276 @@
+
+*,::before,::after{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+::root{
+    --standard-color: white;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+}
+
+/* LOCATION */
+section{
+    border: 1px solid red;
+}
+
+#location{
+    display:inline-block;
+    padding: 0.5em;
+    width: 230px;
+    background-color: white;
+    margin: 0.8em 0.8em 0;
+    border-radius: 3px;
+    position: relative;
+}
+
+#location > h2{
+    text-align: center;
+    font-size: 1.3rem;
+    font-style: Roboto;
+}
+
+#location > p{
+    text-align: center;
+    color: rgb(109, 109, 109);
+    margin:0.3em auto;
+}
+
+#location > h2 > i{
+    font-size: 1rem;
+}
+
+#location button{
+    padding:0.3em;
+    width: 30%;
+    height: 40%;
+    border: none;
+    border-radius: 2px;
+    background-color:rgb(226, 226, 226);
+    cursor:pointer;
+}
+
+
+#location div > button:hover{
+    background-color: black;
+}
+
+#location div > a > button:hover{
+    background-color: black;
+}
+
+#location div > button:hover i, .mail:hover i{
+    color:white;
+}
+
+input{
+    border: 1.3px solid rgb(215, 215, 215);
+    border-radius: 3px;
+    width: 80%;
+    padding: 0.3em;
+    margin-bottom:0.5em;
+}
+
+input:focus{
+    outline:none;
+}
+
+.type-location{
+    position:absolute;
+    left:10px;
+    right:0;
+    bottom:30px;
+}
+
+/* QUOTE */
+section:nth-of-type(2){
+    width: 230px;
+    padding: 0.8em;
+    background-color: white;
+    margin: 0.8em;
+    border-radius: 3px;
+}
+.quote{
+    font-family: Arial;
+    font-size: 0.8rem;
+    color:black;
+}
+
+/* SUNRISE & SUNSET */
+section:nth-of-type(3){
+    margin: 0.6em 0.8em 0.2em 0.8em;
+    padding:0.3em;
+    width: 230px;
+    background-color: white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-radius: 3px;
+    position: relative;
+}
+
+/* h2{
+    margin: 0.2em auto;
+} */
+
+.data{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.data div{
+    background-color: rgb(207, 207, 207);
+    border-radius: 3px;
+    line-height: 1.5em;
+    width: 200px;
+    padding:0.3em;
+    position: relative;
+}
+
+.data h4{
+    text-align:center;
+}
+
+.right{
+    position:absolute;
+    right:4px;
+}
+
+.left{
+    position:absolute;
+    left: 4px;
+}
+
+.data div p{
+    font-size: 0.9rem;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.dot{
+    color:gray;
+    font-size: 1.7rem;
+}
+
+.active{
+    color:black;
+}
+
+button[class='left'],button[class='right']{
+    border:none;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.105);
+    top: 50%;
+}
+
+#api-source{
+    font-size: 0.6rem;
+    color:rgb(163, 163, 163);
+}
+
+#api-source a{
+    color: black;
+    text-decoration: none;
+}
+/* WEATHER FORECAST */
+
+section:nth-of-type(4){
+    width:620px;
+    height: 100vh;
+    background-color: rgba(45, 45, 45, 0.053);
+    margin:0.8em;
+    border-radius: 3px;
+}
+
+/* #forecast *{
+    border: 1px solid red;
+} */
+
+#forecast{
+    height: 85%;
+    width: 100%;
+    padding-top: 1em;
+    display:flex;
+    gap: 1em;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#forecast div{
+    padding: 0.5em;
+    line-height: 1.5em;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    width: 30%;
+    max-height: max-content;
+    background-color:white;
+}
+
+#forecast div p{
+    position: relative;
+}
+
+#days{
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#days > button{
+    padding: 1em;
+}
+
+.value{
+    color:rgb(144, 144, 144);
+}
+
+.bold{
+    font-weight: 600;;
+}
+/* EXTRA DATA */
+
+section:last-of-type{
+    width: 230px;
+    height: 100%;
+    margin:0.8em;
+    position: relative;
+    right:0px;
+    top:0;
+}
+
+section:last-of-type div{
+    background-color: white;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#aqi-bar{
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, green 0%,green 20%,yellow,orange,red,purple);
+}
