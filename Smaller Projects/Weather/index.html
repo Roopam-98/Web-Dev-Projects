@@ -37,7 +37,7 @@
             <div class="js-quote quote"></div>
         </section>
         <section>
-            <h2>Sunrise & Sunset</h2>
+            <!-- <h2>Sunrise & Sunset</h2> -->
             <div class="data">
             </div>
             <div>
@@ -54,9 +54,19 @@
             <div id="api-source">Powered by <a href="https://sunrisesunset.io/api/">SunriseSunset.io</a></div>
         </section>
         <section>
-            <div>Forecast</div>
+            <div id="current-weather">
+                <div id="current-data">
+                    <div id="time"></div>
+                    <div id="weather"></div>
+                </div>
+                <div id="extra-data">
+                    <div id="wind"></div>
+                    <div id="humidity"></div>
+                    <div id="pressure"></div>
+                </div>
+            </div>
             <div id="forecast"></div>
-            <div id="days"></div>
+            <!-- <div id="days"></div> -->
         </section>
         <section>
             <div>
@@ -64,6 +74,28 @@
                 <div>
                     <p>Air Quality Index: </p>
                     <p id="aqi-bar"></p>
+                </div>
+                <div id="pollutants-data">
+                    <div class="pollutants">
+                        <p class="center"><span class="pollutant-value co"></span><span
+                                class="pollutant-unit">μg/m3</span></p>
+                        <p class="pollutant-font">Carbon Monoxide</p>
+                    </div>
+                    <div class="pollutants">
+                        <p class="center"><span class="pollutant-value o3"></span><span
+                                class="pollutant-unit">μg/m3</span></p>
+                        <p class="pollutant-font">Ozone</p>
+                    </div>
+                    <div class="pollutants">
+                        <p class="center"><span class="pollutant-value pm2_5"></span><span
+                                class="pollutant-unit">μg/m3</span></p>
+                        <p class="pollutant-font">Fine particles</p>
+                    </div>
+                    <div class="pollutants">
+                        <p class="center"><span class="pollutant-value pm10"></span><span
+                                class="pollutant-unit">μg/m3</span></p>
+                        <p class="pollutant-font">Coarse particles</p>
+                    </div>
                 </div>
             </div>
         </section>

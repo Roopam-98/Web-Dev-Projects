@@ -1,5 +1,9 @@
 const quote_url = "https://zenquotes.io/api/today";
 const quoteValue = document.querySelector(".js-quote");
+const O3 = document.querySelector('.o3');
+const CO = document.querySelector('.co');
+const PM2_5 = document.querySelector('.pm2_5');
+const PM10 = document.querySelector('.pm10');
 let longitude,latitude, sunriseSunsetUrl;
 const options = {
     enableHighAccuracy: true,
@@ -33,6 +37,7 @@ document.querySelector('.search-location').addEventListener('click',()=>{
 
             setVal(longitude,latitude);
             getWeather(longitude,latitude);
+            getAirQuality(longitude,latitude);
         })
     })
 
@@ -62,6 +67,7 @@ function successResponse(position){
 
     setVal(longitude,latitude);
     getWeather(longitude,latitude);
+    getAirQuality(longitude,latitude);
 }
 
 function errorResponse(){
@@ -97,13 +103,10 @@ function prevNext(result){
         result.then((data)=>{
             document.querySelector('.data').innerHTML = `
                         <div class="sunrise-sunset">
-                            <h4 class="date">${data.date}</h4>
-                            <p>Date: <span class="right">${data.date}</span></p>
-                            <p>Sunrise: <span class="right">${data.sunrise}</span></p>
-                            <p>Sunset: <span class="right">${data.sunset}</span></p>
-                            <p>Golden Hour: <span class="right">${data.golden_hour}</span></p>
-                            <p>Dawn: <span class="right">${data.dawn}</span> </p>
-                            <p>Day Length: <span class="right">${data.day_length}</span></p>
+                            <h4 class="date">${formatDate(data.date)}</h4>
+                            <p><img class="icon" title="sunrise" src="./dawn_1582750.png"><span class="right">${formatTime(data.sunrise)} am</span></p>
+                            <p><img class="icon" title="sunset" src="./sunset_1582749.png"> <span class="right">${formatTime(data.sunset)} pm</span></p>
+                            <p><img class="icon" title="golden hour" src="./sunrise_6753118.png"><span class="right">${formatTime(data.golden_hour)} pm</span></p>
                         </div>`;
         })
     }
@@ -115,7 +118,7 @@ function prevNext(result){
         for(let i=result.length-1;i>0; i--){
             let setDate = document.querySelector('.date').innerHTML;
             result[i].then((data) =>{
-                if(data.date === setDate){
+                if(formatDate(data.date) === setDate){
                     matchingIndex = i;
                     renderData(result[matchingIndex-1]);
                     document.querySelector('.active').classList.remove('active');
@@ -129,7 +132,7 @@ function prevNext(result){
         for(let i=0;i<result.length; i++){
             let setDate = document.querySelector('.date').innerHTML;
             result[i].then((data) =>{
-                if(data.date === setDate){
+                if(formatDate(data.date) === setDate){
                     matchingIndex = i;
                     renderData(result[matchingIndex+1]);
                     document.querySelector('.active').classList.remove('active');
@@ -152,7 +155,7 @@ function getWeather(longitude,latitude){
 }
 
 function renderWeather(data){
-    let currentWeather = data.list.slice(0,6);
+    let currentWeather = data.list.slice(0,8);
     document.querySelector('#forecast').innerHTML='';
     console.log(currentWeather);
     currentWeather.forEach((day)=>{
@@ -163,13 +166,14 @@ function renderWeather(data){
         let newDate = `${year}-${month}-${date}`;
         day.dt_txt.split(' ')[0].split('-')[0];
         let time = day.dt_txt.split(' ')[1];
-        document.querySelector('#forecast').innerHTML +=`<div><p class="bold">Date:<span class="right value ">${newDate} , ${time}</span></p>
-                <p>Temperature: <span class="right value">${day.main.temp}&deg;C</span></p>
-                <p>Feels Like: <span class="right value">${day.main.feels_like}&deg;C</span></p>
-                <p>Weather: <span class="right value">${day.weather[0].main}</span></p>
-                <p>Description: <span class="right value">${day.weather[0].description}</span></p>
-                <p>High/Low: <span class="right value">${day.main.temp_max}/${day.main.temp_min}&deg;C</span></p>
-                <p>Humidity: <span class="right value">${day.main.humidity}</span></p></div>`;
+        document.querySelector('#forecast').innerHTML +=`<div><p class="bold">${formatTime(time)}</p>
+                <img class = "forecast-icon" src="https://cdn-icons-png.freepik.com/256/2204/2204336.png?uid=R182106668&ga=GA1.1.175180818.1729070584">
+                <p><span class="value">${day.weather[0].main}</span></p>
+                <p class="value">${day.main.temp}&deg;C</p>
+                <p class="value">${formatDate(newDate).split('2025')[0]}</p>
+                <!--
+                <p class="value"><span>Feels</span><span>${day.main.feels_like}&deg;C</span></p>
+                <p>Description: <span class="right value">${day.weather[0].description}</span></p>--></div>`;
     })
 }
 
@@ -185,20 +189,36 @@ for(let i=0; i< 5; i++){
     forecastDates.push(date.format('YYYY-MM-DD'));
 }
 
-const daysBtn = document.querySelector('#days');
-forecastDates.forEach((eachDay)=>{
-    daysBtn.innerHTML += `<button class="days">${eachDay}</button>`;
-})
-
 
 
 function getAirQuality(longitude,latitude){
     const airQualityUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
     fetch(airQualityUrl).then((response)=>{
         response.json().then((airQualityData)=>{
-            console.log(airQualityData);
+            renderPollutants(airQualityData.list[0].components);
         })
     })
 }
 
-getAirQuality(12,77);
+
+
+
+
+function formatTime(time){
+    let inputTime = time.split(":")
+    let newTime = `${inputTime[0]}:${inputTime[1]}`;
+    return newTime;
+}
+
+function renderPollutants(components){
+
+    O3.innerText = components.o3;
+    CO.innerText = components.co;
+    PM2_5.innerText = components['pm2_5'];
+    PM10.innerText = components['pm10'];
+}
+
+function formatDate(date){
+    let formattedDate = dayjs(date).format('DD MMM YYYY');
+    return formattedDate;
+}
