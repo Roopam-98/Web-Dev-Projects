@@ -37,13 +37,9 @@ main{
     object-fit: contain;
     display:block;
     margin: 0 auto;
-    border: 1px solid red;
 }
 
 /* LOCATION */
-section{
-    border: 1px solid red;
-}
 
 #location{
     display:flex;
@@ -60,21 +56,6 @@ section{
     width: 100%;
 }
 
-/* #location > h2{
-    text-align: center;
-    font-size: 1.3rem;
-    font-style: Roboto;
-} */
-
-/* #location > p{
-    text-align: center;
-    color: rgb(109, 109, 109);
-    margin:0.3em auto;
-} */
-
-/* #location > h2 > i{
-    font-size: 1rem;
-} */
 
 #location button{
     padding:0.45em;
@@ -104,7 +85,6 @@ section{
 
 input{
     border:none;
-    /* border: 1.3px solid rgb(215, 215, 215); */
     border-radius: 15px;
     width: 100%;
     padding: 0.5em;
@@ -118,16 +98,17 @@ input:focus{
 
 /* QUOTE */
 section:nth-of-type(2){
-    width: 230px;
+    width: 20%;
     padding: 0.8em;
-    background-color: white;
     margin: 0.8em;
     border-radius: 3px;
 }
 .quote{
+    line-height: 1em;
+    text-align: center;
     font-family: Arial;
     font-size: 0.8rem;
-    color:black;
+    color:white;
 }
 
 /* SUNRISE & SUNSET */
@@ -231,7 +212,6 @@ section:nth-of-type(4){
     height: 60%;
     border-radius:3px;
     background-color: white;
-    border: 2px solid blue;
     margin-bottom:0.8em;
 }
 
@@ -387,7 +367,6 @@ section:nth-of-type(4){
 }
 
 #forecast div{
-    border: 1px solid red;
     padding: 0.8em;
     line-height: 1.5em;
     border-radius: 3px;

@@ -27,22 +27,25 @@ getQuote(quote_url);
 document.querySelector('#city-name').addEventListener('keypress',(event)=>{
     if(event.key === 'Enter'){
         let inputLocation = document.querySelector('input').value;
-        
+
         document.getElementById('set-location').innerText = `${inputLocation}`;
-    
+
         let geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${inputLocation}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
         fetch(geocodeUrl).then((response) =>{
             response.json().then((result)=>{
                 longitude = result[0].lon;
                 latitude = result[0].lat;
-    
+
+                document.querySelector('input').value = ' ';
+
                 setVal(longitude,latitude);
                 getCurrentWeather(longitude,latitude);
                 getWeather(longitude,latitude);
                 getAirQuality(longitude,latitude);
-                inputLocation='';
+
             })
         })
+
     }
 })
 
