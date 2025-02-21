@@ -23,28 +23,27 @@ async function getQuote(quote_url){
 
 getQuote(quote_url);
 
-document.querySelector('.input-select').addEventListener('click',()=>{
-    document.querySelector('.type-location').classList.toggle('hidden');
-})
 
-document.querySelector('.search-location').addEventListener('click',()=>{
-    let inputLocation = document.querySelector('input').value;
-    document.querySelector('.type-location').classList.toggle('hidden');
-    document.getElementById('set-location').innerText = `${inputLocation}`;
-
-    let geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${inputLocation}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
-    fetch(geocodeUrl).then((response) =>{
-        response.json().then((result)=>{
-            longitude = result[0].lon;
-            latitude = result[0].lat;
-
-            setVal(longitude,latitude);
-            getCurrentWeather(longitude,latitude);
-            getWeather(longitude,latitude);
-            getAirQuality(longitude,latitude);
+document.querySelector('#city-name').addEventListener('keypress',(event)=>{
+    if(event.key === 'Enter'){
+        let inputLocation = document.querySelector('input').value;
+        
+        document.getElementById('set-location').innerText = `${inputLocation}`;
+    
+        let geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${inputLocation}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
+        fetch(geocodeUrl).then((response) =>{
+            response.json().then((result)=>{
+                longitude = result[0].lon;
+                latitude = result[0].lat;
+    
+                setVal(longitude,latitude);
+                getCurrentWeather(longitude,latitude);
+                getWeather(longitude,latitude);
+                getAirQuality(longitude,latitude);
+                inputLocation='';
+            })
         })
-    })
-
+    }
 })
 
 document.querySelector('.auto-select').addEventListener('click',()=>{

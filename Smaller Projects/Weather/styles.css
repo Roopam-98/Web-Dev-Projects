@@ -46,59 +46,68 @@ section{
 }
 
 #location{
-    display:inline-block;
-    padding: 0.5em;
-    width: 230px;
-    background-color: white;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    width: 20%;
+    height: 25%;
     margin: 0.8em 0.8em 0;
     border-radius: 3px;
     position: relative;
 }
 
-#location > h2{
+#location div{
+    width: 100%;
+}
+
+/* #location > h2{
     text-align: center;
     font-size: 1.3rem;
     font-style: Roboto;
-}
+} */
 
-#location > p{
+/* #location > p{
     text-align: center;
     color: rgb(109, 109, 109);
     margin:0.3em auto;
-}
+} */
 
-#location > h2 > i{
+/* #location > h2 > i{
     font-size: 1rem;
-}
+} */
 
 #location button{
-    padding:0.3em;
-    width: 30%;
-    height: 40%;
+    padding:0.45em;
+    width: 100%;
     border: none;
-    border-radius: 2px;
-    background-color:rgb(226, 226, 226);
+    border-radius: 12px;
+    color:white;
+    background:linear-gradient(90deg,rgb(5, 88, 203),rgb(0, 174, 255));
     cursor:pointer;
 }
 
-
-#location div > button:hover{
-    background-color: black;
+.or-option{
+    text-align:center;
+    padding: 0 1em;
 }
 
-#location div > a > button:hover{
-    background-color: black;
+.len-50{
+    width: 35%;
+    border:1px solid rgb(202, 202, 202);
 }
 
-#location div > button:hover i, .mail:hover i{
-    color:white;
+.selection-text{
+    font-weight: 600;
+    font-size: 0.9rem;
+    color:rgb(202, 202, 202);
 }
 
 input{
-    border: 1.3px solid rgb(215, 215, 215);
-    border-radius: 3px;
-    width: 80%;
-    padding: 0.3em;
+    border:none;
+    /* border: 1.3px solid rgb(215, 215, 215); */
+    border-radius: 15px;
+    width: 100%;
+    padding: 0.5em;
     margin-bottom:0.5em;
 }
 
@@ -106,12 +115,6 @@ input:focus{
     outline:none;
 }
 
-.type-location{
-    position:absolute;
-    left:10px;
-    right:0;
-    bottom:30px;
-}
 
 /* QUOTE */
 section:nth-of-type(2){
