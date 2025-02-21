@@ -233,26 +233,141 @@ section:nth-of-type(4){
 }
 
 #current-data{
-    background-color: gray;
+    padding: 0.8em;
     width:100%;
     height: 70%;
+    display:flex;
+    gap: 0.8em;
+    justify-content: space-evenly;
+}
+
+#time{
+    width: 35%;
+    height:100%;
+    background-color: lightgray;
+    border-radius: 3px;
+}
+
+.set-location{
+    margin: 0 0.4em;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    font-size:0.7rem;
+    background:linear-gradient(90deg,rgb(5, 88, 203),rgb(0, 174, 255));
+}
+
+.clock-time{
+    margin-top: 0.2em;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#weather{
+    width: 60%;
+    height: 100%;
+    background-color: lightgray;
+    border-radius: 3px;
+    display:flex;
+}
+
+.weather-temp{
+    width: 50%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+    flex-direction: column;
+    justify-content: center;
+    position:relative;
+}
+
+.weather-image{
+    width:50%;
+    height: 100%;
+    display: flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content: center;
+    gap: 0.8em;
+}
+
+.space{
+    margin: 0 0.4em;
+}
+.set-temp{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.weather-img{
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.weather-font{
+    font-size:0.7rem;
+    line-height: 1.6em;
+    color: gray;
+}
+
+/* .weather-font:last-of-type{
+    position:absolute;
+    bottom:0;
+} */
+
+.weather-description{
+    font-size: 1.2rem;
+    color: gray;
 }
 
 #extra-data {
     width:100%;
     height: 30%;
     display:flex;
-    border: 2px solid red;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-evenly;
-    padding-bottom:0.8em;
 }
 
 #extra-data div{
+    display:flex;
     width: 30%;
     height: 80%;
     border-radius: 3px;
     background-color: lightgrey;
+}
+
+
+.extra-data-icon{
+    padding: 0.3em;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    /* border: 1px solid red; */
+}
+
+.extra-data-font{
+    /* position: absolute;
+    bottom:0; */
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.extra-data-value{
+    font-weight: 600;
+    font-size: 1.2rem;
+    color:gray;
+}
+
+.size{
+    width: 50%;
+    height: 100%;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #forecast{
@@ -351,7 +466,7 @@ section:last-of-type > div{
     margin:auto;
 }
 
-.pollutant-unit{
+.pollutant-unit,.weather-unit{
     margin: 0.15em;
     font-size: 0.6rem;
     color:gray;

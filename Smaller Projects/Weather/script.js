@@ -4,6 +4,9 @@ const O3 = document.querySelector('.o3');
 const CO = document.querySelector('.co');
 const PM2_5 = document.querySelector('.pm2_5');
 const PM10 = document.querySelector('.pm10');
+const wind = document.getElementById('wind');
+const pressure = document.getElementById('pressure');
+const humidity = document.getElementById('humidity');
 let longitude,latitude, sunriseSunsetUrl;
 const options = {
     enableHighAccuracy: true,
@@ -36,6 +39,7 @@ document.querySelector('.search-location').addEventListener('click',()=>{
             latitude = result[0].lat;
 
             setVal(longitude,latitude);
+            getCurrentWeather(longitude,latitude);
             getWeather(longitude,latitude);
             getAirQuality(longitude,latitude);
         })
@@ -66,6 +70,7 @@ function successResponse(position){
     });
 
     setVal(longitude,latitude);
+    getCurrentWeather(longitude,latitude)
     getWeather(longitude,latitude);
     getAirQuality(longitude,latitude);
 }
@@ -202,8 +207,6 @@ function getAirQuality(longitude,latitude){
 
 
 
-
-
 function formatTime(time){
     let inputTime = time.split(":")
     let newTime = `${inputTime[0]}:${inputTime[1]}`;
@@ -222,3 +225,42 @@ function formatDate(date){
     let formattedDate = dayjs(date).format('DD MMM YYYY');
     return formattedDate;
 }
+
+function getCurrentWeather(longitude,latitude){
+    let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=f91a70d3b32ab07d9d08c9703a965c24`;
+    fetch(currentWeatherUrl).then((response)=>{
+        response.json().then(data =>{
+            renderCurrentWeather(data.main,data.weather[0],data.wind);
+        })
+    })
+}
+
+
+function renderCurrentWeather(main,weather,windStatus){
+    wind.innerHTML = `${windStatus.speed}<span class="weather-unit">m/sec</span>`;
+    pressure.innerHTML = `${main.pressure}<span class="weather-unit">hPa</span>`;
+    humidity.innerHTML = `${main.humidity}<span class="weather-unit">%</span>`;
+    const weatherData = document.getElementById('weather');
+    weatherData.innerHTML = `
+    <div class="weather-temp">
+        <p class="set-temp">${main.temp}&deg;C</p>
+        <p class="weather-font">High <span class="space"></span>${main.temp_max}&deg;C </p>
+        <p class="weather-font">Low <span class="space"></span>${main.temp_min}&deg;C</p>
+        <p class="weather-font">Feels Like <span class="space"></span>${main.feels_like}&deg;C</p>
+    </div>
+    <div class="weather-image">
+        <img class="weather-img" src="https://cdn-icons-png.freepik.com/256/2204/2204336.png?uid=R182106668&ga=GA1.1.175180818.1729070584">
+        <p class="weather-description">${weather.main}</p>
+    </div>
+    `;
+}
+
+function renderTime(){
+    const dateData = String(dayjs().$d);
+    const values = dateData.split(' ');
+    const time =formatTime(values[4]);
+    document.querySelector('.clock-time').innerText = time;
+    document.querySelector('.date').innerText = `${values[0]}, ${values[2]} ${values[1]} ${values[3]}`
+}
+
+renderTime();

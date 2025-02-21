@@ -19,8 +19,8 @@
 <body>
     <main>
         <section id="location">
-            <h2>Location <i class="fa-solid fa-location-dot"></i></h2>
-            <p id="set-location">New York</p>
+            <h2>Location </h2>
+            <!-- <p id="set-location">New York</p> -->
             <div class="type-location hidden">
                 <input type="text" id="city-name">
                 <i class="fa-solid fa-magnifying-glass search-location"></i>
@@ -56,13 +56,37 @@
         <section>
             <div id="current-weather">
                 <div id="current-data">
-                    <div id="time"></div>
+                    <div id="time" class="flex">
+                        <p class="set-location"><i class="fa-solid fa-location-dot"></i> <span id="set-location"></span>
+                        </p>
+                        <p class="clock-time"></p>
+                        <p class="date weather-font"></p>
+                    </div>
                     <div id="weather"></div>
                 </div>
                 <div id="extra-data">
-                    <div id="wind"></div>
-                    <div id="humidity"></div>
-                    <div id="pressure"></div>
+                    <div id="wind-status">
+                        <p class="size flex">
+                            <img class="extra-data-icon" src="./wind_2204347.png">
+                            <span class="extra-data-font">wind speed</span>
+                        </p>
+                        <p class="extra-data-value size flex" id="wind"></p>
+                    </div>
+                    <div id="humidity-status">
+                        <p class="size flex">
+                            <img class="extra-data-icon" src="./humidity_4907228.png">
+                            <span class="extra-data-font">humidity</span>
+                        </p>
+                        <p class="size extra-data-value flex" id="humidity"></p>
+                    </div>
+                    <div id="pressure-status">
+                        <p class="size flex">
+                            <img class="extra-data-icon" src="./gauge_3251037.png">
+                            <span class="extra-data-font">pressure</span>
+                        </p>
+                        <p class="extra-data-value size flex" id="pressure">
+                        </p>
+                    </div>
                 </div>
             </div>
             <div id="forecast"></div>
