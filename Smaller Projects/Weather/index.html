@@ -21,7 +21,7 @@
         <!-- ACQUIRE LOCATION -->
         <section id="location">
             <div>
-                <input type="text" id="city-name" placeholder="Search by city...">
+                <input type="text" id="city-name" value="New York" placeholder="Search by city...">
             </div>
             <div class="or-option flex">
                 <p>
@@ -108,8 +108,15 @@
             <div>
                 <h2>Air Quality</h2>
                 <div>
-                    <p>Air Quality Index: </p>
-                    <p id="aqi-bar"></p>
+                    <input type="range" min="1" max="5" step="0.5" class="slider" id="aqi" list="values">
+                    <!-- <datalist id="values">
+                        <option value="1" label="Good"></option>
+                        <option value="2" label="Moderate"></option>
+                        <option value="3" label="Unhealthy"></option>
+                        <option value="4" label="Very Unhealthy"></option>
+                        <option value="5" label="Severe"></option>
+                    </datalist> -->
+                    <!-- <p id="aqi-bar"><span class="indicator">&#10148;</span></p> -->
                 </div>
                 <div id="pollutants-data">
                     <div class="pollutants">
@@ -134,6 +141,9 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <!--WEEKLY TEMPERATURE-->
+        <section class="weekly-temp">
         </section>
     </main>
 </body>

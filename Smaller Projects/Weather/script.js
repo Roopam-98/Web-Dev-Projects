@@ -28,7 +28,7 @@ document.querySelector('#city-name').addEventListener('keypress',(event)=>{
     if(event.key === 'Enter'){
         let inputLocation = document.querySelector('input').value;
 
-        document.getElementById('set-location').innerText = `${inputLocation}`;
+        document.getElementById('set-location').innerText = `${formatLocationText(inputLocation)}`;
 
         let geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${inputLocation}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
         fetch(geocodeUrl).then((response) =>{
@@ -50,19 +50,24 @@ document.querySelector('#city-name').addEventListener('keypress',(event)=>{
 })
 
 document.querySelector('.auto-select').addEventListener('click',()=>{
+    getCoordinates();
+})
+
+function getCoordinates(){
     if(!navigator.geolocation){
         alert("Your Browser does not support this feature!");
     }
     else{
         navigator.geolocation.getCurrentPosition(successResponse,errorResponse,options);
     }
+}
 
-})
+getCoordinates();
 
 function successResponse(position){
     longitude = position.coords.longitude;
     latitude = position.coords.latitude;
-    console.log(longitude,latitude);
+    // console.log(longitude,latitude);
 
     let reverseGeocodeUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
     fetch(reverseGeocodeUrl).then((result)=>{
@@ -155,6 +160,7 @@ function getWeather(longitude,latitude){
     let weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=f91a70d3b32ab07d9d08c9703a965c24&units=metric`;
     fetch(weatherUrl).then((response) =>{
         response.json().then((data) =>{
+            renderWeeklyTemp(data.list);
             renderWeather(data);
         })
     })
@@ -164,7 +170,7 @@ function getWeather(longitude,latitude){
 function renderWeather(data){
     let currentWeather = data.list.slice(0,8);
     document.querySelector('#forecast').innerHTML='';
-    console.log(currentWeather);
+    // console.log(currentWeather);
     currentWeather.forEach((day)=>{
         let totalDate = day.dt_txt.split(' ')[0];
         let year = totalDate.split('-')[0];
@@ -174,7 +180,7 @@ function renderWeather(data){
         day.dt_txt.split(' ')[0].split('-')[0];
         let time = day.dt_txt.split(' ')[1];
         document.querySelector('#forecast').innerHTML +=`<div><p class="bold">${formatTime(time)}</p>
-                <img class = "forecast-icon" src="https://cdn-icons-png.freepik.com/256/2204/2204336.png?uid=R182106668&ga=GA1.1.175180818.1729070584">
+                <img class = "forecast-icon" src="./${getWeatherImgPath(day.weather[0].main)}">
                 <p><span class="value">${day.weather[0].main}</span></p>
                 <p class="value">${day.main.temp}&deg;C</p>
                 <p class="value">${formatDate(newDate).split('2025')[0]}</p>
@@ -182,6 +188,18 @@ function renderWeather(data){
                 <p class="value"><span>Feels</span><span>${day.main.feels_like}&deg;C</span></p>
                 <p>Description: <span class="right value">${day.weather[0].description}</span></p>--></div>`;
     })
+}
+
+function getWeatherImgPath(weather){
+    switch (weather){
+        case "Clear": return 'sunny.png' ;
+        case "Clouds": return 'cloudy.png';
+        case "Winds": return 'windy.png';
+        case "Rain": return 'rain.png';
+        case "Storm": return 'storm.png';
+        case "Thunder": return 'thunder.png';
+        case "Snow": return 'snow.png';
+    }
 }
 
 
@@ -202,6 +220,7 @@ function getAirQuality(longitude,latitude){
     const airQualityUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=f91a70d3b32ab07d9d08c9703a965c24`;
     fetch(airQualityUrl).then((response)=>{
         response.json().then((airQualityData)=>{
+            renderAQI(airQualityData.list[0].main);
             renderPollutants(airQualityData.list[0].components);
         })
     })
@@ -251,7 +270,7 @@ function renderCurrentWeather(main,weather,windStatus){
         <p class="weather-font">Feels Like <span class="space"></span>${main.feels_like}&deg;C</p>
     </div>
     <div class="weather-image">
-        <img class="weather-img" src="https://cdn-icons-png.freepik.com/256/2204/2204336.png?uid=R182106668&ga=GA1.1.175180818.1729070584">
+        <img class="weather-img" src="./${getWeatherImgPath(weather.main)}">
         <p class="weather-description">${weather.main}</p>
     </div>
     `;
@@ -266,3 +285,41 @@ function renderTime(){
 }
 
 renderTime();
+
+function weeklyTemp(date,temp){
+    document.querySelector('.weekly-temp').innerHTML+=` <div><div>${formatDate(date).split('2025')[0]}</div>
+            <div>${temp} &deg;C</div></div>
+            <hr class="line-separator">`;
+
+}
+
+
+function renderWeeklyTemp(weeklyData){
+    document.querySelector('.weekly-temp').innerHTML='';
+    const numOfDays = weeklyData.length/8;
+    let start = 0;
+    let end = 8;
+    let weathertemp=[];
+    for(let i=0;i<numOfDays;i++){
+        let sum=0;
+        for(start;start<end;start++){
+            sum+=weeklyData[start].main.temp;
+        }
+        let avg = (sum/8).toFixed(2);
+        weathertemp.push(avg);
+        start = end;
+        end = end+8;
+    }
+
+    for(let i=0; i<numOfDays;i++){
+        weeklyTemp(forecastDates[i],weathertemp[i]);
+    }
+}
+
+function renderAQI(aqiValue){
+    document.querySelector('.slider').value = aqiValue.aqi;
+}
+
+function formatLocationText(inputLocation){
+    return inputLocation[0].toUpperCase() + inputLocation.slice(1).toLowerCase();
+}
