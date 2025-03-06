@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="flex">
+            <div class="flex" id="box-11"><span class="letter-style"></span></div>
+            <div class="flex" id="box-12"><span class="letter-style"></span></div>
+            <div class="flex" id="box-13"><span class="letter-style"></span></div>
+            <div class="flex" id="box-21"><span class="letter-style"></span></div>
+            <div class="flex" id="box-22"><span class="letter-style"></span></div>
+            <div class="flex" id="box-23"><span class="letter-style"></span></div>
+            <div class="flex" id="box-31"><span class="letter-style"></span></div>
+            <div class="flex" id="box-32"><span class="letter-style"></span></div>
+            <div class="flex" id="box-33"><span class="letter-style"></span></div>
+        </div>
+        <audio src="./game-bonus-2-294436.mp3" type="audio/mp3">
+    </div>
+    <div class="guideNscore">
+        <div>
+            <h1 id="h1-1">TIC-TAC-TOE</h1>
+        </div>
+        <div class="option-section">
+            <button>Options</button>
+            <button>New Game</button>
+            <button class="sound"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+        <p class="winner">Player 1 Wins!</p>
+        <div class="score-section">
+            <p>Player 1 - <span class="score"> 5</span></p>
+            <p>Player 2 - <span class="score"> 3</span></p>
+            <p>Tie - <span class="score">4</span></p>
+        </div>
+        <button class="reset-btn">Reset Score</button>
+    </div>
+
+    <div>
+        <select class="player1-movetype">
+            <option selected value="X">X</option>
+            <option value="O">O</option>
+            <option value="Computer">Computer</option>
+        </select>
+        <select class="player2-movetype">
+            <option value="X">X</option>
+            <option selected value="O">O</option>
+            <option value="Computer">Computer</option>
+        </select>
+    </div>
+</body>
+
+<script src="./script.js"></script>
+
+</html>
