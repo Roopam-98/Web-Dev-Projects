@@ -42,13 +42,21 @@ playBoard.forEach((box) => {
 
 
 function inputAudioPlay() {
-    document.querySelector('audio').play();
+    try {
+        let audio = new Audio("./game-bonus-2-294436.mp3");
+        audio.play();
+    }
+    catch (err) {
+        console.log(err);
+    }
+
 }
 
+
 function inputMove(playedMove, inputBox) {
+    inputAudioPlay();
     const inputMove = document.querySelector(`#${inputBox} span`);
     inputMove.innerText = playedMove;
-    inputAudioPlay();
     checkingWinner();
 }
 
@@ -102,6 +110,16 @@ function checkWinningConditions(resultArray) {
     }
 }
 
+function winningAudioPlay() {
+    try {
+        let audio = new Audio("./level-win-6416.mp3");
+        audio.play();
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
 let player1Score = 0;
 let player2Score = 0;
 let Tie = 0;
@@ -109,10 +127,12 @@ function renderWinner(winningMove) {
     const winner = document.querySelector('.winner');
     if (winningMove === player1Move.value) {
         winner.innerText = 'Player 1 Wins!';
+        winningAudioPlay();
         player1Score++;
     }
     else if (winningMove === player2Move.value) {
         winner.innerText = 'Player 2 Wins!';
+        winningAudioPlay();
         player2Score++;
     }
     renderScore();
