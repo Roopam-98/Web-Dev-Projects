@@ -14,7 +14,7 @@ soundBtn.addEventListener('click', () => {
 let player1Move, player2Move;
 player1Move = document.querySelector('.player1-movetype');
 player2Move = document.querySelector('.player2-movetype');
-console.log(player1Move.value, player2Move.value);
+// console.log(player1Move.value, player2Move.value);
 
 if (player1Move === 'Computer') {
     if (player1Move) { }
@@ -68,30 +68,72 @@ function checkingWinner() {
 
     })
 
-    if (resultArray[0] === resultArray[1] && resultArray[0] === resultArray[2]) {
-        console.log(resultArray[0]);
-    }
-    else if (resultArray[3] === resultArray[4] && resultArray[3] === resultArray[5]) {
-        console.log(resultArray[3]);
-    }
-    else if (resultArray[6] === resultArray[7] && resultArray[6] === resultArray[8]) {
-        console.log(resultArray[6]);
-    }
-    else if (resultArray[0] === resultArray[3] && resultArray[0] === resultArray[6]) {
-        console.log(resultArray[0]);
-    }
-    else if (resultArray[1] === resultArray[4] && resultArray[1] === resultArray[7]) {
-        console.log(resultArray[1]);
-    }
-    else if (resultArray[2] === resultArray[5] && resultArray[2] === resultArray[8]) {
-        console.log(resultArray[2]);
-    }
-    else if (resultArray[0] === resultArray[4] && resultArray[0] === resultArray[8]) {
-        console.log(resultArray[0]);
-    }
-    else if (resultArray[2] === resultArray[4] && resultArray[2] === resultArray[6]) {
-        console.log(resultArray[2]);
-    }
+    let winningMove = checkWinningConditions(resultArray);
+    renderWinner(winningMove);
+
 
 }
 
+
+function checkWinningConditions(resultArray) {
+    if (resultArray[0] === resultArray[1] && resultArray[0] === resultArray[2]) {
+        return resultArray[0];
+    }
+    else if (resultArray[3] === resultArray[4] && resultArray[3] === resultArray[5]) {
+        return resultArray[3];
+    }
+    else if (resultArray[6] === resultArray[7] && resultArray[6] === resultArray[8]) {
+        return resultArray[6];
+    }
+    else if (resultArray[0] === resultArray[3] && resultArray[0] === resultArray[6]) {
+        return resultArray[0];
+    }
+    else if (resultArray[1] === resultArray[4] && resultArray[1] === resultArray[7]) {
+        return resultArray[1];
+    }
+    else if (resultArray[2] === resultArray[5] && resultArray[2] === resultArray[8]) {
+        return resultArray[2];
+    }
+    else if (resultArray[0] === resultArray[4] && resultArray[0] === resultArray[8]) {
+        return resultArray[0];
+    }
+    else if (resultArray[2] === resultArray[4] && resultArray[2] === resultArray[6]) {
+        return resultArray[2];
+    }
+}
+
+let player1Score = 0;
+let player2Score = 0;
+let Tie = 0;
+function renderWinner(winningMove) {
+    const winner = document.querySelector('.winner');
+    if (winningMove === player1Move.value) {
+        winner.innerText = 'Player 1 Wins!';
+        player1Score++;
+    }
+    else if (winningMove === player2Move.value) {
+        winner.innerText = 'Player 2 Wins!';
+        player2Score++;
+    }
+    renderScore();
+}
+
+function renderScore() {
+    const player1 = document.querySelector('.player1');
+    const player2 = document.querySelector('.player2');
+    const tie = document.querySelector('.tie');
+    player1.innerText = player1Score;
+    player2.innerText = player2Score;
+    tie.innerText = Tie;
+}
+
+const resetBtn = document.querySelector('.reset-btn');
+resetBtn.addEventListener('click', () => {
+    resetScore();
+})
+function resetScore() {
+    player1Score = 0;
+    player2Score = 0;
+    Tie = 0;
+    renderScore();
+}

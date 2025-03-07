@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root{
+    --mid-bold: 600;
+    --std-shadow: 4px 4px 4px blue;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
@@ -50,21 +55,21 @@ body{
 
 .letter-style{
     font-size: 7rem;
-    font-weight: 600;
+    font-weight: var(--mid-bold);
     color:white;
-    text-shadow: 4px 4px 4px blue;
+    text-shadow: var(--std-shadow);
 }
 
 
 #box-11{
     border-left: none;
     border-top:none;
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: var(--std-shadow);
 }
 
 #box-12{
     border-top:none;
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: var(--std-shadow);
 }
 
 #box-13{
@@ -75,11 +80,11 @@ body{
 
 #box-21{
     border-left:none;
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: var(--std-shadow);
 }
 
 #box-22{
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: var(--std-shadow);
 }
 
 #box-23{
@@ -108,7 +113,7 @@ body{
 h1{
     margin-top: 0.3em;
     font-size: 3.5rem;
-    text-shadow: 4px 4px 4px blue;
+    text-shadow: var(--std-shadow);
     color:white;
 }
 
@@ -116,8 +121,8 @@ h1{
     border:none;
     padding: 0.7em 0.9em;
     border-radius: 17px;
-    box-shadow: 4px 4px 4px blue;
-    font-weight: 600;
+    box-shadow: var(--std-shadow);
+    font-weight: var(--mid-bold);
 }
 
 i{
@@ -131,7 +136,7 @@ i{
     width: 100%;
     justify-content: space-evenly;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--mid-bold);
 }
 
 .option-section{
@@ -144,16 +149,19 @@ i{
 .winner{
     margin: 0.8em auto;
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: var(--mid-bold);
 }
 
 .reset-btn{
-    font-weight: 600;
+    font-weight: var(--mid-bold);
     margin: 1.5em;
     border:none;
     padding: 0.8em 1.5em;
     border-radius: 17px;
-    box-shadow: 4px 4px 4px blue;
+    box-shadow: var(--std-shadow);
 }
 
 
+.visibility{
+    display:none;
+}
