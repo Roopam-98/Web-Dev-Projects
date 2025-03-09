@@ -20,26 +20,44 @@ if (player1Move === 'Computer') {
     if (player1Move) { }
 }
 
+let eventHandler = (event) => {
+    let inputBox = event.currentTarget.id;
+    if (previousMove === 'X') {
+        currentMove = 'O';
+        inputMove(currentMove, inputBox);
+        previousMove = currentMove;
+    }
+    else {
+        currentMove = 'X';
+        inputMove(currentMove, inputBox);
+        previousMove = currentMove;
+    }
+}
+
 const playBoard = document.querySelectorAll('.container > div div');
 let previousMove, currentMove;
-playBoard.forEach((box) => {
-    box.addEventListener('click', (event) => {
-        let inputBox = event.currentTarget.id;
-        if (previousMove === 'X') {
-            currentMove = 'O';
-            inputMove(currentMove, inputBox);
-            previousMove = currentMove;
-        }
-        else {
-            currentMove = 'X';
-            inputMove(currentMove, inputBox);
-            previousMove = currentMove;
-        }
 
-
+function addEvents() {
+    playBoard.forEach((box) => {
+        box.addEventListener('click', eventHandler)
     })
-})
+}
+addEvents();
 
+function removeEvents() {
+    playBoard.forEach((box) => {
+        box.removeEventListener('click', eventHandler)
+    })
+}
+
+const newGameBtn = document.querySelector('.new-game');
+newGameBtn.addEventListener('click', () => {
+    playBoard.forEach(box => {
+        const inputBox = document.querySelector(`#${box.id} span`);
+        inputBox.innerText = '';
+    })
+    addEvents();
+});
 
 function inputAudioPlay() {
     try {
@@ -120,21 +138,24 @@ function winningAudioPlay() {
     }
 }
 
-let player1Score = 0;
-let player2Score = 0;
-let Tie = 0;
+let player1Score = JSON.parse(localStorage.getItem('player1Score')) || 0;
+let player2Score = JSON.parse(localStorage.getItem('player2Score')) || 0;
+let Tie = JSON.parse(localStorage.getItem('Tie')) || 0;
 function renderWinner(winningMove) {
     const winner = document.querySelector('.winner');
     if (winningMove === player1Move.value) {
         winner.innerText = 'Player 1 Wins!';
         winningAudioPlay();
+        removeEvents();
         player1Score++;
     }
     else if (winningMove === player2Move.value) {
         winner.innerText = 'Player 2 Wins!';
         winningAudioPlay();
+        removeEvents();
         player2Score++;
     }
+    storeScore();
     renderScore();
 }
 
@@ -147,6 +168,8 @@ function renderScore() {
     tie.innerText = Tie;
 }
 
+renderScore();
+
 const resetBtn = document.querySelector('.reset-btn');
 resetBtn.addEventListener('click', () => {
     resetScore();
@@ -155,5 +178,12 @@ function resetScore() {
     player1Score = 0;
     player2Score = 0;
     Tie = 0;
+    storeScore();
     renderScore();
+}
+
+function storeScore() {
+    localStorage.setItem('player1Score', JSON.stringify(player1Score));
+    localStorage.setItem('player2Score', JSON.stringify(player2Score));
+    localStorage.setItem('Tie', JSON.stringify(Tie));
 }
