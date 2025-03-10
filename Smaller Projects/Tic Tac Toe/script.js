@@ -1,158 +1,81 @@
-const soundBtn = document.querySelector('.sound');
-soundBtn.addEventListener('click', () => {
-    const soundState = document.querySelector('.fa-solid');
-    if (soundState.classList[1] === 'fa-volume-high') {
-        soundBtn.innerHTML = `<i class="fa-solid fa-volume-xmark muted"></i>`;
-    }
-    else {
-        soundBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
-    }
-})
+import { inputAudioPlay, winningAudioPlay } from "./sound.js";
 
-
-
-let player1Move, player2Move;
-player1Move = document.querySelector('.player1-movetype');
-player2Move = document.querySelector('.player2-movetype');
+const boxes = document.querySelectorAll('.container > div');
+let player1Move = document.querySelector('.player1-movetype');
+let player2Move = document.querySelector('.player2-movetype');
 // console.log(player1Move.value, player2Move.value);
 
-if (player1Move === 'Computer') {
-    if (player1Move) { }
-}
+const winningPatterns = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
+[0, 3, 6], [1, 4, 7], [2, 5, 8],
+[0, 4, 8], [2, 4, 6]];
 
+let previousMove, currentMove;
 let eventHandler = (event) => {
     let inputBox = event.currentTarget.id;
     if (previousMove === 'X') {
         currentMove = 'O';
-        inputMove(currentMove, inputBox);
-        previousMove = currentMove;
     }
     else {
         currentMove = 'X';
-        inputMove(currentMove, inputBox);
-        previousMove = currentMove;
     }
+    inputMove(currentMove, inputBox);
+    previousMove = currentMove;
 }
 
-const playBoard = document.querySelectorAll('.container > div div');
-let previousMove, currentMove;
 
 function addEvents() {
-    playBoard.forEach((box) => {
-        box.addEventListener('click', eventHandler)
+    boxes.forEach((box) => {
+        box.addEventListener('click', eventHandler);
     })
 }
 addEvents();
 
 function removeEvents() {
-    playBoard.forEach((box) => {
+    boxes.forEach((box) => {
         box.removeEventListener('click', eventHandler)
     })
 }
 
 const newGameBtn = document.querySelector('.new-game');
 newGameBtn.addEventListener('click', () => {
-    playBoard.forEach(box => {
-        const inputBox = document.querySelector(`#${box.id} span`);
+    boxes.forEach(box => {
+        const inputBox = document.querySelector(`#${box.id}`);
         inputBox.innerText = '';
     })
+    countMove = 0;
     addEvents();
 });
 
-function inputAudioPlay() {
-    const muteState = checkIfMuted();
-    if (!muteState) {
-        try {
-            let audio = new Audio("./game-bonus-2-294436.mp3");
-            audio.play();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-
-}
-
-function checkIfMuted() {
-    const mutedBtn = document.querySelector('.muted') || false;
-    if (mutedBtn) return true;
-    else return false;
-}
-
-
 function inputMove(playedMove, inputBox) {
+    countMove++;
     inputAudioPlay();
-    const inputMove = document.querySelector(`#${inputBox} span`);
+    const inputMove = document.querySelector(`#${inputBox}`);
     inputMove.innerText = playedMove;
-    checkingWinner();
+    let isWinner = checkingWinner();
+    renderWinner(isWinner);
 }
 
 function checkingWinner() {
-    let resultArray = [];
-    const valArray = document.querySelectorAll('.container > div div');
-    valArray.forEach((value) => {
-        let boxText;
-        if (value.innerText) {
-            boxText = value.innerText;
-            resultArray.push(boxText);
-        }
-        else {
-            boxText = " ";
-            resultArray.push(boxText);
+    let winner;
+    winningPatterns.forEach((pattern) => {
+        let val1 = boxes[pattern[0]].innerText;
+        let val2 = boxes[pattern[1]].innerText;
+        let val3 = boxes[pattern[2]].innerText;
+
+        if (val1 === val2 && val2 === val3) {
+            winner = val1;
         }
 
     })
-
-    let winningMove = checkWinningConditions(resultArray);
-    renderWinner(winningMove);
-
-
+    return winner;
 }
 
 
-function checkWinningConditions(resultArray) {
-    if (resultArray[0] === resultArray[1] && resultArray[0] === resultArray[2]) {
-        return resultArray[0];
-    }
-    else if (resultArray[3] === resultArray[4] && resultArray[3] === resultArray[5]) {
-        return resultArray[3];
-    }
-    else if (resultArray[6] === resultArray[7] && resultArray[6] === resultArray[8]) {
-        return resultArray[6];
-    }
-    else if (resultArray[0] === resultArray[3] && resultArray[0] === resultArray[6]) {
-        return resultArray[0];
-    }
-    else if (resultArray[1] === resultArray[4] && resultArray[1] === resultArray[7]) {
-        return resultArray[1];
-    }
-    else if (resultArray[2] === resultArray[5] && resultArray[2] === resultArray[8]) {
-        return resultArray[2];
-    }
-    else if (resultArray[0] === resultArray[4] && resultArray[0] === resultArray[8]) {
-        return resultArray[0];
-    }
-    else if (resultArray[2] === resultArray[4] && resultArray[2] === resultArray[6]) {
-        return resultArray[2];
-    }
-}
-
-function winningAudioPlay() {
-    const muteState = checkIfMuted();
-    if (!muteState) {
-        try {
-            let audio = new Audio("./level-win-6416.mp3");
-            audio.play();
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
-}
 
 let player1Score = JSON.parse(localStorage.getItem('player1Score')) || 0;
 let player2Score = JSON.parse(localStorage.getItem('player2Score')) || 0;
 let Tie = JSON.parse(localStorage.getItem('Tie')) || 0;
+let countMove = 0;
 function renderWinner(winningMove) {
     const winner = document.querySelector('.winner');
     if (winningMove === player1Move.value) {
@@ -166,6 +89,11 @@ function renderWinner(winningMove) {
         winningAudioPlay();
         removeEvents();
         player2Score++;
+    }
+    else if (countMove === 9 && !winningMove) {
+        winner.innerText = 'Draw Match!';
+        Tie++;
+        console.log(Tie);
     }
     storeScore();
     renderScore();
@@ -184,15 +112,13 @@ renderScore();
 
 const resetBtn = document.querySelector('.reset-btn');
 resetBtn.addEventListener('click', () => {
-    resetScore();
-})
-function resetScore() {
     player1Score = 0;
     player2Score = 0;
     Tie = 0;
     storeScore();
     renderScore();
-}
+})
+
 
 function storeScore() {
     localStorage.setItem('player1Score', JSON.stringify(player1Score));
