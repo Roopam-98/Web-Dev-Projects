@@ -21,7 +21,7 @@ export function getCurrentWeather() {
         const response = await fetch(API_URL);
         const weatherData = await response.json();
 
-        console.log(weatherData);
+        // console.log(weatherData);
         renderWeather(weatherData);
     }
 

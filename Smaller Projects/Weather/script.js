@@ -1,5 +1,5 @@
 import { formatDate, formatStrLocation, formatTime, setCurrentTime } from "./scripts/formatters.js";
-import { quote_url, getQuote } from './scripts/quote.js';
+import { quote_url, getQuote } from '../../Modules/getQuote.js';
 import { getAirQuality } from "./scripts/airQuality.js";
 import { forecastDates } from "./scripts/generateDates.js";
 import { setVal } from "./scripts/sunriseSunset.js";

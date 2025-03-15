@@ -2,7 +2,8 @@ import './scripts/header.js';
 import './scripts/footer.js';
 import { quotes } from './quotes/quotescript.js';
 import './data/usermail.js';
-import { getCurrentWeather } from '../weather.js';
+import { getCurrentWeather } from '../Modules/getWeather.js';
+import './scripts/data.js';
 
 setInterval(() => {
     changeQuote();
@@ -34,4 +35,4 @@ document.querySelector('.change-quote').addEventListener('click', () => {
 });     //changes quote when clicked
 
 
-getCurrentWeather()
+getCurrentWeather();
