@@ -5,7 +5,8 @@ document.querySelector('.header-section').innerHTML =
             <div class="web-name">MediaWare</div>
         </div>
         <div class="nav-center">
-            <div></div>
+        <i class="fa-solid fa-location-dot"></i>  
+        <div></div>
         </div>
         <div class="nav-right">
             <div></div>

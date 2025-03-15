@@ -1,7 +1,7 @@
 
 *,*::before,*::after{
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    /* font-family:Arial, Helvetica, sans-serif; */
 }
 
 *{
@@ -23,7 +23,7 @@ body{
     height: 50px;
     background-color:rgb(15, 34, 58);
     display:grid;
-    grid-template-columns: 220px 1fr 500px;
+    grid-template-columns: 220px 1fr 450px;
     align-items: center;
     position: fixed;
     top:0;
@@ -55,7 +55,21 @@ body{
 /* Center navigation styling */
 
 .nav-center{
-    padding-left: 6em;
+    margin-left: 1.5em;
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-center i{
+    margin: 0 0.6em;
+    color:rgb(13, 138, 227);
+}
+
+.nav-center p{
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 /* .search-bar{
@@ -149,7 +163,7 @@ body{
     left: 0;
 }
 
-.light-mode{
+/* .light-mode{
     background-color: white;
     color:black;
 }
@@ -157,7 +171,7 @@ body{
 .dark-mode{
     background-color: rgb(44, 42, 42);
     color:white;
-}
+} */
 
 .subscription-section{
     display: none;
@@ -295,9 +309,9 @@ h2{
     display:flex;
 }
 
-.main-data *{
-    /* border: 2px solid blue; */
-}
+/* .main-data *{
+    border: 2px solid blue;
+} */
 .news{
     background-color: rgb(230, 230, 230);
     width: 80vw;
