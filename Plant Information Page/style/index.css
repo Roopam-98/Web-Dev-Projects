@@ -58,7 +58,7 @@ body{
     padding-left: 6em;
 }
 
-.search-bar{
+/* .search-bar{
     border-left: 1px solid rgb(209, 209, 209);
     border-top: 1px solid rgb(209, 209, 209);
     border-bottom: none;
@@ -76,7 +76,7 @@ body{
     border:none;
     background-color:white;
     outline: 2px solid rgb(13, 138, 227);
-}
+} */
 
 /* Right side navigation styling */
 
@@ -111,7 +111,7 @@ body{
     transition: 0.5s all ease-in-out;
 }
 
-.mode{
+/* .mode{
     border:none;
     border-radius: 5px;
     text-align: center;
@@ -120,7 +120,7 @@ body{
     font-size:1.8em;
     font-weight: 700;
     padding:1.5px;
-}
+} */
 
 .subscribe-btn:hover,.donate:hover,.species-btn:hover,.mode:hover{
     /* background-color: rgb(196, 196, 196); */
