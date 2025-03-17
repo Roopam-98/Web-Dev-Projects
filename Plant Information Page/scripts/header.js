@@ -9,7 +9,11 @@ document.querySelector('.header-section').innerHTML =
         <div></div>
         </div>
         <div class="nav-right">
-            <div></div>
+
+                <img src="https://flagsapi.com/BE/flat/64.png">
+                <img class="flag-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN1ZkxpaxTx4jchUUj1xoXpjDHn342UYW6jnk2PioSQCVK1hCJZpWHF4V9Q5suZx41kh4&usqp=CAU">
+                <button class="header-btn">Category</button>
+
             <div class="species-dropdown">
                 <a href="species.html"><button class="species-btn">Species</button></a>
             </div>
