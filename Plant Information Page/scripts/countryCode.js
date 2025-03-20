@@ -92,3 +92,5 @@ export const languageCode = [
     'uk',
     'vi',
     'zh',]
+
+export const newsCategories = ['general', 'science', 'sports', 'business', 'health', 'entertainment', 'tech', 'politics', 'food', 'travel']

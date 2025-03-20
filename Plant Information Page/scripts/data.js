@@ -3,8 +3,8 @@ const API_KEY = "vCLAp9pWaoATQPJ7PO7iHgzM80N5DHhSQIjb7Fxg";
 let dailyNews = [];
 
 // GET DAILY NEWS
-export async function getNews(articlePerPage, locale, lang) {
-    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&locale=${locale}&language=${lang}&limit=3&page=${articlePerPage}`;
+export async function getNews(articlePerPage, locale, lang, category) {
+    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&locale=${locale}&language=${lang}&category=${category}&limit=3&page=${articlePerPage}`;
 
     fetch(api_url).then((response) => {
         response.json().then((newsData) => {
@@ -49,8 +49,8 @@ function renderNews(dailyNews) {
 // getNews(1);
 // GET TOP NEWS
 
-export async function getTopNews(locale, lang) {
-    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=${locale}&language=${lang}&limit=3`;
+export async function getTopNews(locale, lang, category) {
+    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=${locale}&language=${lang}&category=${category}&limit=3`;
 
     try {
         let response = await fetch(api_url);
@@ -78,11 +78,11 @@ function renderTopNews(topNews) {
 
 (function articlesPerPage() {
     for (let i = 0; i < 4; i++) {
-        getNews(i + 1, "us", "en");
+        getNews(i + 1, "us", "en", 'general');
     }
 })();
 
-getTopNews('us', 'en');
+getTopNews('us', 'en', 'general');
 
 
 

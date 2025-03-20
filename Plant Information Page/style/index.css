@@ -493,3 +493,8 @@ select{
 option{
     width: 10px;
 }
+
+.category{
+    text-align: center;
+    height: 22px;
+}
