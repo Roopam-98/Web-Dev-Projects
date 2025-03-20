@@ -3,8 +3,10 @@ const API_KEY = "vCLAp9pWaoATQPJ7PO7iHgzM80N5DHhSQIjb7Fxg";
 let dailyNews = [];
 
 // GET DAILY NEWS
-async function getNews(articlePerPage) {
-    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=en&limit=3&page=${articlePerPage}`;
+export async function getNews(articlePerPage) {
+    const locale = document.querySelectorAll('select')[0]?.value;
+    const lang = document.querySelectorAll('select')[1]?.value;
+    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=${'en'}&limit=3&page=${articlePerPage}`;
 
     try {
         let response = await fetch(api_url);
@@ -47,8 +49,10 @@ function renderNews(dailyNews) {
 // getNews(1);
 // GET TOP NEWS
 
-(async function getTopNews() {
-    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=in&categories=general&limit=3`;
+export async function getTopNews() {
+    const locale = document.querySelectorAll('select')[0]?.value;
+    const lang = document.querySelectorAll('select')[1]?.value;
+    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&language=${'en'}&limit=3`;
 
     try {
         let response = await fetch(api_url);
@@ -60,7 +64,7 @@ function renderNews(dailyNews) {
         console.log(err);
     }
 
-})();
+};
 
 
 function renderTopNews(topNews) {
@@ -79,6 +83,9 @@ function renderTopNews(topNews) {
         getNews(i + 1);
     }
 })();
+
+getTopNews();
+
 
 
 

@@ -3,7 +3,6 @@ import './scripts/footer.js';
 import { quotes } from './quotes/quotescript.js';
 import './data/usermail.js';
 import { getCurrentWeather } from '../Modules/getWeather.js';
-import './scripts/data.js';
 
 setInterval(() => {
     changeQuote();
