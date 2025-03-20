@@ -3,22 +3,20 @@ const API_KEY = "vCLAp9pWaoATQPJ7PO7iHgzM80N5DHhSQIjb7Fxg";
 let dailyNews = [];
 
 // GET DAILY NEWS
-export async function getNews(articlePerPage) {
-    const locale = document.querySelectorAll('select')[0]?.value;
-    const lang = document.querySelectorAll('select')[1]?.value;
-    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&language=${'en'}&limit=3&page=${articlePerPage}`;
+export async function getNews(articlePerPage, locale, lang) {
+    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&locale=${locale}&language=${lang}&limit=3&page=${articlePerPage}`;
 
-    try {
-        let response = await fetch(api_url);
-        let newsData = await response.json();
-        dailyNews.push(newsData);
-        if (articlePerPage === 4) {
-            renderNews(dailyNews);
-        }
-    }
-    catch (err) {
-        console.log(err);
-    }
+    fetch(api_url).then((response) => {
+        response.json().then((newsData) => {
+            dailyNews.push(newsData);
+            console.log(dailyNews.length);
+            if (articlePerPage === 4) {
+                renderNews(dailyNews);
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    })
 
 }
 
@@ -44,15 +42,15 @@ function renderNews(dailyNews) {
                 </div>`;
         })
     }
+
+    dailyNews = [];
 }
 
 // getNews(1);
 // GET TOP NEWS
 
-export async function getTopNews() {
-    const locale = document.querySelectorAll('select')[0]?.value;
-    const lang = document.querySelectorAll('select')[1]?.value;
-    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&language=${'en'}&limit=3`;
+export async function getTopNews(locale, lang) {
+    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=${locale}&language=${lang}&limit=3`;
 
     try {
         let response = await fetch(api_url);
@@ -80,11 +78,11 @@ function renderTopNews(topNews) {
 
 (function articlesPerPage() {
     for (let i = 0; i < 4; i++) {
-        getNews(i + 1);
+        getNews(i + 1, "us", "en");
     }
 })();
 
-getTopNews();
+getTopNews('us', 'en');
 
 
 

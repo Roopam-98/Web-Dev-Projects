@@ -99,6 +99,7 @@ body{
     padding: 0.5em;
     display:flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .icon-img{
@@ -458,22 +459,35 @@ a:visited{
 }
 
 .lang-img{
-    width: 40px;
-    height: 93%;
-    border-radius: 3px;
+    width: 35px;
+    height: 65%;
     object-fit: cover;
+    z-index: 1;
 }
 
 .flag-img{
-    border-radius: 3px;
     width: 45px;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    z-index: 1;
 }
 
 select{
     outline:none;
-    height: 85%;
+}
+
+.country{
+    width: 40px;
+    height: 22px;
+    margin-left:-17.8px;
+    z-index: 0;
+}
+
+.lang{
+    width: 40px;
+    height: 22px;
+    margin-left:-12px;
+    z-index: 0;
 }
 
 option{
