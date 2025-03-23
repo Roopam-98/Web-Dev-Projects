@@ -1,16 +1,16 @@
 import { formatDate } from "../../Smaller Projects/Weather/scripts/formatters.js";
-const API_KEY = "vCLAp9pWaoATQPJ7PO7iHgzM80N5DHhSQIjb7Fxg";
+const API_KEY = process.env.NEWS_API_KEY1;
 let dailyNews = [];
 
 // GET DAILY NEWS
 export async function getNews(articlePerPage, locale, lang, category) {
-    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&locale=${locale}&language=${lang}&category=${category}&limit=3&page=${articlePerPage}`;
+    const api_url = `https://api.thenewsapi.com/v1/news/all?api_token=${API_KEY}&locale=${locale}&language=${lang}&categories=${category}&limit=3&page=${articlePerPage}`;
 
     fetch(api_url).then((response) => {
         response.json().then((newsData) => {
             dailyNews.push(newsData);
             console.log(dailyNews.length);
-            if (articlePerPage === 4) {
+            if (articlePerPage >= 4) {
                 renderNews(dailyNews);
             }
         }).catch(err => {
@@ -50,7 +50,7 @@ function renderNews(dailyNews) {
 // GET TOP NEWS
 
 export async function getTopNews(locale, lang, category) {
-    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=${locale}&language=${lang}&category=${category}&limit=3`;
+    const api_url = `https://api.thenewsapi.com/v1/news/top?api_token=${API_KEY}&locale=${locale}&language=${lang}&categories=${category}&limit=3`;
 
     try {
         let response = await fetch(api_url);

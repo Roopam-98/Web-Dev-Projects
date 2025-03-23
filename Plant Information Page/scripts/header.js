@@ -106,12 +106,18 @@ const selectedCountry = document.querySelectorAll('select')[0].value;
 
 flagSelector.src = `https://flagsapi.com/${selectedCountry}/flat/64.png`;
 
-selectBtns[0].addEventListener('change', () => {
+selectBtns.forEach((selectBtn) => {
+    selectBtn.addEventListener('change', () => {
+        callData()
+    })
+})
+
+function callData() {
     const flagSelector = document.querySelector('.flag-img');
     const locale = document.querySelectorAll('select')[0].value.toLowerCase();
     const lang = document.querySelectorAll('select')[1].value.toLowerCase();
     const category = document.querySelector('select')[2].value.toLowerCase();
-    console.log(locale, lang);
+    // console.log(locale, lang);
 
     flagSelector.src = `https://flagsapi.com/${locale.toUpperCase()}/flat/64.png`;
 
@@ -119,5 +125,4 @@ selectBtns[0].addEventListener('change', () => {
     for (let i = 0; i < 4; i++) {
         getNews(i + 1, locale, lang, category);
     }
-})
-
+}
